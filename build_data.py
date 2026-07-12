@@ -143,9 +143,24 @@ def build() -> dict[str, Any]:
 
     prices = [l["price"] for l in live if isinstance(l["price"], int)]
     miles = [l["mileage"] for l in live if isinstance(l["mileage"], int)]
+
+    # latest one-pager PDF (published into site/report/ by S5)
+    report = None
+    pdf = SITE_DIR / "report" / "rs4-daily-latest.pdf"
+    if pdf.exists():
+        report = {
+            "pdf": "report/rs4-daily-latest.pdf",
+            "preview": "report/rs4-daily-latest.png"
+            if (SITE_DIR / "report" / "rs4-daily-latest.png").exists() else None,
+            "updated": today,
+        }
+
+    top_pick = live[0] if live else None
     return {
         "generated_at": dt.datetime.now().astimezone().isoformat(timespec="seconds"),
         "search_label": "Audi RS4 B7 · 2006–2008 · Manual · Petrol · UK-wide",
+        "report": report,
+        "top_pick_id": top_pick["advert_id"] if top_pick else None,
         "market": {
             "total_live": len(live),
             "floor_price": min(prices) if prices else None,

@@ -125,6 +125,12 @@
     if (leader) { leader.classList.remove("on"); }
   }
 
+  // narrow screens render the callout as a fixed bottom sheet (see CSS);
+  // skip the absolute-positioning + leader-line maths entirely there
+  function isNarrow() {
+    return window.matchMedia && window.matchMedia("(max-width: 768px)").matches;
+  }
+
   function openCallout(hs) {
     if (openHotspot === hs) { return; }
     closeCallout();
@@ -133,6 +139,14 @@
     openHotspot = hs;
     hs.setAttribute("aria-expanded", "true");
     card.hidden = false;
+
+    if (isNarrow()) {
+      // bottom sheet: CSS handles placement, clear any stale inline coords
+      card.style.left = "";
+      card.style.top = "";
+      if (leader) { leader.classList.remove("on"); }
+      return;
+    }
 
     // hotspot centre relative to the wrap
     var wr = wrap.getBoundingClientRect();
@@ -500,14 +514,22 @@
         "</a>";
     }).join("");
 
-    // click anywhere on the row opens the advert (anchor covers middle-click)
+    // pointer: click anywhere on the row opens the advert (anchor covers middle-click)
+    // touch: first tap toggles the preview sheet; the preview carries the advert link
     rowsEl.addEventListener("click", function (e) {
       var row = e.target.closest(".fifm-row");
       if (!row) { return; }
       if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) { return; }
-      e.preventDefault();
       var l = listings[parseInt(row.getAttribute("data-idx"), 10)];
-      if (l && l.url) { window.open(l.url, "_blank", "noopener"); }
+      if (!l) { return; }
+      if (isTouch) {
+        e.preventDefault();
+        if (popRow === row && pop && !pop.hidden) { hidePop(); }
+        else { showPop(row, l, true); }
+        return;
+      }
+      e.preventDefault();
+      if (l.url) { window.open(l.url, "_blank", "noopener"); }
     });
   }
 
@@ -538,10 +560,16 @@
       "</svg>";
   }
 
-  function showPop(row, l) {
+  var popRow = null;
+
+  function showPop(row, l, touch) {
     if (!pop) { return; }
     var grab = (l.attention_grabber !== null && l.attention_grabber !== undefined && String(l.attention_grabber).length)
       ? '<div class="pop-grab">' + esc(l.attention_grabber) + "</div>" : "";
+    // on touch the pop is the only way to reach the advert, so carry a link
+    var link = touch
+      ? '<a class="pop-cta" href="' + esc(l.url) + '" target="_blank" rel="noopener">View the advert &rarr;</a>'
+      : "";
     pop.innerHTML =
       '<img src="' + esc(l.image) + '" alt="">' +
       '<div class="pop-body">' +
@@ -550,8 +578,18 @@
         '<div class="pop-chips">' + chipsHtml(l) + "</div>" +
         '<div class="pop-spark">' + sparklineSvg(l.price_history) + "</div>" +
         '<div class="pop-meta">first seen ' + esc(fmtDate(l.first_seen)) + " · " + esc(l.mileage_text) + " · " + esc(l.seller_type) + "</div>" +
+        link +
       "</div>";
     pop.hidden = false;
+    popRow = row;
+    pop.classList.toggle("pop-touch", !!touch);
+
+    if (touch) {
+      // centred sheet, positioned by CSS — clear any prior inline coords
+      pop.style.left = "";
+      pop.style.top = "";
+      return;
+    }
 
     var r = row.getBoundingClientRect();
     var pw = 300;
@@ -568,7 +606,8 @@
   }
 
   function hidePop() {
-    if (pop) { pop.hidden = true; }
+    if (pop) { pop.hidden = true; pop.classList.remove("pop-touch"); }
+    popRow = null;
   }
 
   if (rowsEl && pop && !isTouch) {
@@ -594,6 +633,15 @@
     window.addEventListener("scroll", hidePop, { passive: true });
   }
 
+  // touch: tap outside the pop (and outside a row) closes it
+  if (isTouch && pop) {
+    document.addEventListener("click", function (e) {
+      if (pop.hidden) { return; }
+      if (e.target.closest("#fifmPop") || e.target.closest(".fifm-row")) { return; }
+      hidePop();
+    });
+  }
+
   /* ---------- FIFM: gone from market ---------- */
 
   var goneEl = $("goneRows");
@@ -615,11 +663,96 @@
     }
   }
 
-  /* ---------- hero: hi-res selection ---------- */
+  /* ---------- FIFM capstone: the one for you + daily one-pager ---------- */
 
   function townOf(l) {
     return String(l.location || "").replace(/\s*\(.*?\)\s*$/, "");
   }
+
+  // "why it wins" line, built from the winner's keyword hits (with a couple of
+  // friendly rewrites) plus its keeper-flag standing
+  function whyItWins(l) {
+    var map = {
+      "wingbacks": "Recaro wingbacks",
+      "bucket seats": "bucket seats",
+      "recaro": "Recaro seats",
+      "flat bottom": "flat-bottomed wheel",
+      "sports seat": "sports seats"
+    };
+    var reasons = [];
+    (l.keyword_hits || []).forEach(function (h) {
+      var r = map[h] || h;
+      if (reasons.indexOf(r) === -1) { reasons.push(r); }
+    });
+    if (l.paint && (l.paint.name === "Sprint Blue" || l.paint.name === "Misano Red")) {
+      reasons.push("the poster " + l.paint.name.toLowerCase() + " spec");
+    }
+    if (!(l.keyword_flags && l.keyword_flags.length)) {
+      reasons.push("lowest keeper-flags");
+    }
+    if (!reasons.length) { reasons.push("cleanest history on the board today"); }
+    return reasons.slice(0, 4).join(" · ");
+  }
+
+  function pickTopCar() {
+    if (!listings.length) { return null; }
+    if (DATA && DATA.top_pick_id) {
+      var byId = listings.filter(function (l) { return l.advert_id === DATA.top_pick_id; })[0];
+      if (byId) { return byId; }
+    }
+    return listings[0];
+  }
+
+  var heroPick = $("heroPick");
+  if (heroPick) {
+    var top = pickTopCar();
+    if (!top) {
+      heroPick.innerHTML = '<div class="cap-empty">No live car to recommend today — the board is empty. Check back after the 08:45 refresh.</div>';
+    } else {
+      var picHero = (top.images_hires && top.images_hires.length) ? top.images_hires[0] : top.image;
+      var scoreVal = (typeof top.score === "number") ? top.score : 0;
+      heroPick.innerHTML =
+        '<div class="hp-photo">' +
+          '<img src="' + esc(picHero) + '" alt="' + esc(top.year) + " Audi RS4 B7 in " + esc(top.paint ? top.paint.name : "") + ", the top recommended car, for sale in " + esc(townOf(top)) + '">' +
+          '<span class="hp-badge">RANK ' + esc(top.rank) + " · ★ " + scoreVal + "</span>" +
+        "</div>" +
+        '<div class="hp-body">' +
+          '<p class="kicker">Pick of the market this morning</p>' +
+          '<h3 class="hp-title"><span class="yr">' + esc(top.year) + "</span> " + esc(top.title) + " " + esc(top.subtitle) + "</h3>" +
+          '<p class="hp-price">' + esc(top.price_text) + "</p>" +
+          '<p class="hp-why"><span class="hp-why-lab">Why it wins</span>' + esc(whyItWins(top)) + "</p>" +
+          '<p class="hp-meta mono">' + esc(top.mileage_text) + " · " + esc(townOf(top)) + " · " + esc(String(top.seller_type || "")) + "</p>" +
+          '<a class="hp-cta" href="' + esc(top.url) + '" target="_blank" rel="noopener">View the advert &rarr;</a>' +
+        "</div>";
+    }
+  }
+
+  var onePager = $("onePager");
+  if (onePager) {
+    var report = DATA ? DATA.report : null;
+    if (report && report.pdf) {
+      var previewHtml = report.preview
+        ? '<img src="' + esc(report.preview) + '" alt="Preview of today’s RS4 B7 daily market one-pager">'
+        : '<div class="op-noprev mono">PDF ready · no preview image</div>';
+      onePager.innerHTML =
+        '<p class="kicker">Your daily one-pager</p>' +
+        '<div class="op-paper">' + previewHtml + "</div>" +
+        '<div class="op-body">' +
+          '<a class="op-cta" href="' + esc(report.pdf) + '" download>Download today’s report (PDF) &darr;</a>' +
+          '<p class="op-updated mono">Updated ' + esc(fmtDate(report.updated)) + "</p>" +
+          '<p class="op-note">Generated every morning at 08:45 and delivered to WhatsApp.</p>' +
+        "</div>";
+    } else {
+      onePager.innerHTML =
+        '<p class="kicker">Your daily one-pager</p>' +
+        '<div class="op-placeholder">' +
+          '<p class="op-ph-title mono">Today’s report is being generated</p>' +
+          '<p class="op-ph-line">Check back after 08:45.</p>' +
+        "</div>";
+    }
+  }
+
+  /* ---------- hero: hi-res selection ---------- */
 
   function pickHeroListing() {
     var best = null;

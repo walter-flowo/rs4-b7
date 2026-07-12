@@ -264,115 +264,216 @@
 
   <div class="bp-wrap" id="bpWrap">
     <div class="bp-stage" id="bpStage">
-      <svg class="bp-svg" viewBox="0 0 1000 400" role="img" aria-label="Technical side-elevation line drawing of the Audi RS4 B7 saloon with dimensions: wheelbase 2651 millimetres, overall length 4586, height 1415">
+      <svg class="bp-svg" viewBox="0 0 1000 460" role="img" aria-label="Detailed technical side-elevation line drawing of the Audi RS4 B7 saloon, front to the right, with multi-spoke alloy wheels, box-flared arches, glasshouse pillars, single-frame grille, twin oval exhaust and dimensions: wheelbase 2651 millimetres, overall length 4586, height 1415">
         <defs>
           <marker id="dimArr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
             <path d="M0 0 L8 4 L0 8 z" fill="#7fa8e0"/>
           </marker>
+          <!-- honeycomb hatch for the single-frame grille -->
+          <pattern id="bpHoney" width="9" height="10.4" patternUnits="userSpaceOnUse" patternTransform="scale(0.62)">
+            <path d="M4.5 0 L9 2.6 L9 7.8 L4.5 10.4 L0 7.8 L0 2.6 Z" fill="none" stroke="#8fb8f0" stroke-width="0.5" opacity="0.85"/>
+          </pattern>
+          <!-- 5-twin-spoke (Peler-style) alloy: two thin spokes per arm, ten arms -->
           <g id="bpWheel">
             <circle r="66" class="bp-line"/>
-            <circle r="44" class="bp-fine"/>
-            <circle r="9" class="bp-fine"/>
+            <circle r="61" class="bp-fine"/>
+            <circle r="10" class="bp-line"/>
+            <circle r="5" class="bp-fine"/>
+            <!-- five lug bolts -->
             <g class="bp-fine">
-              <g><line x1="-3" y1="-12" x2="-3" y2="-41"/><line x1="3" y1="-12" x2="3" y2="-41"/></g>
-              <g transform="rotate(51.4)"><line x1="-3" y1="-12" x2="-3" y2="-41"/><line x1="3" y1="-12" x2="3" y2="-41"/></g>
-              <g transform="rotate(102.8)"><line x1="-3" y1="-12" x2="-3" y2="-41"/><line x1="3" y1="-12" x2="3" y2="-41"/></g>
-              <g transform="rotate(154.2)"><line x1="-3" y1="-12" x2="-3" y2="-41"/><line x1="3" y1="-12" x2="3" y2="-41"/></g>
-              <g transform="rotate(205.6)"><line x1="-3" y1="-12" x2="-3" y2="-41"/><line x1="3" y1="-12" x2="3" y2="-41"/></g>
-              <g transform="rotate(257)"><line x1="-3" y1="-12" x2="-3" y2="-41"/><line x1="3" y1="-12" x2="3" y2="-41"/></g>
-              <g transform="rotate(308.4)"><line x1="-3" y1="-12" x2="-3" y2="-41"/><line x1="3" y1="-12" x2="3" y2="-41"/></g>
+              <circle cx="0" cy="-7" r="1.4"/>
+              <g transform="rotate(72)"><circle cx="0" cy="-7" r="1.4"/></g>
+              <g transform="rotate(144)"><circle cx="0" cy="-7" r="1.4"/></g>
+              <g transform="rotate(216)"><circle cx="0" cy="-7" r="1.4"/></g>
+              <g transform="rotate(288)"><circle cx="0" cy="-7" r="1.4"/></g>
             </g>
+            <!-- 5 twin-spoke pairs -->
+            <g class="bp-fine">
+              <g><path d="M-3.5 -12 L-6 -57"/><path d="M3.5 -12 L6 -57"/><path d="M-6 -57 A61 61 0 0 1 6 -57"/></g>
+              <g transform="rotate(72)"><path d="M-3.5 -12 L-6 -57"/><path d="M3.5 -12 L6 -57"/><path d="M-6 -57 A61 61 0 0 1 6 -57"/></g>
+              <g transform="rotate(144)"><path d="M-3.5 -12 L-6 -57"/><path d="M3.5 -12 L6 -57"/><path d="M-6 -57 A61 61 0 0 1 6 -57"/></g>
+              <g transform="rotate(216)"><path d="M-3.5 -12 L-6 -57"/><path d="M3.5 -12 L6 -57"/><path d="M-6 -57 A61 61 0 0 1 6 -57"/></g>
+              <g transform="rotate(288)"><path d="M-3.5 -12 L-6 -57"/><path d="M3.5 -12 L6 -57"/><path d="M-6 -57 A61 61 0 0 1 6 -57"/></g>
+            </g>
+            <!-- brake disc through the spokes + red monoblock caliper -->
+            <circle r="40" class="bp-hair" stroke-dasharray="4 4"/>
+            <circle r="34" class="bp-hair" stroke-dasharray="2 3"/>
+            <path class="bp-red" d="M-46 -16 A48 48 0 0 1 -46 16 L-56 14 A58 58 0 0 0 -56 -14 Z"/>
+            <!-- tyre sidewall + valve stub -->
+            <circle r="79" class="bp-line"/>
+            <circle r="72" class="bp-fine" stroke-dasharray="2 4"/>
+            <g transform="rotate(30)"><rect x="-1.6" y="-74" width="3.2" height="7" class="bp-fine"/></g>
           </g>
         </defs>
 
-        <!-- ground + hub centreline -->
-        <line x1="20" y1="322" x2="980" y2="322" class="bp-hair"/>
-        <line x1="140" y1="256" x2="900" y2="256" class="bp-centre"/>
+        <!-- ground + axle centre-lines (dash-dot) -->
+        <line x1="20" y1="335" x2="980" y2="335" class="bp-hair"/>
+        <line x1="128" y1="269" x2="900" y2="269" class="bp-centre"/>
+        <line x1="238" y1="150" x2="238" y2="360" class="bp-centre"/>
+        <line x1="768" y1="150" x2="768" y2="360" class="bp-centre"/>
+        <!-- vehicle centre-line marker between the axles -->
+        <line x1="503" y1="46" x2="503" y2="70" class="bp-centre"/>
+        <path class="bp-hair" d="M497 58 L503 46 L509 58"/>
 
-        <!-- body outline -->
-        <path class="bp-line" d="M60 300
-          C50 288 48 270 50 252
-          C48 228 50 206 58 192
-          C100 181 140 177 172 176
-          C235 108 280 70 340 50
-          C392 40 468 38 520 44
-          C562 50 612 94 668 146
-          C702 152 762 158 850 164
-          C900 167 932 170 946 176
-          L954 190
-          L952 210
-          L960 218
-          L958 262
-          L953 270
-          L957 276
-          L956 296
-          L966 299
-          L964 303
-          L944 304
-          L835 300
-          A80 80 0 1 0 701 300
-          L305 300
-          A80 80 0 1 0 171 300
-          L60 300 Z"/>
+        <!-- ============ BODY OUTLINE (front to the right) ============ -->
+        <path class="bp-line" d="M62 300
+          C51 290 48 274 50 258
+          C49 236 51 214 60 200
+          C102 190 140 186 172 185
+          C233 118 280 79 340 58
+          C392 48 470 46 522 52
+          C566 59 616 102 672 154
+          C706 160 766 166 852 172
+          C902 175 934 178 948 184
+          L957 199
+          L954 220
+          L963 228
+          L960 270
+          L954 279
+          L959 285
+          L957 305
+          L967 308
+          L964 313
+          L944 314
+          L847 310
+          A79 79 0 1 0 689 310
+          L317 310
+          A79 79 0 1 0 159 310
+          L62 300 Z"/>
 
-        <!-- box-flare blisters -->
-        <path class="bp-line" d="M680 230 A92 92 0 0 1 856 230"/>
-        <path class="bp-line" d="M150 230 A92 92 0 0 1 326 230"/>
+        <!-- ============ BOX-FLARED ARCHES — flare lip standing proud ============ -->
+        <!-- front arch (right) -->
+        <path class="bp-line" d="M672 250 C672 205 712 178 768 178 C824 178 864 205 864 250"/>
+        <path class="bp-accent" d="M666 258 C666 208 710 178 768 178 C826 178 870 208 870 258"/>
+        <!-- rear arch (left) -->
+        <path class="bp-line" d="M142 250 C142 205 182 178 238 178 C294 178 334 205 334 250"/>
+        <path class="bp-accent" d="M136 258 C136 208 180 178 238 178 C296 178 340 208 340 258"/>
 
-        <!-- glasshouse -->
-        <path class="bp-fine" d="M204 166 C256 108 294 80 346 60 C394 51 464 49 512 55 C550 61 598 100 646 146 C560 152 320 162 204 166 Z"/>
-        <path class="bp-fine" d="M470 154 L455 52"/>
-        <path class="bp-fine" d="M282 84 L300 162"/>
+        <!-- ============ SILL + SPLITTER + DIFFUSER ============ -->
+        <path class="bp-fine" d="M317 313 L689 313"/>
+        <!-- front splitter (right) -->
+        <path class="bp-accent" d="M944 314 L967 315 L968 320 L946 320 Z"/>
+        <path class="bp-fine" d="M905 308 L960 311"/>
+        <!-- rear diffuser hint (left) -->
+        <path class="bp-fine" d="M62 302 L100 306 L98 315 L60 312 Z M72 303 L74 312 M84 305 L86 313"/>
 
-        <!-- creases, seams, details -->
-        <path class="bp-fine" d="M332 162 C450 156 560 151 660 148"/>
-        <path class="bp-fine" d="M470 156 C468 210 466 256 468 297"/>
-        <path class="bp-fine" d="M322 160 C320 212 318 258 320 298"/>
-        <path class="bp-fine" d="M676 152 L671 298"/>
-        <rect class="bp-fine" x="492" y="178" width="26" height="5" rx="2"/>
-        <rect class="bp-fine" x="346" y="181" width="26" height="5" rx="2"/>
-        <path class="bp-accent" d="M652 141 L672 127 L684 133 L664 148 Z"/>
-        <path class="bp-fine" d="M942 178 L890 173 L894 186 L944 190 Z"/>
-        <path class="bp-fine" d="M950 196 L958 196 M950 202 L958 202 M950 208 L957 208"/>
-        <path class="bp-fine" d="M312 289 L688 289"/>
-        <path class="bp-fine" d="M58 192 C74 188 96 185 118 184"/>
-        <ellipse class="bp-accent" cx="70" cy="297" rx="13" ry="6"/>
-        <ellipse class="bp-fine" cx="70" cy="297" rx="9" ry="3.6"/>
+        <!-- ============ GLASSHOUSE: A / B / C pillars, frames, quarter-light ============ -->
+        <path class="bp-fine" d="M206 176 C258 116 296 88 348 68 C396 59 466 57 514 63 C552 69 600 108 650 154 C562 160 322 172 206 176 Z"/>
+        <!-- A-pillar (front, right) -->
+        <path class="bp-line" d="M648 152 L612 66"/>
+        <!-- B-pillar -->
+        <path class="bp-line" d="M472 164 L458 62"/>
+        <!-- C-pillar (rear, left) -->
+        <path class="bp-line" d="M286 90 L306 170"/>
+        <!-- window frame top rail + belt-line -->
+        <path class="bp-fine" d="M330 172 C450 166 560 160 640 156"/>
+        <!-- quarter-light (small rear triangle window) -->
+        <path class="bp-fine" d="M306 170 L286 92 L318 108 Z"/>
+        <!-- front door glass + rear door glass split already by B-pillar -->
 
-        <!-- wheels -->
-        <use href="#bpWheel" transform="translate(238 256)"/>
-        <use href="#bpWheel" transform="translate(768 256)"/>
-        <!-- front brake disc + caliper -->
-        <circle cx="768" cy="256" r="30" class="bp-hair" stroke-dasharray="4 4"/>
-        <path class="bp-accent" d="M786 226 A36 36 0 0 1 802 250 L 812 247 A46 46 0 0 0 792 217 Z"/>
+        <!-- ============ DOORS: shut-lines + handles ============ -->
+        <!-- front door / rear door / rear wing shuts -->
+        <path class="bp-fine" d="M672 156 L668 306"/>
+        <path class="bp-fine" d="M472 166 C470 220 468 266 470 307"/>
+        <path class="bp-fine" d="M324 170 C322 222 320 268 322 308"/>
+        <!-- boot shut-line (rear, left) -->
+        <path class="bp-fine" d="M118 190 C112 214 110 244 112 276"/>
+        <!-- door handles -->
+        <rect class="bp-fine" x="524" y="188" width="30" height="6" rx="3"/>
+        <rect class="bp-fine" x="376" y="191" width="30" height="6" rx="3"/>
+        <!-- feature crease running the flank -->
+        <path class="bp-fine" d="M150 205 C330 199 560 194 700 196"/>
 
-        <!-- dimensions -->
+        <!-- ============ DOOR MIRROR on its stalk (matt aluminium tell) ============ -->
+        <path class="bp-fine" d="M654 162 L672 150"/>
+        <path class="bp-accent" d="M672 138 C684 137 692 144 690 154 C688 162 678 164 670 160 C666 154 666 143 672 138 Z"/>
+
+        <!-- ============ FRONT (right): headlight, single-frame grille, intakes, fog, badge ============ -->
+        <!-- B7 facelift headlight cluster -->
+        <path class="bp-accent" d="M905 186 L950 189 L957 200 L946 208 L905 200 Z"/>
+        <path class="bp-fine" d="M910 191 L946 193 M912 197 L944 199"/>
+        <!-- single-frame grille outline + honeycomb hatch -->
+        <path class="bp-line" d="M948 210 L963 216 L960 268 L950 272 Z"/>
+        <path d="M948 210 L963 216 L960 268 L950 272 Z" fill="url(#bpHoney)" stroke="none"/>
+        <!-- four-rings front badge -->
+        <g class="bp-fine"><circle cx="953" cy="226" r="2.4"/><circle cx="957" cy="226" r="2.4"/></g>
+        <!-- lower intake + fog lamp -->
+        <path class="bp-fine" d="M950 285 L964 288 L962 306 L949 304 Z"/>
+        <circle class="bp-fine" cx="957" cy="296" r="3.4"/>
+
+        <!-- ============ REAR (left): tail-light, plate recess, twin OVAL exhausts ============ -->
+        <path class="bp-accent" d="M52 258 L64 250 L72 262 L64 276 L52 270 Z"/>
+        <path class="bp-fine" d="M56 260 L66 258 M56 266 L66 264"/>
+        <!-- number-plate recess -->
+        <rect class="bp-fine" x="60" y="286" width="34" height="12" rx="1.5"/>
+        <!-- twin oval exhaust tips (signature) -->
+        <ellipse class="bp-accent" cx="74" cy="312" rx="13" ry="6"/>
+        <ellipse class="bp-fine" cx="74" cy="312" rx="9" ry="3.6"/>
+        <ellipse class="bp-accent" cx="100" cy="313" rx="11" ry="5.4"/>
+        <ellipse class="bp-fine" cx="100" cy="313" rx="7.5" ry="3.2"/>
+
+        <!-- ============ WHEELS ============ -->
+        <use href="#bpWheel" transform="translate(238 269)"/>
+        <use href="#bpWheel" transform="translate(768 269)"/>
+
+        <!-- ============ DETAIL / SECTION VIGNETTES (magnified) ============ -->
+        <!-- detail bubble A: oval exhaust tip cross-section -->
+        <circle cx="112" cy="412" r="32" class="bp-hair"/>
+        <path class="bp-hair" d="M86 322 L96 384" stroke-dasharray="3 3"/>
+        <ellipse class="bp-accent" cx="112" cy="410" rx="21" ry="11"/>
+        <ellipse class="bp-fine" cx="112" cy="410" rx="15" ry="8"/>
+        <path class="bp-fine" d="M97 410 A21 11 0 0 1 127 410" stroke-dasharray="2 2"/>
+        <text x="112" y="453" text-anchor="middle" class="bp-note">DET. A · OVAL TIP</text>
+
+        <!-- detail bubble B: flat-bottom wheel rim from the interior -->
+        <circle cx="286" cy="412" r="32" class="bp-hair"/>
+        <path class="bp-hair" d="M262 355 L280 382" stroke-dasharray="3 3"/>
+        <path class="bp-accent" d="M264 405 A24 24 0 1 1 308 405 L264 405 Z"/>
+        <path class="bp-fine" d="M268 402 L304 402" stroke-dasharray="3 3"/>
+        <circle cx="286" cy="406" r="4.5" class="bp-fine"/>
+        <path class="bp-fine" d="M286 402 L286 390 M282 408 L268 413 M290 408 L304 413"/>
+        <text x="286" y="453" text-anchor="middle" class="bp-note">DET. B · FLAT-BOTTOM WHEEL</text>
+
+        <!-- ============ DIMENSIONS + LEADER CALLOUTS ============ -->
         <g class="bp-dim">
-          <line x1="238" y1="330" x2="238" y2="352"/>
-          <line x1="768" y1="330" x2="768" y2="352"/>
-          <line x1="238" y1="346" x2="768" y2="346" marker-start="url(#dimArr)" marker-end="url(#dimArr)"/>
-          <text x="503" y="341" text-anchor="middle">WHEELBASE 2651</text>
-          <line x1="48" y1="330" x2="48" y2="378"/>
-          <line x1="962" y1="330" x2="962" y2="378"/>
-          <line x1="48" y1="372" x2="962" y2="372" marker-start="url(#dimArr)" marker-end="url(#dimArr)"/>
-          <text x="505" y="367" text-anchor="middle">OVERALL LENGTH 4586</text>
-          <line x1="26" y1="39" x2="26" y2="322" marker-start="url(#dimArr)" marker-end="url(#dimArr)"/>
-          <line x1="16" y1="39" x2="60" y2="39"/>
-          <line x1="16" y1="322" x2="34" y2="322"/>
-          <text transform="translate(20 216) rotate(-90)">HEIGHT 1415</text>
-          <text x="962" y="392" text-anchor="end">DIMENSIONS IN MM &middot; DO NOT SCALE</text>
+          <!-- wheelbase -->
+          <line x1="238" y1="343" x2="238" y2="366"/>
+          <line x1="768" y1="343" x2="768" y2="366"/>
+          <line x1="238" y1="360" x2="768" y2="360" marker-start="url(#dimArr)" marker-end="url(#dimArr)"/>
+          <text x="503" y="355" text-anchor="middle">WHEELBASE 2651</text>
+          <!-- overall length -->
+          <line x1="46" y1="343" x2="46" y2="392"/>
+          <line x1="968" y1="343" x2="968" y2="392"/>
+          <line x1="46" y1="386" x2="968" y2="386" marker-start="url(#dimArr)" marker-end="url(#dimArr)"/>
+          <text x="507" y="381" text-anchor="middle">OVERALL LENGTH 4586</text>
+          <!-- height -->
+          <line x1="26" y1="52" x2="26" y2="335" marker-start="url(#dimArr)" marker-end="url(#dimArr)"/>
+          <line x1="16" y1="52" x2="60" y2="52"/>
+          <line x1="16" y1="335" x2="34" y2="335"/>
+          <text transform="translate(20 228) rotate(-90)">HEIGHT 1415</text>
+          <!-- leader: ride height -->
+          <line x1="768" y1="348" x2="812" y2="348"/>
+          <line x1="812" y1="335" x2="812" y2="348" marker-start="url(#dimArr)"/>
+          <text x="818" y="345" text-anchor="start">RIDE HEIGHT −30 mm</text>
+          <!-- leader: wheel + tyre spec -->
+          <line x1="815" y1="200" x2="878" y2="150"/>
+          <text x="880" y="149" text-anchor="start">255/35 R19</text>
+          <!-- leader: track width (front axle) -->
+          <line x1="768" y1="150" x2="700" y2="120"/>
+          <text x="696" y="118" text-anchor="end">TRACK 1547 · WIDE-BODY +35</text>
+          <text x="500" y="440" text-anchor="middle">DIMENSIONS IN MM &middot; DO NOT SCALE</text>
         </g>
       </svg>
 
-      <!-- hotspots -->
-      <button class="hotspot" id="hs-1" style="left:85.8%;top:47.5%" aria-expanded="false" aria-controls="co-1"><span>1</span></button>
-      <button class="hotspot" id="hs-2" style="left:70%;top:59.5%" aria-expanded="false" aria-controls="co-2"><span>2</span></button>
-      <button class="hotspot" id="hs-3" style="left:52%;top:59.5%" aria-expanded="false" aria-controls="co-3"><span>3</span></button>
-      <button class="hotspot" id="hs-4" style="left:24.3%;top:42%" aria-expanded="false" aria-controls="co-4"><span>4</span></button>
-      <button class="hotspot" id="hs-5" style="left:42%;top:30%" aria-expanded="false" aria-controls="co-5"><span>5</span></button>
-      <button class="hotspot" id="hs-6" style="left:58%;top:42.5%" aria-expanded="false" aria-controls="co-6"><span>6</span></button>
-      <button class="hotspot" id="hs-7" style="left:6.6%;top:74%" aria-expanded="false" aria-controls="co-7"><span>7</span></button>
-      <button class="hotspot" id="hs-8" style="left:80%;top:72.5%" aria-expanded="false" aria-controls="co-8"><span>8</span></button>
+      <!-- hotspots — repositioned onto the detailed elevation (viewBox 1000×460) -->
+      <button class="hotspot" id="hs-1" style="left:83%;top:43.5%" aria-expanded="false" aria-controls="co-1"><span>1</span></button>
+      <button class="hotspot" id="hs-2" style="left:29%;top:54.3%" aria-expanded="false" aria-controls="co-2"><span>2</span></button>
+      <button class="hotspot" id="hs-3" style="left:50.3%;top:65.2%" aria-expanded="false" aria-controls="co-3"><span>3</span></button>
+      <button class="hotspot" id="hs-4" style="left:76.8%;top:39%" aria-expanded="false" aria-controls="co-4"><span>4</span></button>
+      <button class="hotspot" id="hs-5" style="left:40%;top:28.3%" aria-expanded="false" aria-controls="co-5"><span>5</span></button>
+      <button class="hotspot" id="hs-6" style="left:56%;top:27.2%" aria-expanded="false" aria-controls="co-6"><span>6</span></button>
+      <button class="hotspot" id="hs-7" style="left:9%;top:67.8%" aria-expanded="false" aria-controls="co-7"><span>7</span></button>
+      <button class="hotspot" id="hs-8" style="left:76.8%;top:58.5%" aria-expanded="false" aria-controls="co-8"><span>8</span></button>
 
       <svg class="bp-leader" id="bpLeader" aria-hidden="true" focusable="false"><line id="bpLeaderLine" x1="0" y1="0" x2="0" y2="0"/></svg>
     </div>
@@ -638,6 +739,20 @@
       </div>
     </aside>
   </div>
+
+  <!-- ============ CAPSTONE: the one for you + daily one-pager ============ -->
+  <section class="capstone" aria-labelledby="capstoneHead">
+    <div class="section-head cap-head">
+      <p class="kicker">The verdict</p>
+      <h2 class="alu-text" id="capstoneHead">THE ONE FOR YOU</h2>
+      <p class="section-sub">One car off the top of the ranking, and the report that lands on WhatsApp every morning.</p>
+    </div>
+
+    <div class="cap-grid">
+      <div class="hero-pick" id="heroPick" aria-label="Top recommended car"></div>
+      <div class="one-pager" id="onePager" aria-label="Daily PDF report"></div>
+    </div>
+  </section>
 
   <p class="fifm-foot mono">Data refreshes each morning at 08:45 from Autotrader via the local tracker &middot; <span id="genStamp"></span></p>
 </section>
