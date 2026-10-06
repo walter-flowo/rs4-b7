@@ -3,837 +3,677 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark">
-<title>Audi RS4 B7 — Tracker &amp; Tribute</title>
-<meta name="description" content="A catalogue of the Audi RS4 B7 (2006–2008): the story, the BNS 4.2 FSI V8, the chassis, the design — and a live watch on every one for sale in the UK.">
+<meta name="color-scheme" content="light">
+<title>Benji’s Car Dashboard</title>
+<meta name="description" content="The Audi RS4 B7 (2006–2008) inspected station by station: BNS V8, Brembo brakes, Torsen T3 40:60, DRC, the four known faults. Then every UK advert inspected against the same stations.">
+<link rel="icon" href="data:,">
 <link rel="stylesheet" href="css/main.css">
-<script type="module" src="vendor/model-viewer.min.js"></script>
+<!-- vendor/model-viewer.min.js is loaded by js/main.js, only over http(s) and only with WebGL available -->
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#main">Skip to the file</a>
 
-<header class="topbar">
-  <div class="brand" aria-hidden="true">RS4<span>&middot;B7</span></div>
-  <nav class="tabs" role="tablist" aria-label="Site sections">
-    <button class="tab" id="tab-legend" role="tab" aria-selected="true" aria-controls="legend">The&nbsp;Legend</button>
-    <button class="tab" id="tab-blueprint" role="tab" aria-selected="false" aria-controls="blueprint" tabindex="-1">Blueprint</button>
-    <button class="tab" id="tab-viewer360" role="tab" aria-selected="false" aria-controls="viewer360" tabindex="-1">360&deg;</button>
-    <button class="tab" id="tab-lineage" role="tab" aria-selected="false" aria-controls="lineage" tabindex="-1">Lineage</button>
-    <button class="tab" id="tab-gallery" role="tab" aria-selected="false" aria-controls="gallery" tabindex="-1">Gallery</button>
-    <button class="tab" id="tab-fifm" role="tab" aria-selected="false" aria-controls="fifm" tabindex="-1">FIFM!</button>
-  </nav>
-</header>
+<div class="frame">
+
+<!-- ================================================================ ROUTE -->
+<nav class="route" id="route" aria-label="Route through the file">
+  <div class="route-head">
+    <p class="route-title">Benji’s<br>Car Dashboard</p>
+    <p class="stamp" data-asof="rail">Market data not loaded</p>
+  </div>
+  <ol class="stops" id="stops">
+    <li data-stop="file"><a class="stop" href="#file"><span class="box"></span><span class="n">0</span><span>File</span></a></li>
+    <li data-stop="identification"><a class="stop" href="#identification"><span class="box"></span><span class="n">1</span><span>Identification</span></a></li>
+    <li data-stop="provenance"><a class="stop" href="#provenance"><span class="box"></span><span class="n">2</span><span>Provenance</span></a></li>
+    <li data-stop="walkround"><a class="stop" href="#walkround"><span class="box"></span><span class="n">3</span><span>Walk-round</span></a>
+      <svg class="minicar" viewBox="0 0 120 250" role="group" aria-label="Station map, plan view, front at the top">
+        <use href="#planCar"/>
+        <line class="pc-diag" x1="27" y1="55" x2="93" y2="193"/>
+        <line class="pc-diag" x1="93" y1="55" x2="27" y2="193"/>
+        <a href="#st-1" data-st="1" aria-label="1 Engine bay"><circle cx="60" cy="38" r="7"/><text x="60" y="38">1</text></a>
+        <a href="#st-2" data-st="2" aria-label="2 Front brakes"><circle cx="27" cy="55" r="7"/><text x="27" y="55">2</text></a>
+        <a href="#st-3" data-st="3" aria-label="3 Box flares"><circle cx="93" cy="55" r="7"/><text x="93" y="55">3</text></a>
+        <a href="#st-4" data-st="4" aria-label="4 Flat-bottomed wheel"><circle cx="76" cy="112" r="7"/><text x="76" y="112">4</text></a>
+        <a href="#st-5" data-st="5" aria-label="5 Wingback buckets"><circle cx="44" cy="140" r="7"/><text x="44" y="140">5</text></a>
+        <a href="#st-6" data-st="6" aria-label="6 Torsen T3"><circle cx="60" cy="165" r="7"/><text x="60" y="165">6</text></a>
+        <a href="#st-7" data-st="7" aria-label="7 DRC dampers"><circle cx="93" cy="193" r="7"/><text x="93" y="193">7</text></a>
+        <a href="#st-8" data-st="8" aria-label="8 Twin oval tips"><circle cx="60" cy="236" r="7"/><text x="60" y="236">8</text></a>
+      </svg>
+    </li>
+    <li data-stop="faults"><a class="stop" href="#faults"><span class="box"></span><span class="n">4</span><span>Known faults</span></a></li>
+    <li data-stop="fifm"><a class="stop" href="#fifm"><span class="box"></span><span class="n">5</span><span>FIFM! forecourt<span class="rs" data-scan="live"></span></span></a></li>
+    <li data-stop="verdict"><a class="stop" href="#verdict"><span class="box"></span><span class="n">6</span><span>The one for you<span class="rs" data-scan="pick"></span></span></a></li>
+    <li data-stop="evidence"><a class="stop" href="#evidence"><span class="box"></span><span class="n">7</span><span>Evidence</span></a></li>
+  </ol>
+</nav>
 
 <main id="main">
 
-<!-- ============================================================ TAB 1 — THE LEGEND -->
-<section id="legend" class="panel" role="tabpanel" aria-labelledby="tab-legend">
-
-  <div class="hero">
-    <img class="hero-img" id="heroImg" src="media/hires/202606293709569_0.jpg" alt="A Sprint Blue Audi RS4 B7 saloon in a showroom, front three-quarter view">
-    <div class="hero-scrim" aria-hidden="true"></div>
-    <svg class="hero-rings" viewBox="0 0 340 100" aria-hidden="true" focusable="false">
-      <defs>
-        <linearGradient id="aluRing" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#f2f3f5"/>
-          <stop offset=".45" stop-color="#c9ccd1"/>
-          <stop offset=".55" stop-color="#7d828a"/>
-          <stop offset="1" stop-color="#d6d9dd"/>
-        </linearGradient>
-      </defs>
-      <g fill="none" stroke="url(#aluRing)" stroke-width="7">
-        <circle cx="48" cy="50" r="45"/>
-        <circle cx="129" cy="50" r="45"/>
-        <circle cx="210" cy="50" r="45"/>
-        <circle cx="291" cy="50" r="45"/>
-      </g>
-    </svg>
-    <div class="hero-inner">
-      <p class="kicker">The RS4 B7, in five parts</p>
-      <div class="hero-head">
-        <h1 class="alu-text">AUDI&nbsp;RS4&nbsp;B7</h1>
-        <p class="strap">4.2 litres &middot; eight cylinders &middot; 8,250 rpm &middot; three pedals</p>
-      </div>
-    </div>
-    <p class="hero-credit" id="heroCredit">Sprint Blue saloon &middot; a live advert this morning, Ripon</p>
+<!-- ================================================================ 0 FILE -->
+<section class="sec file" id="file" aria-labelledby="fileTitle">
+  <div class="file-line">
+    <span>Benji’s Car Dashboard · Audi RS4 (B7) · Typ 8E · 2006–2008</span>
+    <span>Prepared for Benji · dossier compiled 12 Jul 2026</span>
   </div>
-
-  <article class="longread">
-
-    <div class="chapter-head">
-      <span class="ch-no">I</span>
-      <h2>The Story</h2>
-      <div class="rule"></div>
+  <div class="file-grid">
+    <div>
+      <h1 id="fileTitle">RS4 B7<small>4,163 cc V8 · 420 PS at 7,800 rpm · limiter 8,250 rpm · six-speed manual only · Torsen T3 40:60 · DRC</small></h1>
+      <p class="what">Eight stations, BNS V8 to oval tips, in the order a pre-purchase inspection walks round the car. Then every UK advert, read against the same eight.</p>
     </div>
-    <div class="prose">
-      <p class="dropcap">Four years after the B5 RS4 Avant left production, quattro GmbH — Audi&rsquo;s performance arm at Neckarsulm — brought the badge back. An early prototype appeared in February 2005 at &ldquo;quattro Night&rdquo;, the company&rsquo;s celebration at its Ingolstadt headquarters. The production car was shown to North America at the Detroit show in January 2006; Europe had it by the middle of that year, and every one was assembled at the dedicated quattro GmbH facility in Neckarsulm.</p>
-      <p>Three firsts and one return fix the B7&rsquo;s place in the bloodline. The first V8-engined RS4, where the B5 had used a twin-turbo V6. The first normally aspirated RS model of any kind. The first RS4 saloon and the first — and only — RS4 Cabriolet, after two generations of Avant-only cars. And the return of the nameplate itself: there was no B6 RS4.</p>
-      <p>The timing was pointed. BMW&rsquo;s E46 M3, 343&nbsp;PS of straight-six, was bowing out in 2006, and the V8 E90 M3 would not arrive until 2007. For roughly a year the RS4 stood alone: a 420&nbsp;PS, high-revving V8 in a compact executive body — and unlike the M3 it drove all four wheels and came as a five-seat saloon or estate.</p>
-    </div>
-    <blockquote class="pull">
-      <p>&ldquo;A V8 executive that gives the BMW M3 a run for its money&rdquo; — with a chassis balance decidedly &lsquo;un-Audi&rsquo;.</p>
-      <cite>evo, buying guide verdict</cite>
-    </blockquote>
-    <div class="prose">
-      <p>Around 10,000 were built across the three body styles before production ended in autumn 2008; roughly 2,000 crossed to the USA. How the run divided between saloon, Avant and Cabriolet is a question Audi has never settled publicly — the figures circulating on owner forums do not add up, so none are repeated here.</p>
-    </div>
-
-    <div class="chapter-head">
-      <span class="ch-no">II</span>
-      <h2>The Engine</h2>
-      <div class="rule"></div>
-    </div>
-    <div class="bignum-strip" role="group" aria-label="Headline engine figures">
-      <div class="bignum"><span class="bn-val">420</span><span class="bn-cap">PS at 7,800 rpm</span></div>
-      <div class="bignum"><span class="bn-val">430</span><span class="bn-cap">Nm at 5,500 rpm</span></div>
-      <div class="bignum"><span class="bn-val">8,250</span><span class="bn-cap">rpm limiter</span></div>
-      <div class="bignum"><span class="bn-val">12.5:1</span><span class="bn-cap">compression</span></div>
-    </div>
-    <div class="prose">
-      <p class="dropcap">Engine code BNS. A 4,163&nbsp;cc, 90-degree V8 — 84.5&nbsp;mm bores at 92.8&nbsp;mm stroke — with four valves per cylinder and direct injection. FSI is the load-bearing detail: injecting fuel straight into the chamber cools the charge in the cylinder, and that charge cooling is what buys a 12.5:1 compression ratio on a naturally aspirated road engine. It is also, in fairness, what sends the intake valves sooty — no fuel ever washes over them. The mechanic&rsquo;s chapter deals with that.</p>
-      <p>The construction reads like a motorsport parts list: a two-piece, closed-deck cylinder block with 90&nbsp;mm bore spacing; roller finger cam followers with hydraulic backlash compensation; chrome-plated, sodium-filled valve stems to carry heat out of the combustion chamber; 11.0&nbsp;mm of valve lift. The specific output works out at roughly 101&nbsp;PS per litre — arithmetic, not folklore: 420 divided by 4.163.</p>
-      <p>The headline is not the peak figure but the spread. Ninety per cent of peak torque is on call from 2,250&nbsp;rpm all the way to 7,600&nbsp;rpm, and peak power arrives just 200&nbsp;rpm short of the 8,000&nbsp;rpm redline, with the limiter at 8,250. It is a genuinely high-revving V8 in a four-door body — the trait every retrospective singles out.</p>
-      <p>One gearbox: a six-speed Getrag manual. No automatic, no dual-clutch, no debate. The factory claimed 0–100&nbsp;km/h in 4.8 seconds for the saloon and 4.9 for the Avant; Road &amp; Track measured 4.5 to sixty-two. Top speed is pegged at 250&nbsp;km/h on every variant.</p>
-    </div>
-
-    <div class="chapter-head">
-      <span class="ch-no">III</span>
-      <h2>The Chassis</h2>
-      <div class="rule"></div>
-    </div>
-    <div class="prose">
-      <p class="dropcap">The B7 carries the third-generation Torsen T3 centre differential — asymmetric, dynamic, and set to a 40:60 front-to-rear torque split by default, with a 4:1 torque bias ratio against the standard A4&rsquo;s 2:1. That rear bias was quattro GmbH&rsquo;s direct answer to the nose-led reputation of earlier fast Audis, and the period road tests credited it with monstrous traction that had not cost the car its involvement.</p>
-      <p>Then there is DRC — Dynamic Ride Control — and it deserves its reputation. Entirely mechanical, no sensors, no lag: diagonally opposed dampers, front-left to rear-right and front-right to rear-left, are linked hydraulically through a central valve. When the body rolls or pitches, oil moves across the diagonal, stiffening the damper that needs support and relieving the one that does not. The car sits 30&nbsp;mm lower than a standard A4, with a further optional 10&nbsp;mm drop. The full mechanism is drawn out in the Blueprint tab.</p>
-      <p>Braking is by 365&nbsp;mm ventilated front discs with Brembo eight-piston monoblock calipers and 324&nbsp;mm rears; from 2007 an optional package brought 380&nbsp;mm carbon-ceramic discs from SGL Carbon with six-piston calipers. Kerb weight runs 1,650–1,680&nbsp;kg for the saloon, 1,710 for the Avant and 1,845 for the Cabriolet, in the European DIN figures.</p>
-    </div>
-
-    <div class="chapter-head">
-      <span class="ch-no">IV</span>
-      <h2>The Design</h2>
-      <div class="rule"></div>
-    </div>
-    <div class="prose">
-      <p class="dropcap">The B7 is the template for restrained RS aggression, and every cue earns its keep. The box-flared arches are not decoration: the body measures 1,816&nbsp;mm across the front wings — said to be around 35&nbsp;mm wider than an A4 or S4 — purely to clear a widened track. The mirror housings are matt, natural aluminium: the classic RS tell. Two oval exhaust tips replace the S4&rsquo;s four round outlets. Honeycomb mesh fills the grilles where the standard car wears egg-crate.</p>
-      <p>Inside, a small-diameter, flat-bottomed steering wheel — perforated leather, aluminium-effect lower section carrying the RS4 script — credited as Audi&rsquo;s first on a production car, though nobody has ever produced the paperwork. European saloons and Avants took the RS4-embossed bucket seats, the &ldquo;wingbacks&rdquo;, with electrically inflatable side bolsters; the Cabriolet made do with S4-style chairs, and North America got conventional Recaros. Drilled aluminium pedals and carbon dash inserts finish the room.</p>
-    </div>
-    <div class="figures" id="designFigures">
-      <figure>
-        <img src="media/202605252687946.jpg" alt="Rear three-quarter view of a dark blue RS4 B7 saloon showing the flared rear arch" loading="lazy">
-        <figcaption>The blister over the rear axle — the whole silhouette is built around the wider track. Live advert: 66,000 miles, Biggleswade.</figcaption>
-      </figure>
-      <figure>
-        <img src="media/202606273670017.jpg" alt="Front three-quarter view of a Sprint Blue RS4 B7 saloon showing mesh grille and aluminium mirrors" loading="lazy">
-        <figcaption>Honeycomb mesh, matt aluminium mirrors, Sprint Blue — the poster spec. Live advert: 35,000 miles, Keighley.</figcaption>
-      </figure>
-      <figure>
-        <img src="media/202408042534024.jpg" alt="Side profile of a Sprint Blue RS4 B7 Cabriolet with the roof down" loading="lazy">
-        <figcaption>The only open RS4 ever made. This one: 95,998 miles, Bradford — recorded Cat&nbsp;D, priced accordingly.</figcaption>
-      </figure>
-    </div>
-
-    <div class="paint-studio" id="paintStudio">
-      <p class="kicker">Choose a paint &middot; the photographs, accents and 3D car follow</p>
-      <div class="paint-chips" id="paintChips" role="radiogroup" aria-label="Paint colour"></div>
-      <p class="paint-caption" id="paintCaption" aria-live="polite"></p>
-    </div>
-    <div class="swatches" role="group" aria-label="The 2007–2008 exterior palette (colours approximate)">
-      <p class="kicker">The palette &middot; seven colours &middot; approximate</p>
-      <ul>
-        <li><span class="sw" style="background:#1e56c8"></span>Sprint Blue</li>
-        <li><span class="sw" style="background:#b01526"></span>Misano Red</li>
-        <li><span class="sw" style="background:#e8c400"></span>Imola Yellow</li>
-        <li><span class="sw" style="background:#b9bec4"></span>Avus Silver</li>
-        <li><span class="sw" style="background:#565a5e"></span>Daytona Grey</li>
-        <li><span class="sw" style="background:#1c2f5e"></span>Mugello Blue</li>
-        <li><span class="sw" style="background:#0c0d10"></span>Phantom Black</li>
-      </ul>
-      <p class="swatch-note">US distribution data — forum-derived, indicative only — suggests black and grey dominated while Sprint Blue (~7%) and Misano Red (~5%) were scarce when new. The two signature colours carry a premium now.</p>
-    </div>
-
-    <div class="chapter-head">
-      <span class="ch-no">V</span>
-      <h2>The Mechanic&rsquo;s Chapter</h2>
-      <div class="rule"></div>
-    </div>
-    <div class="prose">
-      <p class="dropcap">Robust where it matters — block, gearbox, quattro system — and needy in four specific places. A good B7 is defined by how the four have been managed, and the service file tells you before the test drive does.</p>
-    </div>
-
-    <div class="jobs">
-      <article class="job">
-        <header><span class="job-no">JOB 01</span><h3>Intake-valve decarbonisation</h3><span class="job-tag">THE FSI TAX</span></header>
-        <dl class="job-specs">
-          <div><dt>SYMPTOM</dt><dd>Rough, lumpy idle &middot; misfires &middot; blue smoke on start-up &middot; dulled throttle response</dd></div>
-          <div><dt>WINDOW</dt><dd>60,000–100,000 mi — earlier on town-driven cars</dd></div>
-          <div><dt>FIX</dt><dd>Inlet manifold off; all eight ports walnut-blasted</dd></div>
-          <div><dt>BUDGET</dt><dd>£500–£1,000 at a specialist</dd></div>
-          <div><dt>NOTE</dt><dd>Hard-revved engines carbon up more slowly. No invoice in the file? Price the job into the offer.</dd></div>
-        </dl>
-      </article>
-      <article class="job">
-        <header><span class="job-no">JOB 02</span><h3>DRC — reseal &amp; re-pressurise</h3><span class="job-tag">THE STANCE TEST</span></header>
-        <dl class="job-specs">
-          <div><dt>SYMPTOM</dt><dd>Saggy or uneven stance &middot; deteriorating ride &middot; knocking over bumps &middot; fluid weeps at the dampers</dd></div>
-          <div><dt>FIX</dt><dd>Replace or reseal the dampers; re-pressurise with specialist tooling — not a general-garage job</dd></div>
-          <div><dt>RULE</dt><dd>If one damper fails, its diagonal partner is replaced with it — the system is a pair of pairs</dd></div>
-          <div><dt>NOTE</dt><dd>Many cars run coilovers instead. Cheaper to run; breaks originality — the collector walks away.</dd></div>
-        </dl>
-      </article>
-      <article class="job">
-        <header><span class="job-no">JOB 03</span><h3>Oil discipline</h3><span class="job-tag">EVERY 1,000 MILES</span></header>
-        <dl class="job-specs">
-          <div><dt>CONSUMPTION</dt><dd>Up to 2–3 litres per 1,000 mi in hard-driven cars — by design and by use</dd></div>
-          <div><dt>PRACTICE</dt><dd>A level check every 1,000 mi is standard ownership, not paranoia</dd></div>
-          <div><dt>ON INSPECTION</dt><dd>Insist on a cold start; read the oil habits in the service file before the engine bay</dd></div>
-        </dl>
-      </article>
-      <article class="job">
-        <header><span class="job-no">JOB 04</span><h3>Cooling &amp; corrosion</h3><span class="job-tag">THE HIDDEN ONES</span></header>
-        <dl class="job-specs">
-          <div><dt>FAULT</dt><dd>Debris and galvanic corrosion attack the radiators and the steel oil-cooler pipes at the aluminium cooler</dd></div>
-          <div><dt>BUDGET</dt><dd>Auxiliary radiator ≈ £500 fitted</dd></div>
-          <div><dt>NOTE</dt><dd>Inspect the pipes on a lift, not from the arch</dd></div>
-        </dl>
-      </article>
-    </div>
-
-    <div class="worknotes">
-      <p class="kicker">The rest of the sheet</p>
-      <ul class="mono-list">
-        <li>Gearbox: the six-speed has proven fault-free; clutches last around 40,000 mi even driven hard — check for judder on track-used cars. A failed £23 clutch switch (≈£150 fitted) kills cruise control and the throttle blip.</li>
-        <li>Coil-packs fail and can take catalysts with them; exhaust bypass-valve actuators seize — &ldquo;sport mode always on&rdquo; is the giveaway.</li>
-        <li>Early cars had a lumpy idle cured by a warranty ECU update — confirm it was applied.</li>
-        <li>No systemic timing-chain or camshaft trouble is documented for the BNS; the infamous FSI cam-follower worry belongs to other engines. Any top-end rattle still gets investigated.</li>
-        <li>The body does not rot — inspect stone-chips and paint-repair quality instead. Inside: driver&rsquo;s bolster wear, the centre-armrest catch, and an in-date tyre-sealant canister. There is no spare wheel.</li>
-        <li>Factory service intervals were not verified for this dossier; community practice is oil checks every 1,000 mi and a manifold-off decarbonisation roughly every 40,000 mi.</li>
-      </ul>
-    </div>
-
-    <div class="ppi">
-      <p class="kicker">Pre-purchase inspection &middot; minimum</p>
-      <ul class="check-list">
-        <li>Cold start — smoke, idle quality</li>
-        <li>Carbon-clean and DRC invoices</li>
-        <li>Oil-level habits in the history</li>
-        <li>Stance square and level</li>
-        <li>Damper weep check on a lift</li>
-        <li>Clutch bite and judder</li>
-        <li>Coil-pack and misfire scan</li>
-        <li>Radiator and oil-cooler pipe corrosion</li>
-        <li>ECU update status</li>
-        <li>Bolster and armrest condition</li>
-        <li>Sealant kit present and in date</li>
-      </ul>
-    </div>
-
-    <div class="chapter-head">
-      <span class="ch-no">&Sigma;</span>
-      <h2>The Numbers</h2>
-      <div class="rule"></div>
-    </div>
-    <table class="numbers">
-      <tbody>
-        <tr><th scope="row">Engine</th><td>4.2-litre (4,163 cc) 90° V8 &middot; FSI direct injection &middot; 32v DOHC &middot; code BNS</td></tr>
-        <tr><th scope="row">Bore × stroke / CR</th><td>84.5 × 92.8 mm &middot; 12.5:1</td></tr>
-        <tr><th scope="row">Power</th><td>420 PS (309 kW / 414 bhp) @ 7,800 rpm</td></tr>
-        <tr><th scope="row">Torque</th><td>430 Nm (317 lb ft) @ 5,500 rpm &middot; 90% from 2,250–7,600 rpm</td></tr>
-        <tr><th scope="row">Redline / limiter</th><td>8,000 / 8,250 rpm</td></tr>
-        <tr><th scope="row">Gearbox</th><td>6-speed Getrag manual — the only option</td></tr>
-        <tr><th scope="row">Drivetrain</th><td>quattro permanent AWD &middot; Torsen T3 centre diff &middot; 40:60 default</td></tr>
-        <tr><th scope="row">0–100 km/h</th><td>4.8 s saloon / 4.9 s Avant (factory claim)</td></tr>
-        <tr><th scope="row">Top speed</th><td>250 km/h (155 mph), electronically limited</td></tr>
-        <tr><th scope="row">Kerb weight</th><td>1,650–1,680 kg saloon &middot; 1,710 kg Avant &middot; 1,845 kg Cabriolet</td></tr>
-        <tr><th scope="row">Dimensions (Avant)</th><td>4,586 × 1,816 × 1,415 mm &middot; wheelbase 2,651 mm</td></tr>
-        <tr><th scope="row">Brakes</th><td>F 365 × 34 mm Brembo 8-piston &middot; R 324 × 22 mm &middot; optional 380 mm SGL ceramics (2007+)</td></tr>
-        <tr><th scope="row">Wheels / tyres</th><td>8.5J × 18 &middot; 255/40 R18</td></tr>
-        <tr><th scope="row">Fuel</th><td>63-litre tank &middot; 13.5–13.6 l/100 km combined (NEDC)</td></tr>
-        <tr><th scope="row">Suspension</th><td>DRC diagonal hydraulic damper linkage &middot; −30 mm vs A4 (−40 mm optional)</td></tr>
-        <tr><th scope="row">Production</th><td>2006–2008 &middot; ~10,000 total &middot; ~2,000 to the USA</td></tr>
-      </tbody>
-    </table>
-  </article>
+    <aside class="hunt" aria-labelledby="huntTitle">
+      <h2 id="huntTitle"><span>The hunt <a class="src" href="#src-m1">M1</a></span><span class="stamp" data-asof="short"></span></h2>
+      <dl id="huntList">
+        <div class="hrow"><dt>Market data</dt><dd>js/data.js did not load</dd></div>
+      </dl>
+    </aside>
+  </div>
 </section>
 
-<!-- ============================================================ TAB 2 — BLUEPRINT -->
-<section id="blueprint" class="panel" role="tabpanel" aria-labelledby="tab-blueprint" hidden>
-  <div class="section-head">
-    <p class="kicker">Sheet 02 &middot; side elevation</p>
-    <h2 class="alu-text">Blueprint</h2>
-    <p class="section-sub">Eight points where the B7 stops being an A4. Hover, tap or tab to each marker.</p>
+<!-- ================================================================ 1 IDENTIFICATION -->
+<section class="sec" id="identification" aria-labelledby="h-id">
+  <div class="sec-head">
+    <h2 id="h-id"><span class="no">1</span>Identification</h2>
+    <p class="lede">The car as it left Neckarsulm between 2006 and 2008, before any wear.</p>
   </div>
 
-  <div class="bp-wrap" id="bpWrap">
-    <div class="bp-stage" id="bpStage">
-      <svg class="bp-svg" viewBox="0 0 1000 460" role="img" aria-label="Detailed technical side-elevation line drawing of the Audi RS4 B7 saloon, front to the right, with multi-spoke alloy wheels, box-flared arches, glasshouse pillars, single-frame grille, twin oval exhaust and dimensions: wheelbase 2651 millimetres, overall length 4586, height 1415">
-        <defs>
-          <marker id="dimArr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-            <path d="M0 0 L8 4 L0 8 z" fill="#7fa8e0"/>
-          </marker>
-          <!-- honeycomb hatch for the single-frame grille -->
-          <pattern id="bpHoney" width="9" height="10.4" patternUnits="userSpaceOnUse" patternTransform="scale(0.62)">
-            <path d="M4.5 0 L9 2.6 L9 7.8 L4.5 10.4 L0 7.8 L0 2.6 Z" fill="none" stroke="#8fb8f0" stroke-width="0.5" opacity="0.85"/>
-          </pattern>
-          <!-- 5-twin-spoke (Peler-style) alloy: two thin spokes per arm, ten arms -->
-          <g id="bpWheel">
-            <circle r="66" class="bp-line"/>
-            <circle r="61" class="bp-fine"/>
-            <circle r="10" class="bp-line"/>
-            <circle r="5" class="bp-fine"/>
-            <!-- five lug bolts -->
-            <g class="bp-fine">
-              <circle cx="0" cy="-7" r="1.4"/>
-              <g transform="rotate(72)"><circle cx="0" cy="-7" r="1.4"/></g>
-              <g transform="rotate(144)"><circle cx="0" cy="-7" r="1.4"/></g>
-              <g transform="rotate(216)"><circle cx="0" cy="-7" r="1.4"/></g>
-              <g transform="rotate(288)"><circle cx="0" cy="-7" r="1.4"/></g>
-            </g>
-            <!-- 5 twin-spoke pairs -->
-            <g class="bp-fine">
-              <g><path d="M-3.5 -12 L-6 -57"/><path d="M3.5 -12 L6 -57"/><path d="M-6 -57 A61 61 0 0 1 6 -57"/></g>
-              <g transform="rotate(72)"><path d="M-3.5 -12 L-6 -57"/><path d="M3.5 -12 L6 -57"/><path d="M-6 -57 A61 61 0 0 1 6 -57"/></g>
-              <g transform="rotate(144)"><path d="M-3.5 -12 L-6 -57"/><path d="M3.5 -12 L6 -57"/><path d="M-6 -57 A61 61 0 0 1 6 -57"/></g>
-              <g transform="rotate(216)"><path d="M-3.5 -12 L-6 -57"/><path d="M3.5 -12 L6 -57"/><path d="M-6 -57 A61 61 0 0 1 6 -57"/></g>
-              <g transform="rotate(288)"><path d="M-3.5 -12 L-6 -57"/><path d="M3.5 -12 L6 -57"/><path d="M-6 -57 A61 61 0 0 1 6 -57"/></g>
-            </g>
-            <!-- brake disc through the spokes + red monoblock caliper -->
-            <circle r="40" class="bp-hair" stroke-dasharray="4 4"/>
-            <circle r="34" class="bp-hair" stroke-dasharray="2 3"/>
-            <path class="bp-red" d="M-46 -16 A48 48 0 0 1 -46 16 L-56 14 A58 58 0 0 0 -56 -14 Z"/>
-            <!-- tyre sidewall + valve stub -->
-            <circle r="79" class="bp-line"/>
-            <circle r="72" class="bp-fine" stroke-dasharray="2 4"/>
-            <g transform="rotate(30)"><rect x="-1.6" y="-74" width="3.2" height="7" class="bp-fine"/></g>
-          </g>
-        </defs>
-
-        <!-- ground + axle centre-lines (dash-dot) -->
-        <line x1="20" y1="335" x2="980" y2="335" class="bp-hair"/>
-        <line x1="128" y1="269" x2="900" y2="269" class="bp-centre"/>
-        <line x1="238" y1="150" x2="238" y2="360" class="bp-centre"/>
-        <line x1="768" y1="150" x2="768" y2="360" class="bp-centre"/>
-        <!-- vehicle centre-line marker between the axles -->
-        <line x1="503" y1="46" x2="503" y2="70" class="bp-centre"/>
-        <path class="bp-hair" d="M497 58 L503 46 L509 58"/>
-
-        <!-- ============ BODY OUTLINE (front to the right) ============ -->
-        <path class="bp-line" d="M62 300
-          C51 290 48 274 50 258
-          C49 236 51 214 60 200
-          C102 190 140 186 172 185
-          C233 118 280 79 340 58
-          C392 48 470 46 522 52
-          C566 59 616 102 672 154
-          C706 160 766 166 852 172
-          C902 175 934 178 948 184
-          L957 199
-          L954 220
-          L963 228
-          L960 270
-          L954 279
-          L959 285
-          L957 305
-          L967 308
-          L964 313
-          L944 314
-          L847 310
-          A79 79 0 1 0 689 310
-          L317 310
-          A79 79 0 1 0 159 310
-          L62 300 Z"/>
-
-        <!-- ============ BOX-FLARED ARCHES — flare lip standing proud ============ -->
-        <!-- front arch (right) -->
-        <path class="bp-line" d="M672 250 C672 205 712 178 768 178 C824 178 864 205 864 250"/>
-        <path class="bp-accent" d="M666 258 C666 208 710 178 768 178 C826 178 870 208 870 258"/>
-        <!-- rear arch (left) -->
-        <path class="bp-line" d="M142 250 C142 205 182 178 238 178 C294 178 334 205 334 250"/>
-        <path class="bp-accent" d="M136 258 C136 208 180 178 238 178 C296 178 340 208 340 258"/>
-
-        <!-- ============ SILL + SPLITTER + DIFFUSER ============ -->
-        <path class="bp-fine" d="M317 313 L689 313"/>
-        <!-- front splitter (right) -->
-        <path class="bp-accent" d="M944 314 L967 315 L968 320 L946 320 Z"/>
-        <path class="bp-fine" d="M905 308 L960 311"/>
-        <!-- rear diffuser hint (left) -->
-        <path class="bp-fine" d="M62 302 L100 306 L98 315 L60 312 Z M72 303 L74 312 M84 305 L86 313"/>
-
-        <!-- ============ GLASSHOUSE: A / B / C pillars, frames, quarter-light ============ -->
-        <path class="bp-fine" d="M206 176 C258 116 296 88 348 68 C396 59 466 57 514 63 C552 69 600 108 650 154 C562 160 322 172 206 176 Z"/>
-        <!-- A-pillar (front, right) -->
-        <path class="bp-line" d="M648 152 L612 66"/>
-        <!-- B-pillar -->
-        <path class="bp-line" d="M472 164 L458 62"/>
-        <!-- C-pillar (rear, left) -->
-        <path class="bp-line" d="M286 90 L306 170"/>
-        <!-- window frame top rail + belt-line -->
-        <path class="bp-fine" d="M330 172 C450 166 560 160 640 156"/>
-        <!-- quarter-light (small rear triangle window) -->
-        <path class="bp-fine" d="M306 170 L286 92 L318 108 Z"/>
-        <!-- front door glass + rear door glass split already by B-pillar -->
-
-        <!-- ============ DOORS: shut-lines + handles ============ -->
-        <!-- front door / rear door / rear wing shuts -->
-        <path class="bp-fine" d="M672 156 L668 306"/>
-        <path class="bp-fine" d="M472 166 C470 220 468 266 470 307"/>
-        <path class="bp-fine" d="M324 170 C322 222 320 268 322 308"/>
-        <!-- boot shut-line (rear, left) -->
-        <path class="bp-fine" d="M118 190 C112 214 110 244 112 276"/>
-        <!-- door handles -->
-        <rect class="bp-fine" x="524" y="188" width="30" height="6" rx="3"/>
-        <rect class="bp-fine" x="376" y="191" width="30" height="6" rx="3"/>
-        <!-- feature crease running the flank -->
-        <path class="bp-fine" d="M150 205 C330 199 560 194 700 196"/>
-
-        <!-- ============ DOOR MIRROR on its stalk (matt aluminium tell) ============ -->
-        <path class="bp-fine" d="M654 162 L672 150"/>
-        <path class="bp-accent" d="M672 138 C684 137 692 144 690 154 C688 162 678 164 670 160 C666 154 666 143 672 138 Z"/>
-
-        <!-- ============ FRONT (right): headlight, single-frame grille, intakes, fog, badge ============ -->
-        <!-- B7 facelift headlight cluster -->
-        <path class="bp-accent" d="M905 186 L950 189 L957 200 L946 208 L905 200 Z"/>
-        <path class="bp-fine" d="M910 191 L946 193 M912 197 L944 199"/>
-        <!-- single-frame grille outline + honeycomb hatch -->
-        <path class="bp-line" d="M948 210 L963 216 L960 268 L950 272 Z"/>
-        <path d="M948 210 L963 216 L960 268 L950 272 Z" fill="url(#bpHoney)" stroke="none"/>
-        <!-- four-rings front badge -->
-        <g class="bp-fine"><circle cx="953" cy="226" r="2.4"/><circle cx="957" cy="226" r="2.4"/></g>
-        <!-- lower intake + fog lamp -->
-        <path class="bp-fine" d="M950 285 L964 288 L962 306 L949 304 Z"/>
-        <circle class="bp-fine" cx="957" cy="296" r="3.4"/>
-
-        <!-- ============ REAR (left): tail-light, plate recess, twin OVAL exhausts ============ -->
-        <path class="bp-accent" d="M52 258 L64 250 L72 262 L64 276 L52 270 Z"/>
-        <path class="bp-fine" d="M56 260 L66 258 M56 266 L66 264"/>
-        <!-- number-plate recess -->
-        <rect class="bp-fine" x="60" y="286" width="34" height="12" rx="1.5"/>
-        <!-- twin oval exhaust tips (signature) -->
-        <ellipse class="bp-accent" cx="74" cy="312" rx="13" ry="6"/>
-        <ellipse class="bp-fine" cx="74" cy="312" rx="9" ry="3.6"/>
-        <ellipse class="bp-accent" cx="100" cy="313" rx="11" ry="5.4"/>
-        <ellipse class="bp-fine" cx="100" cy="313" rx="7.5" ry="3.2"/>
-
-        <!-- ============ WHEELS ============ -->
-        <use href="#bpWheel" transform="translate(238 269)"/>
-        <use href="#bpWheel" transform="translate(768 269)"/>
-
-        <!-- ============ DETAIL / SECTION VIGNETTES (magnified) ============ -->
-        <!-- detail bubble A: oval exhaust tip cross-section -->
-        <circle cx="112" cy="412" r="32" class="bp-hair"/>
-        <path class="bp-hair" d="M86 322 L96 384" stroke-dasharray="3 3"/>
-        <ellipse class="bp-accent" cx="112" cy="410" rx="21" ry="11"/>
-        <ellipse class="bp-fine" cx="112" cy="410" rx="15" ry="8"/>
-        <path class="bp-fine" d="M97 410 A21 11 0 0 1 127 410" stroke-dasharray="2 2"/>
-        <text x="112" y="453" text-anchor="middle" class="bp-note">DET. A · OVAL TIP</text>
-
-        <!-- detail bubble B: flat-bottom wheel rim from the interior -->
-        <circle cx="286" cy="412" r="32" class="bp-hair"/>
-        <path class="bp-hair" d="M262 355 L280 382" stroke-dasharray="3 3"/>
-        <path class="bp-accent" d="M264 405 A24 24 0 1 1 308 405 L264 405 Z"/>
-        <path class="bp-fine" d="M268 402 L304 402" stroke-dasharray="3 3"/>
-        <circle cx="286" cy="406" r="4.5" class="bp-fine"/>
-        <path class="bp-fine" d="M286 402 L286 390 M282 408 L268 413 M290 408 L304 413"/>
-        <text x="286" y="453" text-anchor="middle" class="bp-note">DET. B · FLAT-BOTTOM WHEEL</text>
-
-        <!-- ============ DIMENSIONS + LEADER CALLOUTS ============ -->
-        <g class="bp-dim">
-          <!-- wheelbase -->
-          <line x1="238" y1="343" x2="238" y2="366"/>
-          <line x1="768" y1="343" x2="768" y2="366"/>
-          <line x1="238" y1="360" x2="768" y2="360" marker-start="url(#dimArr)" marker-end="url(#dimArr)"/>
-          <text x="503" y="355" text-anchor="middle">WHEELBASE 2651</text>
-          <!-- overall length -->
-          <line x1="46" y1="343" x2="46" y2="392"/>
-          <line x1="968" y1="343" x2="968" y2="392"/>
-          <line x1="46" y1="386" x2="968" y2="386" marker-start="url(#dimArr)" marker-end="url(#dimArr)"/>
-          <text x="507" y="381" text-anchor="middle">OVERALL LENGTH 4586</text>
-          <!-- height -->
-          <line x1="26" y1="52" x2="26" y2="335" marker-start="url(#dimArr)" marker-end="url(#dimArr)"/>
-          <line x1="16" y1="52" x2="60" y2="52"/>
-          <line x1="16" y1="335" x2="34" y2="335"/>
-          <text transform="translate(20 228) rotate(-90)">HEIGHT 1415</text>
-          <!-- leader: ride height -->
-          <line x1="768" y1="348" x2="812" y2="348"/>
-          <line x1="812" y1="335" x2="812" y2="348" marker-start="url(#dimArr)"/>
-          <text x="818" y="345" text-anchor="start">RIDE HEIGHT −30 mm</text>
-          <!-- leader: wheel + tyre spec -->
-          <line x1="815" y1="200" x2="878" y2="150"/>
-          <text x="880" y="149" text-anchor="start">255/35 R19</text>
-          <!-- leader: track width (front axle) -->
-          <line x1="768" y1="150" x2="700" y2="120"/>
-          <text x="696" y="118" text-anchor="end">TRACK 1547 · WIDE-BODY +35</text>
-          <text x="500" y="440" text-anchor="middle">DIMENSIONS IN MM &middot; DO NOT SCALE</text>
-        </g>
-      </svg>
-
-      <!-- hotspots — repositioned onto the detailed elevation (viewBox 1000×460) -->
-      <button class="hotspot" id="hs-1" style="left:83%;top:43.5%" aria-expanded="false" aria-controls="co-1"><span>1</span></button>
-      <button class="hotspot" id="hs-2" style="left:29%;top:54.3%" aria-expanded="false" aria-controls="co-2"><span>2</span></button>
-      <button class="hotspot" id="hs-3" style="left:50.3%;top:65.2%" aria-expanded="false" aria-controls="co-3"><span>3</span></button>
-      <button class="hotspot" id="hs-4" style="left:76.8%;top:39%" aria-expanded="false" aria-controls="co-4"><span>4</span></button>
-      <button class="hotspot" id="hs-5" style="left:40%;top:28.3%" aria-expanded="false" aria-controls="co-5"><span>5</span></button>
-      <button class="hotspot" id="hs-6" style="left:56%;top:27.2%" aria-expanded="false" aria-controls="co-6"><span>6</span></button>
-      <button class="hotspot" id="hs-7" style="left:9%;top:67.8%" aria-expanded="false" aria-controls="co-7"><span>7</span></button>
-      <button class="hotspot" id="hs-8" style="left:76.8%;top:58.5%" aria-expanded="false" aria-controls="co-8"><span>8</span></button>
-
-      <svg class="bp-leader" id="bpLeader" aria-hidden="true" focusable="false"><line id="bpLeaderLine" x1="0" y1="0" x2="0" y2="0"/></svg>
+  <div class="id-grid">
+    <div class="id-left">
+    <div class="turntable">
+      <div class="tt-stage" id="ttStage" data-state="wait">
+        <model-viewer id="rs4Model"
+          src="assets/rs4_model/rs4.glb"
+          alt="Three-dimensional model of an Audi RS4 B7 saloon. Drag sideways to turn it."
+          camera-controls
+          disable-zoom
+          disable-pan
+          touch-action="pan-y"
+          interaction-prompt="none"
+          shadow-intensity="0.8"
+          exposure="0.95"
+          camera-orbit="35deg 78deg 78%"
+          min-camera-orbit="auto 45deg auto"
+          max-camera-orbit="auto 90deg auto"
+          loading="lazy"
+          reveal="auto"><div slot="progress-bar"></div></model-viewer>
+        <div class="tt-fallback" id="ttFallback">
+          <img class="tt-poster" src="assets/rs4_model/poster.webp" width="1196" height="896" alt="The same RS4 B7 saloon model as a still image, front three-quarter view, in Sprint Blue.">
+        </div>
+        <p class="tt-status" id="ttStatus" role="status"><span id="ttMsg">Still image · the turntable needs the page served over http</span><span class="tt-bar" aria-hidden="true"><i id="ttBar"></i></span></p>
+      </div>
+      <div class="tt-meta"><span>Drag sideways to turn</span><span class="credit" id="modelCredit"></span></div>
     </div>
 
-    <!-- callout cards -->
-    <div class="callout" id="co-1" role="region" aria-label="4.2 FSI V8" hidden>
-      <svg class="sketch" viewBox="0 0 120 84" aria-hidden="true" focusable="false">
-        <path d="M56 46 L22 22 L34 8 L62 30 Z"/><path d="M64 46 L98 22 L86 8 L58 30 Z"/>
-        <circle cx="60" cy="58" r="10"/><path d="M52 38 L58 50 M68 38 L62 50"/>
-        <path d="M42 68 Q60 78 78 68"/><path d="M48 26 A18 18 0 0 1 72 26" stroke-dasharray="3 3"/>
-      </svg>
-      <h3>4.2 FSI V8 &middot; code BNS</h3>
-      <p>4,163 cc, 84.5 × 92.8 mm, 12.5:1 — direct injection cools the charge and buys the compression. 420 PS at 7,800 rpm; 90% of its 430 Nm from 2,250 to 7,600 rpm; limiter at 8,250. Sodium-filled valve stems carry the heat away.</p>
+    <div class="paint">
+      <h3>Paint</h3>
+      <p class="note">Seven colours for 2007–2008 <a class="src" href="#src-18">S18</a> <a class="src" href="#src-19">S19</a>. Swatches approximate. Select one to tint the model and mark its adverts on the contact sheet.</p>
+      <div class="chip-key"><span></span><span>Colour</span><span>US share <a class="t-rep" href="#uv-10">reputed</a> <a class="src" href="#src-16">S16</a></span><span>Adverts, <span class="stamp" data-asof="day"></span></span></div>
+      <div class="chips" id="chips" role="radiogroup" aria-label="Paint colour">
+        <button class="chip" role="radio" aria-checked="true" tabindex="0" data-name="Sprint Blue" style="--c:#1e56c8"><span class="sw"></span><span class="nm">Sprint Blue</span><span class="us">US ≈7%<span class="bar-us" style="width:21%"></span></span><span class="ct" data-count></span></button>
+        <button class="chip" role="radio" aria-checked="false" tabindex="-1" data-name="Misano Red" style="--c:#b01526"><span class="sw"></span><span class="nm">Misano Red</span><span class="us">US ≈5%<span class="bar-us" style="width:15%"></span></span><span class="ct" data-count></span></button>
+        <button class="chip" role="radio" aria-checked="false" tabindex="-1" data-name="Imola Yellow" style="--c:#e8c400"><span class="sw"></span><span class="nm">Imola Yellow</span><span class="us"></span><span class="ct" data-count></span></button>
+        <button class="chip" role="radio" aria-checked="false" tabindex="-1" data-name="Avus Silver" style="--c:#b9bec4"><span class="sw"></span><span class="nm">Avus Silver</span><span class="us"></span><span class="ct" data-count></span></button>
+        <button class="chip" role="radio" aria-checked="false" tabindex="-1" data-name="Daytona Grey" style="--c:#565a5e"><span class="sw"></span><span class="nm">Daytona Grey</span><span class="us">US ≈27%<span class="bar-us" style="width:82%"></span></span><span class="ct" data-count></span></button>
+        <button class="chip" role="radio" aria-checked="false" tabindex="-1" data-name="Mugello Blue" style="--c:#1c2f5e"><span class="sw"></span><span class="nm">Mugello Blue</span><span class="us"></span><span class="ct" data-count></span></button>
+        <button class="chip" role="radio" aria-checked="false" tabindex="-1" data-name="Phantom Black" style="--c:#0c0d10"><span class="sw"></span><span class="nm">Phantom Black</span><span class="us">US ≈33%<span class="bar-us" style="width:100%"></span></span><span class="ct" data-count></span></button>
+      </div>
+      <p class="paint-say" id="paintSay" aria-live="polite"></p>
     </div>
-    <div class="callout" id="co-2" role="region" aria-label="DRC dampers" hidden>
-      <svg class="sketch" viewBox="0 0 120 84" aria-hidden="true" focusable="false">
-        <rect x="32" y="10" width="56" height="64" rx="10"/>
-        <rect x="18" y="14" width="9" height="18"/><rect x="93" y="14" width="9" height="18"/>
-        <rect x="18" y="52" width="9" height="18"/><rect x="93" y="52" width="9" height="18"/>
-        <path d="M28 24 L92 62 M92 24 L28 62"/><circle cx="60" cy="43" r="6"/>
-      </svg>
-      <h3>DRC &middot; Dynamic Ride Control</h3>
-      <p>Diagonally opposed dampers — front-left to rear-right, front-right to rear-left — share oil through a central valve. Roll and pitch are checked mechanically: no sensors, no lag. The car sits 30 mm below an A4; a further 10 mm was optional.</p>
-    </div>
-    <div class="callout" id="co-3" role="region" aria-label="Torsen centre differential" hidden>
-      <svg class="sketch" viewBox="0 0 120 84" aria-hidden="true" focusable="false">
-        <rect x="48" y="30" width="24" height="24"/><path d="M50 34 L70 30 M50 40 L70 36 M50 46 L70 42 M50 52 L70 48"/>
-        <circle cx="30" cy="42" r="14" stroke-dasharray="4 3"/><circle cx="90" cy="42" r="14" stroke-dasharray="4 3"/>
-        <path d="M6 42 L16 42 M104 42 L114 42"/>
-        <text x="30" y="76" text-anchor="middle">40</text><text x="90" y="76" text-anchor="middle">60</text>
-      </svg>
-      <h3>Torsen T3 &middot; 40:60</h3>
-      <p>Third-generation asymmetric centre differential: 40:60 front-to-rear by default, with a 4:1 torque bias ratio against the standard A4&rsquo;s 2:1. quattro GmbH&rsquo;s answer to the nose-led fast Audis that came before.</p>
-    </div>
-    <div class="callout" id="co-4" role="region" aria-label="Box-flared arches" hidden>
-      <svg class="sketch" viewBox="0 0 120 84" aria-hidden="true" focusable="false">
-        <path d="M18 72 A34 34 0 0 1 86 72"/><path d="M8 72 A44 44 0 0 1 96 72" stroke-dasharray="5 4"/>
-        <circle cx="52" cy="72" r="22"/><path d="M100 46 L112 46 M106 40 L106 52"/>
-      </svg>
-      <img src="media/202605252687946.jpg" alt="Rear arch flare on a dark blue RS4 saloon" loading="lazy">
-      <h3>Box flares</h3>
-      <p>1,816 mm across the front wings — said to be around 35 mm wider than an S4 — purely to clear the widened track. The template for every RS blister since.</p>
-    </div>
-    <div class="callout" id="co-5" role="region" aria-label="Recaro wingback seats" hidden>
-      <svg class="sketch" viewBox="0 0 120 84" aria-hidden="true" focusable="false">
-        <path d="M42 74 C32 62 32 40 38 22 C40 12 50 8 54 16 C57 22 55 28 52 34 C48 44 46 56 48 66 Z"/>
-        <path d="M46 74 C58 68 76 68 88 74 L90 64 C74 58 58 60 48 64 Z"/>
-        <path d="M40 30 C44 28 48 28 50 30 M39 42 C44 40 48 40 51 42" stroke-dasharray="2 2"/>
-      </svg>
-      <h3>Wingback buckets</h3>
-      <p>RS4-embossed sports buckets with electrically inflatable side bolsters, fitted to European saloons and Avants. Wingback cars command a premium today — and the bolsters wear, so check them.</p>
-    </div>
-    <div class="callout" id="co-6" role="region" aria-label="Flat-bottomed steering wheel" hidden>
-      <svg class="sketch" viewBox="0 0 120 84" aria-hidden="true" focusable="false">
-        <path d="M33 52 A30 30 0 1 1 87 52 L33 52 Z"/><path d="M38 47 L82 47" stroke-dasharray="3 3"/>
-        <circle cx="60" cy="40" r="6"/><path d="M60 34 L60 12 M55 43 L34 49 M65 43 L86 49"/>
-      </svg>
-      <h3>Flat-bottomed wheel</h3>
-      <p>Small diameter, perforated leather, aluminium-effect lower section with the RS4 script. Credited as Audi&rsquo;s first flat-bottomed wheel on a production car — reputed, never proven on paper.</p>
-    </div>
-    <div class="callout" id="co-7" role="region" aria-label="Oval exhaust tips" hidden>
-      <svg class="sketch" viewBox="0 0 120 84" aria-hidden="true" focusable="false">
-        <path d="M10 22 L110 16"/><path d="M10 70 L110 66" stroke-dasharray="5 4"/>
-        <ellipse cx="45" cy="48" rx="20" ry="11"/><ellipse cx="45" cy="48" rx="15" ry="7"/>
-        <ellipse cx="88" cy="45" rx="20" ry="11"/><ellipse cx="88" cy="45" rx="15" ry="7"/>
-      </svg>
-      <h3>Twin oval tips</h3>
-      <p>Two ovals where the S4 wears four round outlets — the quiet RS tell. The exhaust bypass-valve actuators seize with age; &ldquo;sport mode always on&rdquo; is the giveaway.</p>
-    </div>
-    <div class="callout" id="co-8" role="region" aria-label="Brakes" hidden>
-      <svg class="sketch" viewBox="0 0 120 84" aria-hidden="true" focusable="false">
-        <circle cx="54" cy="42" r="32"/><circle cx="54" cy="42" r="10"/><circle cx="54" cy="42" r="17" stroke-dasharray="3 3"/>
-        <g><line x1="54" y1="14" x2="54" y2="24"/></g>
-        <g transform="rotate(45 54 42)"><line x1="54" y1="14" x2="54" y2="24"/></g>
-        <g transform="rotate(90 54 42)"><line x1="54" y1="14" x2="54" y2="24"/></g>
-        <g transform="rotate(135 54 42)"><line x1="54" y1="14" x2="54" y2="24"/></g>
-        <g transform="rotate(180 54 42)"><line x1="54" y1="14" x2="54" y2="24"/></g>
-        <g transform="rotate(225 54 42)"><line x1="54" y1="14" x2="54" y2="24"/></g>
-        <g transform="rotate(270 54 42)"><line x1="54" y1="14" x2="54" y2="24"/></g>
-        <g transform="rotate(315 54 42)"><line x1="54" y1="14" x2="54" y2="24"/></g>
-        <path d="M80 20 A38 38 0 0 1 90 44 L100 42 A48 48 0 0 0 88 12 Z"/>
-        <text x="54" y="80" text-anchor="middle">Ø365</text>
-      </svg>
-      <h3>Brembo eight-piston</h3>
-      <p>365 × 34 mm ventilated discs with Brembo eight-piston monoblock calipers up front; 324 mm rears. From 2007, optional 380 mm SGL carbon-ceramics with six-piston calipers.</p>
     </div>
 
-    <!-- title block -->
-    <div class="bp-title" aria-label="Drawing title block">
-      <div class="bpt-row"><span>PROJECT</span><strong>AUDI RS4 (B7) &middot; TYP 8E</strong></div>
-      <div class="bpt-row"><span>DRAWING</span><strong>SIDE ELEVATION — SALOON</strong></div>
-      <div class="bpt-row"><span>DRAWN</span><strong>QUATTRO GMBH &middot; NECKARSULM</strong></div>
-      <div class="bpt-row split"><span>SCALE <strong>1:24 @ A3</strong></span><span>SHEET <strong>02 / 05</strong></span></div>
-      <div class="bpt-row split"><span>DATE <strong>2026-07-12</strong></span><span>DRG № <strong>RS4-8E-042 &middot; REV C</strong></span></div>
-    </div>
-
-    <!-- parts schedule -->
-    <table class="bp-schedule">
-      <thead><tr><th>№</th><th>Designation</th><th>Spec</th></tr></thead>
+    <table class="plate">
+      <caption>Type plate</caption>
       <tbody>
-        <tr data-hs="hs-1"><td>1</td><td>Engine — 4.2 FSI V8 (BNS)</td><td>420 PS &middot; 8,250 rpm &middot; 12.5:1</td></tr>
-        <tr data-hs="hs-2"><td>2</td><td>DRC dampers, both axles</td><td>Diagonal hydraulic link &middot; −30 mm</td></tr>
-        <tr data-hs="hs-3"><td>3</td><td>Torsen T3 centre differential</td><td>40:60 default &middot; 4:1 bias ratio</td></tr>
-        <tr data-hs="hs-4"><td>4</td><td>Box-flared arches</td><td>1,816 mm across the front wings</td></tr>
-        <tr data-hs="hs-5"><td>5</td><td>Wingback bucket seats</td><td>RS4-embossed &middot; inflatable bolsters</td></tr>
-        <tr data-hs="hs-6"><td>6</td><td>Flat-bottomed steering wheel</td><td>Perforated leather &middot; RS4 script</td></tr>
-        <tr data-hs="hs-7"><td>7</td><td>Twin oval exhaust tips</td><td>Bypass valve &middot; check the actuators</td></tr>
-        <tr data-hs="hs-8"><td>8</td><td>Brakes — Brembo monoblock</td><td>F 365 × 34 mm, 8-piston</td></tr>
+        <tr><th scope="row">Engine</th><td>4,163 cc 90° V8 · FSI direct injection · 32v DOHC · code BNS</td><td class="s"><a class="src" href="#src-5">S5</a> <a class="src" href="#src-7">S7</a></td></tr>
+        <tr><th scope="row">Bore × stroke · CR</th><td>84.5 × 92.8 mm · 12.5:1</td><td class="s"><a class="src" href="#src-7">S7</a></td></tr>
+        <tr><th scope="row">Power</th><td>420 PS · 309 kW · 414 bhp at 7,800 rpm</td><td class="s"><a class="src" href="#src-1">S1</a> <a class="src" href="#src-7">S7</a></td></tr>
+        <tr><th scope="row">Torque</th><td>430 Nm · 317 lb ft at 5,500 rpm · 90% from 2,250 to 7,600 rpm</td><td class="s"><a class="src" href="#src-7">S7</a> <a class="src" href="#src-2">S2</a></td></tr>
+        <tr><th scope="row">Redline · limiter</th><td>8,000 · 8,250 rpm</td><td class="s"><a class="src" href="#src-5">S5</a> <a class="src" href="#src-1">S1</a></td></tr>
+        <tr><th scope="row">Gearbox</th><td>6-speed Getrag manual, the only option</td><td class="s"><a class="src" href="#src-1">S1</a></td></tr>
+        <tr><th scope="row">Drivetrain</th><td>quattro · Torsen T3 centre differential · 40:60 front:rear</td><td class="s"><a class="src" href="#src-1">S1</a></td></tr>
+        <tr><th scope="row">0–100 km/h</th><td><span class="dis">4.8 s saloon · 4.9 s Avant, factory</span><a class="t-dis" href="#cf-1">disputed</a></td><td class="s"><a class="src" href="#src-1">S1</a> <a class="src" href="#src-7">S7</a></td></tr>
+        <tr><th scope="row">Top speed</th><td>250 km/h (155 mph), electronically limited</td><td class="s"><a class="src" href="#src-1">S1</a></td></tr>
+        <tr><th scope="row">Kerb weight</th><td><span class="dis">1,650–1,680 kg saloon · 1,710 kg Avant · 1,845 kg Cabriolet (EU DIN)</span><a class="t-dis" href="#cf-3">disputed</a></td><td class="s"><a class="src" href="#src-1">S1</a> <a class="src" href="#src-7">S7</a></td></tr>
+        <tr><th scope="row">Dimensions, Avant</th><td>4,586 × 1,816 × 1,415 mm · wheelbase 2,651 mm</td><td class="s"><a class="src" href="#src-7">S7</a></td></tr>
+        <tr><th scope="row">Brakes</th><td>F 365 × 34 mm, <span class="dis">8-piston</span><a class="t-dis" href="#cf-2">disputed</a> · R 324 × 22 mm · 380 mm ceramic option, 2007+</td><td class="s"><a class="src" href="#src-1">S1</a> <a class="src" href="#src-2">S2</a></td></tr>
+        <tr><th scope="row">Wheels · tyres</th><td>8.5J × 18 · 255/40 R18 · <span class="rep">19-inch factory option</span><a class="t-unv" href="#uv-6">unverified</a></td><td class="s"><a class="src" href="#src-7">S7</a></td></tr>
+        <tr><th scope="row">Fuel</th><td>63 l tank · 13.5–13.6 l/100 km combined (NEDC)</td><td class="s"><a class="src" href="#src-7">S7</a></td></tr>
+        <tr><th scope="row">Suspension</th><td>DRC diagonal hydraulic link · −30 mm against an A4, −40 mm optional</td><td class="s"><a class="src" href="#src-1">S1</a> <a class="src" href="#src-10">S10</a></td></tr>
+        <tr><th scope="row">Production</th><td>2006–2008 · about 10,000 · about 2,000 to the USA</td><td class="s"><a class="src" href="#src-1">S1</a></td></tr>
       </tbody>
     </table>
   </div>
 </section>
 
-<!-- ============================================================ TAB 3 — 360° VIEWER -->
-<section id="viewer360" class="panel" role="tabpanel" aria-labelledby="tab-viewer360" hidden>
-  <div class="section-head">
-    <p class="kicker">Studio &middot; sheet 03 &middot; the car in the round</p>
-    <h2 class="alu-text">360&deg;</h2>
-    <p class="section-sub">Click, hold and drag to rotate the car through a full 360 degrees; pinch or scroll to zoom. Arrow keys steer the camera too. The body wears the paint selected in The&nbsp;Legend tab.</p>
+<!-- ================================================================ 2 PROVENANCE -->
+<section class="sec" id="provenance" aria-labelledby="h-prov">
+  <div class="sec-head">
+    <h2 id="h-prov"><span class="no">2</span>Provenance</h2>
+    <p class="lede">The year it had no V8 M3 to face, and the only RS4 with a V8, a manual and a saloon.</p>
   </div>
 
-  <div class="studio" id="studioWrap">
-    <div class="studio-stage" id="studioStage">
-      <div class="studio-glow" aria-hidden="true"></div>
-      <model-viewer id="rs4Model"
-        src="assets/rs4_model/rs4.glb"
-        alt="Interactive three-dimensional model of an Audi RS4 B7 saloon"
-        camera-controls
-        interaction-prompt="none"
-        shadow-intensity="1"
-        exposure="1"
-        camera-orbit="45deg 75deg 105%"
-        min-camera-orbit="auto 20deg auto"
-        max-camera-orbit="auto 92deg auto"
-        loading="eager"></model-viewer>
-      <div class="studio-fallback" id="studioFallback">
-        <p class="sf-title">3D model not installed yet</p>
-        <p class="sf-line">Drop a <code>rs4.glb</code> into <code>site/assets/rs4_model/</code> — see README.</p>
-        <p class="sf-note mono">On file:// the 3D viewer needs a local server: run <code>./serve.sh</code></p>
-      </div>
+  <ol class="dates" aria-label="Key dates">
+    <li><time datetime="2005-02">Feb 2005</time><span>Prototype, “quattro Night”, Ingolstadt</span></li>
+    <li><time datetime="2006-01">Jan 2006</time><span>Detroit show debut</span></li>
+    <li><time datetime="2006">Mid-2006</time><span>On sale in Europe</span></li>
+    <li><time datetime="2006-06">Jun 2006</time><span>US deliveries begin</span></li>
+    <li><time datetime="2006">Late 2006</time><span>Cabriolet on sale in Europe</span></li>
+    <li><time datetime="2008">Autumn 2008</time><span>Production ends</span></li>
+  </ol>
+
+  <div class="story">
+    <div class="prose measure">
+      <p>Four years after the B5 RS4 Avant left production, quattro GmbH revived the badge on the B7 A4, and built every car at its Neckarsulm plant. <a class="src" href="#src-1">S1</a> <a class="src" href="#src-2">S2</a></p>
+      <p>Four things were new. It was the first RS4 with a V8; the B5 had a 2.7-litre twin-turbo V6. It was Audi’s first normally aspirated RS model. It was the first RS4 saloon and the only RS4 Cabriolet, after the Avant-only RS2 and B5. And it brought back a name that had skipped a generation: there was no B6 RS4. <a class="src" href="#src-1">S1</a> <a class="src" href="#src-4">S4</a></p>
+      <p>BMW’s E46 M3, 343 PS from a straight-six, left production in 2006; the E90 M3 and its 420 PS V8 arrived in 2007. For about a year the RS4 was the class’s only 420 PS high-revving V8, and unlike either M3 it drove all four wheels and came as an estate. <a class="src" href="#src-3">S3</a></p>
+      <p>The split by body style is not public. Forum tallies citing Audi annual reports include impossible 2004 entries and sum to over 14,000, so none is repeated here. <a class="t-dis" href="#cf-5">disputed</a> <a class="src" href="#src-16">S16</a></p>
     </div>
-    <div class="studio-meta">
-      <span class="studio-label">AUDI RS4 (B7) &middot; TYP 8E &middot; DIGITAL STUDIO &middot; DRAG TO ROTATE</span>
-      <div class="model-credit" id="modelCredit"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ TAB 4 — LINEAGE -->
-<section id="lineage" class="panel" role="tabpanel" aria-labelledby="tab-lineage" hidden>
-  <div class="section-head">
-    <p class="kicker">RS2 → B9 &middot; thirty years of fast estates and one V8 saloon</p>
-    <h2 class="alu-text">Lineage</h2>
-    <p class="section-sub">Read it bottom-up: the B8 deleted the manual and the saloon, the B9 deleted the V8. The B7 is the only one with all three.</p>
-  </div>
-
-  <div class="timeline" role="list">
-    <div class="tl-node" role="listitem">
-      <span class="tl-years">1994–95</span>
-      <h3>RS2</h3>
-      <p class="tl-spec">2.2 turbo I5 &middot; 315 PS &middot; Avant only &middot; manual</p>
-      <p class="tl-sig">The Porsche co-build that started it all — the heritage nod every RS carries.</p>
-    </div>
-    <div class="tl-node" role="listitem">
-      <span class="tl-years">1999–2001</span>
-      <h3>RS4 B5</h3>
-      <p class="tl-spec">2.7 biturbo V6 &middot; 380 PS &middot; Avant only &middot; manual</p>
-      <p class="tl-sig">The nameplate&rsquo;s debut. Fast, boosted, estate-shaped.</p>
-    </div>
-    <div class="tl-node tl-hero" role="listitem">
-      <span class="tl-pick">THE COLLECTOR&rsquo;S PICK</span>
-      <span class="tl-years">2006–08</span>
-      <h3>RS4 B7</h3>
-      <p class="tl-spec">4.2 FSI V8, atmospheric &middot; 420 PS &middot; saloon / Avant / Cabriolet &middot; 6-speed manual only</p>
-      <p class="tl-sig">The last naturally aspirated V8 with a manual — and the only RS4 ever sold as a saloon. ~10,000 built.</p>
-    </div>
-    <div class="tl-node" role="listitem">
-      <span class="tl-years">2012–15</span>
-      <h3>RS4 B8</h3>
-      <p class="tl-spec">4.2 FSI V8, atmospheric &middot; 450 PS &middot; Avant only &middot; 7-speed S tronic</p>
-      <p class="tl-sig">Kept the V8, deleted the manual and the saloon. ~7,000 built.</p>
-    </div>
-    <div class="tl-node" role="listitem">
-      <span class="tl-years">2017–</span>
-      <h3>RS4 B9</h3>
-      <p class="tl-spec">2.9 TFSI twin-turbo V6 &middot; 450 PS / 600 Nm &middot; Avant only &middot; 8-speed auto</p>
-      <p class="tl-sig">The turbo era. Faster everywhere; sings nowhere near 8,250.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ TAB 4 — GALLERY -->
-<section id="gallery" class="panel" role="tabpanel" aria-labelledby="tab-gallery" hidden>
-  <div class="section-head">
-    <p class="kicker">Today&rsquo;s UK market, in pictures</p>
-    <h2 class="alu-text">Gallery</h2>
-    <p class="section-sub">Live adverts tracked this morning — every photograph below is a real car for sale right now.</p>
-  </div>
-  <div class="masonry" id="galleryGrid"></div>
-</section>
-
-<!-- ============================================================ TAB 5 — FIFM -->
-<section id="fifm" class="panel" role="tabpanel" aria-labelledby="tab-fifm" hidden>
-  <div class="section-head">
-    <p class="kicker" id="fifmLabel">Find It For Me!</p>
-    <h2 class="alu-text">FIFM!</h2>
-    <p class="section-sub" id="fifmSearchLabel"></p>
-  </div>
-
-  <div class="kpi-band" id="kpiBand" role="group" aria-label="Market key figures"></div>
-  <p class="band-note">Working bands, per evo&rsquo;s guidance: leggy cars from ~£14k &middot; £25k+ buys a good sub-60,000-mile car &middot; the best beyond £30k, small premium for Avants.</p>
-
-  <div class="fifm-grid">
-    <div class="fifm-main">
-      <div class="panel-box">
-        <div class="panel-head">
-          <h3>Trend</h3>
-          <div class="legend-chips">
-            <span class="lc lc-ceiling">ceiling</span>
-            <span class="lc lc-median">median</span>
-            <span class="lc lc-floor">floor</span>
-            <span class="lc lc-live">live count</span>
-          </div>
-        </div>
-        <canvas id="trendCanvas" height="280" aria-label="Price trend chart: floor, median and ceiling prices over tracked days, with live listing count"></canvas>
-        <p class="chart-note" id="chartNote" hidden></p>
-      </div>
-
-      <div class="panel-box">
-        <div class="panel-head"><h3>Ranked entries</h3><span class="panel-sub mono" id="rankCount"></span></div>
-        <div class="fifm-head" aria-hidden="true">
-          <span>№</span><span></span><span>Car</span><span class="ta-r">Price</span><span class="ta-r">Mileage</span><span>Location</span><span>Seller</span><span class="ta-r">Listed</span><span class="ta-r">Score</span>
-        </div>
-        <div id="fifmRows"></div>
-      </div>
-
-      <div class="panel-box">
-        <div class="panel-head"><h3>Gone from market</h3></div>
-        <div id="goneRows"></div>
-      </div>
-    </div>
-
-    <aside class="fifm-side">
-      <div class="panel-box keeper">
-        <div class="panel-head"><h3>The keeper test</h3></div>
-        <p class="kicker">Worth the money</p>
-        <ul class="mono-list tight">
-          <li>Original, working DRC — the dividing line between collector car and used fast Audi</li>
-          <li>Wingbacks with unworn bolsters</li>
-          <li>Full specialist history: carbon cleans, oil discipline, DRC care</li>
-          <li>Unmodified engine and exhaust</li>
-          <li>Sprint Blue or Misano Red over black buckets — the poster spec</li>
-        </ul>
-        <p class="kicker flag-kicker">Walk away, or price it in</p>
-        <ul class="mono-list tight flags">
-          <li>Coilovers in place of DRC</li>
-          <li>Remap with no supporting history</li>
-          <li>Clutch judder on a track-used car</li>
-          <li>Insurance Cat markers</li>
-          <li>No carbon-clean invoice past 70,000 mi</li>
-          <li>&ldquo;Sport mode always on&rdquo; — seized bypass valves</li>
-        </ul>
-      </div>
+    <aside class="margin" aria-label="Margin notes">
+      <blockquote>
+        <p>“V8 executive gives the BMW M3 a run for its money.”</p>
+        <footer>evo buying guide, which calls the chassis balance “decidedly ‘un-Audi’”. <a class="src" href="#src-3">S3</a></footer>
+      </blockquote>
+      <p class="fact"><b>~10,000</b>built; about 2,000 for the USA <a class="src" href="#src-1">S1</a> <a class="src" href="#src-2">S2</a></p>
     </aside>
   </div>
 
-  <!-- ============ CAPSTONE: the one for you + daily one-pager ============ -->
-  <section class="capstone" aria-labelledby="capstoneHead">
-    <div class="section-head cap-head">
-      <p class="kicker">The verdict</p>
-      <h2 class="alu-text" id="capstoneHead">THE ONE FOR YOU</h2>
-      <p class="section-sub">One car off the top of the ranking, and the report that lands on WhatsApp every morning.</p>
+  <div class="lineage" id="lineage">
+    <h3>Lineage</h3>
+    <p>Read it from the bottom. The B9 dropped the V8. The B8 kept the atmospheric V8 but dropped the manual and the saloon. The B7 is the only RS4 with all three. With a run of about 10,000, that combination is the collector case in The Car Investor, Frost and Hagerty <a class="src" href="#src-20">S20</a> <a class="src" href="#src-21">S21</a> <a class="src" href="#src-22">S22</a>. Select a row to compare.</p>
+    <div class="lin-wrap">
+      <table class="lin" id="linTable">
+        <thead>
+          <tr><th scope="col">Generation</th><th scope="col">Years</th><th scope="col">Engine</th><th scope="col">Output</th><th scope="col">Bodies</th><th scope="col">Gearbox</th><th scope="col" class="trait">Atmos. V8</th><th scope="col" class="trait">Manual</th><th scope="col" class="trait">Saloon</th><th scope="col">Src</th></tr>
+        </thead>
+        <tbody>
+          <tr data-gen="RS2"><th scope="row"><button type="button">RS2</button></th><td data-l="Years">1994–95</td><td data-l="Engine">2.2 turbo I5, built with Porsche</td><td data-l="Output"><span class="ps"><i style="width:47px"></i>315 PS</span></td><td data-l="Bodies">Avant</td><td data-l="Gearbox">Manual</td><td class="trait" data-l="Atmos. V8"><span class="n" role="img" aria-label="no"></span></td><td class="trait" data-l="Manual"><span class="y" role="img" aria-label="yes"></span></td><td class="trait" data-l="Saloon"><span class="n" role="img" aria-label="no"></span></td><td><a class="src" href="#src-1">S1</a> <a class="src" href="#src-25">S25</a></td></tr>
+          <tr data-gen="B5"><th scope="row"><button type="button">B5</button></th><td data-l="Years">1999–2001</td><td data-l="Engine">2.7 biturbo V6</td><td data-l="Output"><span class="ps"><i style="width:57px"></i>380 PS</span></td><td data-l="Bodies">Avant</td><td data-l="Gearbox">Manual</td><td class="trait" data-l="Atmos. V8"><span class="n" role="img" aria-label="no"></span></td><td class="trait" data-l="Manual"><span class="y" role="img" aria-label="yes"></span></td><td class="trait" data-l="Saloon"><span class="n" role="img" aria-label="no"></span></td><td><a class="src" href="#src-26">S26</a></td></tr>
+          <tr data-gen="B7" class="b7"><th scope="row"><button type="button">B7</button></th><td data-l="Years">2006–08</td><td data-l="Engine">4.2 FSI V8, atmospheric</td><td data-l="Output"><span class="ps"><i style="width:63px"></i>420 PS</span></td><td data-l="Bodies">Saloon · Avant · Cabriolet</td><td data-l="Gearbox">6-speed manual only</td><td class="trait" data-l="Atmos. V8"><span class="y" role="img" aria-label="yes"></span></td><td class="trait" data-l="Manual"><span class="y" role="img" aria-label="yes"></span></td><td class="trait" data-l="Saloon"><span class="y" role="img" aria-label="yes"></span></td><td><a class="src" href="#src-1">S1</a></td></tr>
+          <tr data-gen="B8"><th scope="row"><button type="button">B8</button></th><td data-l="Years">2012–15</td><td data-l="Engine">4.2 FSI V8, atmospheric</td><td data-l="Output"><span class="ps"><i style="width:68px"></i>450 PS</span></td><td data-l="Bodies">Avant</td><td data-l="Gearbox">7-speed S tronic only · about 7,000 built</td><td class="trait" data-l="Atmos. V8"><span class="y" role="img" aria-label="yes"></span></td><td class="trait" data-l="Manual"><span class="n" role="img" aria-label="no"></span></td><td class="trait" data-l="Saloon"><span class="n" role="img" aria-label="no"></span></td><td><a class="src" href="#src-1">S1</a> <a class="src" href="#src-24">S24</a></td></tr>
+          <tr data-gen="B9"><th scope="row"><button type="button">B9</button></th><td data-l="Years">2017–</td><td data-l="Engine">2.9 TFSI twin-turbo V6 · 600 Nm</td><td data-l="Output"><span class="ps"><i style="width:68px"></i>450 PS</span></td><td data-l="Bodies">Avant</td><td data-l="Gearbox">8-speed automatic</td><td class="trait" data-l="Atmos. V8"><span class="n" role="img" aria-label="no"></span></td><td class="trait" data-l="Manual"><span class="n" role="img" aria-label="no"></span></td><td class="trait" data-l="Saloon"><span class="n" role="img" aria-label="no"></span></td><td><a class="src" href="#src-24">S24</a> <a class="src" href="#src-25">S25</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="compare" id="compare" aria-live="polite">B7 selected. Pick another generation to see what changed.</p>
+  </div>
+</section>
+
+<!-- ================================================================ 3 WALK-ROUND -->
+<section class="sec" id="walkround" aria-labelledby="h-walk">
+  <div class="sec-head">
+    <h2 id="h-walk"><span class="no">3</span>Walk-round</h2>
+    <p class="lede">BNS V8 to oval tips. Each station: the figure, the reasoning, the sources, the adverts.</p>
+  </div>
+
+  <div class="walk">
+    <div class="walk-fig">
+      <div class="bp" id="bp">
+        <div class="bp-stage" id="bpStage">
+<!-- BP:BEGIN (generated by scratchpad/build_bp.py) -->
+<svg class="bp-svg" viewBox="0 0 1000 900" role="img" aria-labelledby="bpTitle bpDesc"><title id="bpTitle">RS4 B7 saloon, right side and plan, with the eight inspection stations.</title><desc id="bpDesc">Length 4,586 mm, wheelbase 2,651 mm, height 1,415 mm, 1,816 mm across the front wings, tyres 255/40 R18 (661 mm). Outline traced from the 3D model; engine, driveline, seats, steering wheel and DRC lines are schematic.</desc><g class="bp-cl" aria-hidden="true"><line class="bp-cen" x1="775.2" y1="171.8" x2="775.2" y2="352"/><line class="bp-cen" x1="775.2" y1="407" x2="775.2" y2="817"/><line class="bp-cen" x1="699.1" y1="251.9" x2="851.3" y2="251.9"/><line class="bp-cen" x1="245" y1="171.8" x2="245" y2="352"/><line class="bp-cen" x1="245" y1="407" x2="245" y2="817"/><line class="bp-cen" x1="168.9" y1="251.9" x2="321.1" y2="251.9"/><line class="bp-cen" x1="32" y1="612" x2="977.2" y2="612"/><line class="bp-gnd" x1="16" y1="318" x2="989.2" y2="318"/></g><g class="bp-v"><circle class="bp-tyre" cx="775.2" cy="251.9" r="66.1"/><circle class="bp-tyre" cx="245" cy="251.9" r="66.1"/><path class="bp-o bp-body" d="M404.1 35.4 364.9 37 329.3 39.8 299.8 43.7 298.4 43.5 297.6 42.8 295.9 42.2 291.4 41.8 282.8 36.8 280.7 36.5 280.2 36.7 280.1 37.2 283.1 43.7 282.4 47.5 273.6 49.7 272 50.9 245.5 60 210.4 74.5 179.6 88.5 154.8 100.8 145.8 104.9 137.8 104.1 134.4 105.7 128.4 107.7 82.3 112.4 80.7 112.2 73.3 108.9 71.8 109.1 71.3 110.2 71.2 112.4 71.9 117.3 69.2 120.3 66.3 125.3 62.6 135.5 61.2 141.6 62 142.6 64.4 143.3 65.9 144.2 65.4 144.6 64.9 146.6 63.7 155.4 62.8 172.8 62.2 175.5 60.4 178.1 60 179.5 60.4 183.5 60.7 184.4 61.2 184.7 67.2 185.1 62.1 185.4 60.4 186.2 56.7 188.9 49.6 196.4 47.6 198.9 47.3 199.8 46.1 209 46 214.5 46.5 222.4 50.2 233.9 49.3 235.6 49.5 236.6 50.4 237.8 52.8 238.2 52.4 239.6 56 256.3 55.3 258.8 55.6 260 56.9 261.3 59.9 261.8 61.4 263.6 66.6 264.1 81.2 263.9 82.4 262.2 86.5 262.1 89.6 262.8 92.7 262.2 94.4 263 94.2 265.3 96.1 265.7 119.5 266.6 120.5 266.9 123.1 266.6 153.5 272.6 155.9 273.2 159 274.6 166.4 278.5 170 279.1 170.7 277.6 171.3 259 173.3 243.8 177.2 231 180.5 223.7 183.4 218.1 190.4 208.4 193.5 205.3 204.1 196.4 217 189.3 231.4 185.1 247.2 183.7 263.5 185.8 275.3 189.2 285.4 194.1 289 196.1 299.6 204.6 308.8 216.4 310.5 219.3 316.4 233 319.9 247.8 321.1 257.4 321.5 284.9 322.5 285.7 330.9 285 358.8 284.3 359.4 282.8 360.3 283.7 370.4 284.1 488.4 283.7 601.1 284.6 679.9 286.2 701.5 287.2 701.7 263 703.3 243 707.2 228.5 712.3 218.1 714.8 213.8 722.2 204.5 732.7 195.7 746.8 188 761.1 184.1 777.4 182.9 792.3 184.5 805.5 188.5 816 193.6 820.4 196.2 830.1 204 839.8 216.3 844.8 227.4 848.2 238.7 850.3 249.4 851.5 261 851.4 293.6 851.9 293.5 852.2 288.5 854.2 288.9 868.9 286.6 888.1 284.6 906.1 283.4 954.6 282.5 960.4 282.3 960.7 282 960.7 281.4 956.2 281.2 955.6 277.7 956.1 276.6 957.6 276.2 959.2 274.5 958.9 273.6 959.2 271.8 960.6 268.5 960.2 267.8 961 267.2 961.9 265.6 961.5 264.5 960.3 263.9 960 263.3 961.5 252 962 242 962.3 240.4 963.2 239 963.2 238 962.5 236.7 961.5 236.3 960.7 223.8 959.7 218.9 960.9 218.1 961.2 216.6 960.9 215.7 959.2 214.1 957.3 208.1 957.4 207.8 959.9 207.5 959.9 207 952.9 188.9 952.7 188.5 950.1 188.3 949 186.7 947.6 183.3 948.4 181.4 946.8 178.6 945.1 177.3 942.6 179.1 942.8 178.3 944.7 176.5 942.9 174.3 934.1 168 922.8 162.1 915.6 159.3 902.7 155.3 886.7 151.4 853.9 144.6 812.3 137.8 772.3 132.2 744 128.9 736.3 129.7 733.9 128.5 728 124.3 725.3 123.5 724.8 123 725.4 121.5 725.3 120.6 724 119.3 720.8 121.1 718.3 121.6 716.8 121.3 715.6 121.9 698.1 110.3 665.2 91.9 648.2 83.3 622.8 70.9 583 53.6 582.8 52 582.1 51 564.3 46.6 552.7 43.8 513.9 38.6 473.1 36.2 459.5 35.8 435.1 35.3Z"/><path class="bp-f" d="M419.3 45 390.9 45.8 368.1 47.4 342.5 50.6 330.1 53 319.2 55.7 307.2 60.5 301 63.5 284.4 72.7 268.3 82.8 255.1 92.9 233.1 111.2 231.5 113.7 231.2 115.5 231.6 116.9 234.1 118.5 237.3 119.2 243.7 119.6 273.9 120.2 280 120.8 280.5 120.5 281 118.9 281.7 118.5 282 118.6 281 120.8 286.3 120.5 288.1 120.8 361.5 123 460.7 127 465.3 127.6 465.6 126.9 464.9 125.3 465.2 125 465.9 126.1 466.2 127.2 466.8 127.6 469.2 127.3 470.1 127.6 509.3 129.6 599.1 133.8 675.5 137.8 678.8 138.3 678.1 135.5 674.9 130.2 672 126.4 665.1 118.9 656.9 112.5 641.7 101.6 614.4 84.7 589.8 71.1 562.8 58.9 551 55.1 540.3 52.6 523.9 49.8 509.5 48.2 473.1 45.8 439.2 44.9Z"/><path class="bp-f" d="M271.3 51 244.7 60.3 210.4 74.5 179.6 88.5 159.4 98.3 158.5 98.8 158 101 158.1 106.7 169.9 108.1 171.7 108.9 173.8 107.5 190.4 100.5 235.2 78.1 263.8 65.1 288.4 56 289.5 54.9 286.1 54.4 273.5 51Z"/><path class="bp-f" d="M580.5 53.8 575.5 55.2 569.1 56.4 566.6 55.3 568.6 57.5 595.4 69.3 620.4 82.7 642 95.5 678.6 119.9 695.8 132.3 698.4 134.9 702.7 134.4 716.1 131.8 730.7 130.4 732.5 129.8 734.2 130.1 735.5 129.4 728 124.3 725.3 123.5 724.8 123 725.4 121.5 725.3 120.6 724 119.3 720.8 121.1 718.3 121.6 716.8 121.3 715.6 121.9 697.2 109.8 659.4 88.9 622.8 70.9 584.5 54.1 583 53.7Z"/><path class="bp-glass" d="M412.5 50.2 390.1 51 360.9 53.4 343.3 55.8 326.4 59.3 314.1 80.1 313.2 82.7 314.9 98.4 317.9 117.7 318.4 118.2 321.4 118.5 391.1 120.6 449.1 123.2 438.8 50.2Z"/><path class="bp-glass" d="M459 50.5 479.3 122.8 480.1 124.3 553.7 128.4 593.5 130.2 641.3 133.3 643.6 133.1 643.5 131.7 642.6 131.3 635.9 131.7 631.4 131.1 628.6 129.1 627.7 128.1 626.5 125.2 625.6 118.8 625.7 114.2 626.4 111.9 628.3 108.7 630.3 106.5 633.1 104.9 635 105.1 636.5 105.7 636.8 105.2 636.4 104.7 610 88.3 585 74.3 559.6 63.3 549.1 60.1 536.7 57.4 521.5 55 507.1 53.4 474.7 51Z"/><path class="bp-glass" d="M263.3 53.8 241.2 61.7 210.4 74.5 179.6 88.5 158.2 98.9 158 102.7 158.4 103.9 170.1 106.4 172.9 106.5 175.1 106.1 197 95.3 231.2 77.7 261.6 64.9 274 60.2 276.6 58.5 276.8 58 276.4 57.4Z"/><path class="bp-glass" d="M587.3 56.2 576.7 58.4 574.6 58.5 574.6 58.8 594 66.5 623.6 82.3 648.4 97.1 684.2 121.1 690.8 126.2 694.7 126.5 705.9 125.2 705.4 124.5 705.7 123.8 710.1 123.4 710.8 124.2 712 124.5 716.5 124.9 720 124.7 697.2 109.8 659.4 88.9 622.8 70.9 590 56.5 588.6 56.1Z"/><path class="bp-glass" d="M305.2 71.1 288.7 80.3 271 93.1 267.1 96.1 249.3 111.8 247.6 113.6 247.8 114 248.1 114.3 256.9 114.8 280.5 114.6 299 82.1 305.4 71.7 305.6 71.3Z"/><path class="bp-f" d="M624.6 94.1 624.6 94.4 639.4 103.5 654.6 114.5 662.1 120.7 667.8 126.7 670 129.5 670 125.6 669.1 123.4 665.1 118.9 656.9 112.5 641.7 101.6 630 94.3Z"/><path class="bp-f" d="M632.4 105.1 630.6 106.3 628.3 108.7 626.4 111.9 625.7 114.2 625.6 118.8 626.1 123.6 627.1 126.9 628.8 129.4 630.6 130.7 632.3 131.3 639.3 131.7 644.3 131.2 647.3 130.2 655.8 129.3 657.1 128.8 657.6 127.5 657.4 126 655.2 124.8 656 120.8 655.7 118.3 653 114.4 646.9 110.1 642.4 107.7 635 105.1Z"/><path class="bp-f" d="M586.2 130.1 586.2 133.2 668.7 137.6 669.6 137.5 670 137.1 669.6 135.4 668.1 135.3 645.7 134.1 644.1 133.9 643.9 133.5 643 133.3 640.3 133 590.7 130.1Z"/><path class="bp-f" d="M76.9 123.4 75.2 124 72 127.5 68.4 136.1 66.8 143.1 67 144.4 68.8 145.2 69.8 146.3 70.9 157.9 95.5 159 100.1 159.7 102.3 159.6 105.2 137.3 103.6 135.4 101.3 133.7 96.3 130.4 91 127.5 83.4 124.7 80.5 124.4Z"/><path class="bp-f" d="M695.7 168.2 694.8 168.5 694.2 169.2 694.2 172.9 694.8 173.7 698.1 174.1 705.1 174 706.3 173.7 707.1 172.9 707.1 169.2 706.4 168.5 703 168.1Z"/><path class="bp-f" d="M885.3 173.4 878.5 173.8 875 174.7 873.5 175.7 872.4 177.8 872.8 180.9 880.1 195.1 894.3 196.2 910.8 198.1 916.8 200.9 923.3 202.8 941.2 205.7 943.1 205.6 943.3 205.3 943.6 204.1 943.3 201.7 939.3 191.7 934.8 184.3 932.7 181.8 929.6 179.3 914.7 175.4 893.1 173.4Z"/><path class="bp-h" d="M281.4 142.1 281.2 142.7 290.8 154.7 306.8 176.3 318.8 194.3 328.8 213.9 340.8 248.3 345.6 258.3 350.6 262.9 357.4 265.7 359.4 266.1 417.8 266.1 418.2 266.5 567.4 267.3 567.8 267.7 601.8 267.7 602.2 268.1 627.4 268.1 627.8 268.5 679.8 268.9 683.2 265.9 684 263.5 684 260.3 684.8 256.3 684.8 249.5 685.2 249.1 685.2 240.7 685.6 240.3 686 192.3 685.6 191.9 685.6 178.3 685.2 177.9 685.2 167.5 684.8 167.1 684.4 153.9 682 143.9 681 142.1 683.2 150.3 683.2 152.3 684 155.1 684 160.7 684.4 161.1 684.8 180.7 685.2 181.1 685.2 195.1 685.6 195.5 685.6 216.7 685.2 217.1 684.8 246.7 684.4 247.1 684.4 254.3 684 254.7 684 258.3 683.6 258.7 683.6 262.7 683.2 264.7 681.6 267.1 678.6 268.5 605.8 267.7 605.4 267.3 572.6 267.3 572.2 266.9 479.8 266.5 479.4 266.1 475 266.1 475.2 249.1 475.6 248.7 475.2 193.9 474.8 193.5 474.8 185.9 474.4 185.5 474.4 178.3 474 177.9 473.2 162.7 472.4 158.7 471.2 143.9 470.6 142.1 470 142.3 470.8 145.1 471.6 155.9 472 156.3 472 159.5 472.8 163.5 472.8 168.7 473.2 169.1 473.6 179.5 474 179.9 474.4 196.3 474.8 196.7 475.2 245.5 474.8 245.9 474.4 265.9 360.6 265.7 354.2 264.1 349.4 261.7 348.4 260.7 345.2 256.7 343.2 252.7 329.6 214.7 319.6 194.7 299.6 165.5Z"/><path class="bp-h" d="M245.4 183.7 245 184.1 240.6 184.1 240 184.7 240.2 188.1 240.6 187.7 245.8 187.3 249.8 188.1 257 188.5 271.4 192.9 283.4 199.7 294.4 209.9 301.6 219.9 306 229.5 307.2 232.3 310 245.1 310 260.3 308 268.3 307.6 271.9 303.2 281.9 321 282.1 321.2 257.5 320.8 257.1 320 247.9 318.8 244.3 318.8 242.7 317.6 239.1 316.4 232.7 309.6 217.5 301.2 206.3 288.6 195.7 275.8 189.3 261.8 185.3Z"/><path class="bp-h" d="M719.8 207.7 713.2 215.9 712.4 218.3 707.2 228.3 704.4 239.9 703.2 243.1 703.2 247.1 702.8 247.5 702.4 255.5 702 255.9 702 262.7 701.6 263.1 701.8 282.1 716.8 281.9 712.8 272.7 711.6 265.5 710 259.5 710 245.9 712.8 232.7 717.2 223.5 717.2 222.7 718.8 219.5 720 218.3Z"/><path class="bp-h" d="M249.8 208.9 250 215.9 250.6 216.9 256.6 218.1 259.8 219.7 259.2 217.5 259.6 215.9 260.6 215.3 267.4 216.9 273.4 220.9 275 222.5 276.4 221.9 270.6 216.5 263 212.1 261.8 212.1 254.2 209.3Z"/><path class="bp-h" d="M947 183.2 945.6 184.7 946 187.2 951.8 202.4 954 203.3 955.1 207 954.9 207.5 953.7 208.1 955.7 214.3 959.1 214.2 959.1 213.4 957.5 208.5 955.6 206.1 949.8 190.2 949.7 187.8 947.8 183.5Z"/><path class="bp-h" d="M52.6 238.8 52.5 240 55.9 256.6 56.5 257.5 57.4 257.6 57.9 257.4 58 256.9 56.5 252 56 248.5 56.3 245.3 57.2 244.4 56.7 241 55.6 238.8 53.2 238.5Z"/><path class="bp-h" d="M899.7 240.2 899.2 242.5 902 260.6 903.5 264.1 904.6 265.5 906.4 266.9 909.6 267.7 917.3 268.4 939.8 269.3 944.6 269.3 947.8 268.8 949.9 250 949.9 242.5 944.3 241.8 925.5 240.6 912.4 240.1Z"/><path class="bp-h" d="M959 240.5 958.4 260.9 958.8 263.2 959.6 263.9 960.3 262.8 961.5 252 962 242.3 961.9 240.9Z"/><path class="bp-h" d="M915.3 245 919.3 244.9 921.8 245.5 924.8 248.5 925.5 251 925.6 252.9 924.8 256.5 921.8 260.5 918.2 263.1 914.1 264 910.8 263.2 908.3 261.3 906.3 258.5 905.7 256.2 906.4 252.3 908.2 249.3 912.6 245.9Z"/><path class="bp-h" d="M903.8 198.1 903.8 198.4 910.9 199.3 918.4 202.5 923.7 204 938.5 206.4 942.1 206.8 942.8 206.1 942.1 205.7 923.3 202.8 917.1 201 912.7 198.8 909.5 198.1Z"/><path class="bp-h" d="M953 198.1 954 202.1 956.5 207.5 959.9 207.5 956.8 198.2Z"/><path class="bp-h" d="M956.2 214.9 956.1 216.4 957.2 220.1 957.9 225.8 959 240.4 961.2 240.9 962.2 240.5 963.2 239 963 237.2 961.5 236.3 960.7 223.8 959.7 218.9 960.9 218.1 961.2 216.6 960.9 215.7 959.8 214.7 957 214.5Z"/><path class="bp-h" d="M49.7 234.6 49.2 235.7 50.4 237.8 55.3 238.6 56.1 239.3 57.4 244.2 67.4 244.8 72.4 251.2 77.3 258.6 80.2 260.3 86.7 261.8 89 262.7 92.4 262.3 83.1 256.5 63.4 236.9 59.9 235.4 57.5 235 52.8 234.5Z"/><path class="bp-h" d="M915.3 245 912.6 245.9 908.2 249.3 906.4 252.3 905.7 256.2 906.3 258.5 908.3 261.3 910.8 263.2 914.1 264 918.2 263.1 921.8 260.5 924.8 256.5 925.6 252.9 925.5 251 924.8 248.5 921.8 245.5 919.3 244.9Z"/><circle class="bp-o bp-nofill" cx="775.2" cy="251.9" r="66.1"/><circle class="bp-f bp-nofill" cx="775.2" cy="251.9" r="45.7"/><circle class="bp-f bp-nofill" cx="775.2" cy="251.9" r="6"/><circle class="bp-o bp-nofill" cx="245" cy="251.9" r="66.1"/><circle class="bp-f bp-nofill" cx="245" cy="251.9" r="45.7"/><circle class="bp-f bp-nofill" cx="245" cy="251.9" r="6"/><circle class="bp-h bp-nofill" cx="245" cy="251.9" r="32.4"/></g><g class="bp-part" data-st="2"><circle class="ln bp-f bp-nofill" cx="775.2" cy="251.9" r="36.5"/><path class="ln bp-f bp-cal" d="M732 260.6 733.1 264.5 734.4 268.8 736 272.2 737.6 274.3 739.9 273.6 741.1 272.5 746 260.7 749.5 240.1 748 228.1 745.6 225.8 744.8 225.7 743.7 226.4 741.8 227.9 738.9 231.2 736 235.7 733.2 245.7 732.2 255.5Z"/></g><path class="bp-h bp-cal" d="M259.2 218.1 262.9 229.7 263.2 230.5 275.1 248.4 283.7 256.3 287.7 257.4 288.4 256.3 288.8 252.8 288.7 247 288 243 286.2 239.1 279.6 228.6 276.7 224.6 275.1 222.7 273.9 221.3 267.6 217 260.4 215.4 259.6 216.2Z"/><g class="bp-part" data-st="8"><path class="ln bp-f" d="M57.1 244.7 56.4 245.2 56 246.5 56.5 252 58.8 259.9 61.4 263.6 66.6 264.1 81.2 263.9 82.4 262.2 86.8 261.9 80.2 260.3 77 258.3 72.4 251.2 67.4 244.8 64.6 244.5Z"/><path class="ln bp-f" d="M57.3 245.8 57.9 246.1 59.2 249.3 60.8 254.6 62 260.9 61.7 262.9 60 260.9 57.8 255.5 56.8 249 56.9 246.2Z"/><path class="ln bp-f" d="M94.6 262.8 94.2 265.3 96.1 265.7 122.8 266.7 118.3 265.8 100.9 263.6 95.2 262.5Z"/></g><g class="bp-v"><path class="bp-o bp-body" d="M629.7 419.8 625.8 420.5 626.1 423.5 630 436.1 629.9 436.8 627.5 437.1 593.5 436 491.9 434.4 373.4 433.9 360.3 434.4 359.4 435.6 358.8 434.1 357.3 433.9 335.3 434.3 327.9 433.5 321.4 430.6 314.7 429.3 293.5 428.1 269.7 428 242.5 428.5 218.9 429.3 202.1 430.5 186.9 432 181.3 432.8 175.3 434.2 167.9 437.8 159.1 444.2 150.8 451 127.7 455.4 111.1 459.2 106.9 459.8 93.2 463.6 86 466.7 74.4 476.2 67.6 485.5 66.1 487 60 500.5 55.4 514.1 51.7 531.5 47.7 564 46.5 583.8 46 618.3 46.5 639.8 48.5 667.9 51.7 692.5 55.3 709.5 59.9 723.2 66.1 737 67.6 738.4 74.6 747.9 83.8 755.7 86.8 757.7 94.5 760.7 106.9 764.2 109.1 764.4 125.7 768.1 150.8 773 159.1 779.7 167.5 785.9 174.9 789.6 181.3 791.1 193.7 792.7 212.1 794.3 228.5 795.1 269 796 294.3 795.9 304.7 795.5 311.5 795.1 319.9 793.9 325.2 792 328.6 790 334.6 789.6 356.6 790 358.8 789.9 359.4 788.4 360.5 789.9 375.6 790 493.5 789.5 594.7 788 627.7 786.9 629.9 787.2 629.9 788.4 625.9 801.2 625.8 803.5 626.9 803.9 631.2 804.3 636.6 802.7 643.9 798.6 649.6 791.7 651.3 788.8 652.2 786.5 654.2 786.1 676.8 785.3 689.8 785.6 696.8 789.9 702.5 792 710.9 793.1 718.5 793.5 758.5 793.6 783.9 793.1 819.9 791.1 843.9 788.7 849 787.9 854.4 786 857.3 783.2 861.6 777.3 863.6 775.8 877.3 771.8 881.5 770.9 890.5 768 899 764.3 906.4 759.8 913.7 753.6 924.8 742.2 934.1 730.1 940.6 719.7 947.6 704.1 950.7 696.6 950.7 695.4 958.5 673.2 958.9 664.2 961.1 650.5 962.3 634.3 963.2 614.4 962.3 589.7 960.7 569.9 958.9 560.2 958.6 551.1 952.1 532.1 946.4 517.1 940.9 504.8 932 490.9 924.8 481.8 918 474.5 907.3 464.8 904.6 463 899.2 459.8 892 456.9 890.8 456.1 888.5 455.6 881.8 453.1 870.9 450.5 863 447.8 861.6 446.7 855.3 438.7 853 437.3 848.3 436 840.3 434.8 819.5 432.8 793.1 431.3 771.1 430.5 718.9 430.5 711.3 430.9 702.1 432 696.8 434 689.8 438.5 688.4 439 654 437.9 652.2 437.5 651.3 435.1 649.6 432.2 642.9 424.8 635.6 420.9 631.3 419.7Z"/><path class="bp-f bp-glass" d="M700.9 471.3 621.1 490.5 600.3 495.2 568.3 501.6 567 502.1 566.8 502.8 574.2 527.6 579.5 556.8 581.9 581.4 582.8 607 582.3 636.2 579.5 667.1 574.4 695.5 566.8 721.1 567.3 722.2 598.3 728.3 622.7 733.9 701.1 752.8 702.8 751.3 714.4 734.6 724 714.4 733 679.7 737.9 645.4 738.9 626.1 739.2 625.3 739.1 623.3 737.7 628.5 737.1 634.7 735.7 637.2 732.1 653.9 730.7 668.3 725.9 685 723.5 690.2 722.1 690.8 721.6 691.4 714.9 711.7 710.4 723.9 710.7 725.1 709.4 728.8 708.1 730.5 706.4 729.9 705.2 728.5 706.7 724.7 708.3 722.7 718 695 719.4 690.4 719.4 688.8 724.4 671.3 725.9 668.3 729.1 655.3 729.3 651.1 737.1 612.1 739.1 601 739.2 598.8 737.9 578.6 733.5 547.3 727.3 522 725.6 515.3 725.3 515.3 723.6 546.8 724.1 571.3 725.6 591.1 725.5 597.4 725.1 599.9 724.2 600.8 724 603.3 724.5 628.7 725.2 640.8 724.8 642.5 722.7 643 721.9 642.6 721.6 638.6 722 630.1 721.9 609.5 721.4 601.2 721 601 720.8 599.6 720 586.1 720.4 578.9 719.1 561.6 717.5 547.3 715.6 539.4 716.4 538.4 717.2 538.1 719.5 538.6 720.3 543.4 719.8 544.3 719.6 546.7 720.5 554.6 720.8 554.6 721.2 508.2 720.3 502.1 714.4 489.4 703.3 473.4 701.7 471.4Z"/><path class="bp-f bp-glass" d="M172.1 495.9 160.5 515.9 151.8 537.9 146.1 561.6 142.5 586.5 141.9 610.1 141.6 611.2 142.5 637.4 146.1 662.4 151.7 685.8 161.5 710 171.8 727.8 172.7 728.2 204.7 725.4 267.7 717.2 291.1 714.7 282.6 692 276.1 664.8 273.3 640.2 272.3 612.7 272 611.8 272.3 611.3 273.3 583.8 276.1 559.2 282.5 532.3 291.2 509.3 267.7 506.7 204.3 498.6 173.4 495.7Z"/><path class="bp-f" d="M879.3 457.8 872.6 458.7 872.5 459.7 873.3 460.7 879.6 465.3 885.7 470.4 898.4 482.9 913.6 499.2 931.8 522.5 934.9 525.1 943.2 529.6 943.6 527.4 942.9 525.4 937.4 513.5 929.3 499.7 920.8 488.1 914.5 481.5 903.7 471.6 895.4 465.1 884.4 459.4 880.6 457.7Z"/><path class="bp-f" d="M101 465.1 93.7 470.1 85.5 479.4 77.5 492.6 71.4 509.4 71.2 510.7 71.5 511.3 70.7 512.3 69.9 521 66.8 538.9 67 540.8 70.9 537.9 74.5 532.3 76.6 526.8 82 506.5 81.6 506 80.3 506.4 79.5 506.2 82.1 505.5 82.8 504.7 83.6 501.3 88.7 488.2 92.7 481.5 97.6 475 103.8 470.4 104.8 469.3 102.2 465Z"/><path class="bp-f" d="M67 683.1 66.8 685.1 69.9 703 70.7 711.7 71.5 712.7 71.3 714.3 77.5 731.4 84.8 743.8 93.1 753.3 100.8 758.8 102 759.1 104.8 754.7 102.6 752.7 98.3 749.7 93.1 743.2 88.4 735 83.6 722.7 82.6 718.8 77.4 717.1 77.9 716.9 81.2 717.9 82 717.5 76.7 697.4 74.2 691 72.7 688.6 70.1 685.5Z"/><path class="bp-f" d="M942.8 694.4 935.4 698.5 930.8 702.4 926.8 708.1 914 724.4 898.4 741 888.7 750.8 885.3 754 878.5 759.5 874.2 762.4 872.7 763.9 872.6 765.2 880.5 766.3 893.2 760.4 903.7 752.4 918.4 738.6 928.2 726 937.7 710 943.5 697.2 943.5 694.6Z"/><path class="bp-h" d="M702.2 471.2 702.2 471.6 736.2 471.6 736.6 472 759 472 759.4 472.3 809.8 473.1 810.2 473.5 820.2 473.5 820.6 473.9 830.2 473.9 830.6 474.3 855 475.1 855.4 475.5 873.8 476.3 874.2 476.7 879 476.7 879.4 477.1 883.8 477.1 884.2 477.5 892.4 478.1 891.8 477.5 875 476.3 874.6 475.9 856.6 475.1 856.2 474.7 849.4 474.7 849 474.3 841.8 474.3 841.4 473.9 812.2 473.1 811.8 472.7 764.2 472 763.8 471.6 741.4 471.6 741 471.2Z"/><path class="bp-h" d="M167.8 493.3 167.4 493.7 156.2 494.1 155.8 494.5 152.6 494.5 152.2 494.9 149.4 494.9 145.8 495.7 136.2 496.5 135.8 496.9 133.4 496.9 133 497.3 130.6 497.3 130.2 497.7 127.8 497.7 127.4 498.1 125 498.1 122.2 498.9 119.4 498.9 119 499.3 116.6 499.3 116.2 499.7 113.8 499.7 107.8 500.9 105 500.9 104.6 501.3 102.2 501.3 101.8 501.7 99.4 501.7 93.4 502.8 85 503.2 84 503.8 94.2 503.2 94.6 502.8 100.2 502.5 100.6 502.1 114.2 500.5 114.6 500.1 125 498.9 125.4 498.5 128.2 498.5 128.6 498.1 131 498.1 137 496.9 147 496.1 147.4 495.7 150.2 495.7 153.8 494.9 161.8 494.5 162.2 494.1 170.2 494.1 171.4 493.7 171.4 493.3Z"/><path class="bp-h" d="M84.2 719.9 85 720.7 93.4 721.1 93.8 721.5 96.2 721.5 96.6 721.9 99 721.9 99.4 722.3 101.8 722.3 102.2 722.7 104.6 722.7 110.6 723.9 113.4 723.9 113.8 724.3 116.2 724.3 116.6 724.7 119 724.7 119.4 725.1 121.8 725.1 122.2 725.5 124.6 725.5 125 725.9 127.4 725.9 127.8 726.3 130.2 726.3 136.2 727.4 145.4 728.2 145.8 728.6 149 728.6 149.4 729 155.8 729.4 156.2 729.8 160.6 729.8 161 730.2 171.6 730.4 169.4 729.8 161.8 729.8 161.4 729.4 157.8 729.4 157.4 729 150.2 728.6 149.8 728.2 147 728.2 143.4 727.4 140.2 727.4 139.8 727.1 133.8 726.7 133.4 726.3 114.2 723.9 113.8 723.5 100.6 721.9 100.2 721.5Z"/><path class="bp-h" d="M888.6 746.1 888.2 746.5 884.6 746.5 884.2 746.9 868.6 747.7 868.2 748 862.2 748 861.8 748.4 855.8 748.4 855.4 748.8 831.4 749.6 831 750 821 750 820.6 750.4 811 750.4 810.6 750.8 760.6 751.6 760.2 752 737.8 752 737.4 752.4 702 752.6 742.2 752.8 742.6 752.4 765 752.4 765.4 752 812.6 751.2 813 750.8 841.8 750 842.2 749.6 849.4 749.6 849.8 749.2 856.6 749.2 857 748.8 862.6 748.8 863 748.4 875 748 875.4 747.7 879.8 747.7 880.2 747.3 891.8 746.5 891.8 746.1Z"/><path class="bp-hid bp-hid-l" d="M182.7 433.6 180.1 437.4 180.1 477.8 182.7 481.2 189.5 481.2 189.9 481.6 300.3 481.6 300.7 481.2 307.5 481.2 310.1 477.4 310.1 437.4 307.5 433.6Z"/><path class="bp-hid bp-hid-l" d="M712.7 433.6 710.1 437.4 710.1 477.4 713.1 481.2 719.5 481.2 719.9 481.6 830.3 481.6 830.7 481.2 837.5 481.2 840.1 477.8 840.1 437.4 838.9 435.8 838.5 434.6 837.5 433.6Z"/><path class="bp-hid bp-hid-l" d="M185.1 742.6 184.7 743 182.7 743 180.1 746.4 180.1 786.8 182.7 790.5 307.5 790.5 310.1 786.8 310.1 746.4 307.5 743 305.5 743 305.1 742.6Z"/><path class="bp-hid bp-hid-l" d="M715.1 742.6 714.7 743 712.7 743 710.1 746.4 710.1 786.8 712.7 790.5 837.5 790.5 840.1 786.8 840.1 746.4 837.5 743 835.5 743 835.1 742.6Z"/></g><g class="bp-part" data-st="1"><rect class="ln bp-sch" x="783.2" y="561" width="104" height="102" rx="6"/><circle class="ln bp-sch" cx="803.9" cy="582" r="8.4"/><circle class="ln bp-sch" cx="821.9" cy="582" r="8.4"/><circle class="ln bp-sch" cx="839.9" cy="582" r="8.4"/><circle class="ln bp-sch" cx="857.9" cy="582" r="8.4"/><circle class="ln bp-sch" cx="800.2" cy="642" r="8.4"/><circle class="ln bp-sch" cx="818.2" cy="642" r="8.4"/><circle class="ln bp-sch" cx="836.2" cy="642" r="8.4"/><circle class="ln bp-sch" cx="854.2" cy="642" r="8.4"/></g><g class="bp-part" data-st="6"><path class="ln bp-sch" d="M783.2 577 723.2 585 635.2 593 635.2 631 723.2 639 783.2 647Z"/><rect class="ln bp-sch bp-key" x="632.2" y="599" width="30" height="26" rx="3"/><line class="ln bp-sch" x1="775.2" y1="584" x2="775.2" y2="485.2"/><line class="ln bp-sch" x1="775.2" y1="640" x2="775.2" y2="738.8"/><line class="ln bp-sch" x1="245" y1="580" x2="245" y2="485.2"/><line class="ln bp-sch" x1="245" y1="644" x2="245" y2="738.8"/><line class="ln bp-sch" x1="635.2" y1="609" x2="285" y2="609"/><line class="ln bp-sch" x1="635.2" y1="615" x2="285" y2="615"/><rect class="ln bp-sch" x="223" y="582" width="62" height="60" rx="5"/></g><g class="bp-part" data-st="7"><line class="ln bp-drc" x1="775.2" y1="487.2" x2="245" y2="736.8"/><line class="ln bp-drc bp-drc2" x1="775.2" y1="736.8" x2="245" y2="487.2"/><circle class="ln bp-damp" cx="775.2" cy="487.2" r="7"/><circle class="ln bp-damp" cx="775.2" cy="736.8" r="7"/><circle class="ln bp-damp" cx="245" cy="487.2" r="7"/><circle class="ln bp-damp" cx="245" cy="736.8" r="7"/><circle class="ln bp-damp" cx="510.1" cy="612" r="6.5"/></g><g class="bp-part" data-st="5"><path class="ln bp-sch" d="M426.1 637 C410.1 638 402.1 648 402.1 658 L402.1 718 C402.1 728 410.1 738 426.1 739 L454.1 739 L454.1 637Z"/><path class="ln bp-sch" d="M454.1 641 L530.1 645 C538.1 648 538.1 728 530.1 731 L454.1 735"/><path class="ln bp-sch bp-thin" d="M458.1 660 L524.1 662 M458.1 716 L524.1 714"/><path class="ln bp-sch" d="M426.1 485 C410.1 486 402.1 496 402.1 506 L402.1 566 C402.1 576 410.1 586 426.1 587 L454.1 587 L454.1 485Z"/><path class="ln bp-sch" d="M454.1 489 L530.1 493 C538.1 496 538.1 576 530.1 579 L454.1 583"/><path class="ln bp-sch bp-thin" d="M458.1 508 L524.1 510 M458.1 564 L524.1 562"/></g><g class="bp-part" data-st="4"><rect class="ln bp-sch bp-key" x="610.1" y="651" width="13" height="74" rx="9"/><line class="ln bp-sch" x1="623.1" y1="688" x2="690.1" y2="688"/></g><g class="bp-part" data-st="8"><rect class="ln bp-hid" x="50" y="498.2" width="26" height="37.3" rx="18.6"/><rect class="ln bp-hid" x="50" y="688.2" width="26" height="37.6" rx="18.8"/><rect class="ln bp-hid" x="50" y="502.2" width="26" height="26.7" rx="13.4"/><rect class="ln bp-hid" x="50" y="695" width="26" height="26.8" rx="13.4"/><rect class="ln bp-hid" x="50" y="479.9" width="26" height="7.1" rx="3.6"/></g><g class="bp-dims"><line class="bp-ext" x1="431.1" y1="35.3" x2="21" y2="35.3"/><line class="bp-ext" x1="50" y1="318" x2="21" y2="318"/><line class="bp-dl" x1="27" y1="35.3" x2="27" y2="318"/><path class="bp-ah" d="M27 35.3L29.8 44.3L24.2 44.3Z"/><path class="bp-ah" d="M27 318L24.2 309L29.8 309Z"/><text class="bp-dt" transform="translate(21 176.6) rotate(-90)" text-anchor="middle">1,415 mm</text><line class="bp-dl" x1="245" y1="344" x2="775.2" y2="344"/><path class="bp-ah" d="M245 344L254 341.2L254 346.8Z"/><path class="bp-ah" d="M775.2 344L766.2 346.8L766.2 341.2Z"/><text class="bp-dt" x="510.1" y="338" text-anchor="middle">2,651 mm</text><line class="bp-ext" x1="963.2" y1="618.4" x2="963.2" y2="840"/><line class="bp-ext" x1="46" y1="622.3" x2="46" y2="840"/><line class="bp-dl" x1="46" y1="834" x2="963.2" y2="834"/><path class="bp-ah" d="M46 834L55 831.2L55 836.8Z"/><path class="bp-ah" d="M963.2 834L954.2 836.8L954.2 831.2Z"/><text class="bp-dt" x="216" y="853" text-anchor="middle">4,586 mm</text></g><g class="bp-part" data-st="3"><line class="bp-ext" x1="775.1" y1="430.4" x2="976" y2="430.4"/><line class="bp-ext" x1="775.1" y1="793.6" x2="976" y2="793.6"/><line class="ln bp-dl" x1="970" y1="430.4" x2="970" y2="793.6"/><path class="bp-ah" d="M970 430.4L972.8 439.4L967.2 439.4Z"/><path class="bp-ah" d="M970 793.6L967.2 784.6L972.8 784.6Z"/><text class="bp-dt" transform="translate(986 612) rotate(-90)" text-anchor="middle">1,816 mm</text></g><g class="bp-note"><line class="bp-ldr" x1="283" y1="306" x2="299" y2="306"/><circle class="bp-dot" cx="283" cy="306" r="2.4"/><text class="bp-dt" x="303" y="311.5">255/40 R18 · Ø661 mm</text></g><text class="bp-vl" x="150" y="25">RIGHT SIDE</text><text class="bp-vl" x="150" y="416">PLAN</text><g class="bp-lead" aria-hidden="true"><g data-st="1"><line class="bp-ldr" x1="905" y1="104" x2="814.1" y2="158"/><circle class="bp-dot" cx="814.1" cy="158" r="2.6"/></g><g data-st="2"><line class="bp-ldr" x1="872" y1="384" x2="801.5" y2="277.1"/><circle class="bp-dot" cx="801.5" cy="277.1" r="2.6"/></g><g data-st="3"><line class="bp-ldr" x1="745" y1="384" x2="771.1" y2="430.5"/><circle class="bp-dot" cx="771.1" cy="430.5" r="2.6"/></g><g data-st="4"><line class="bp-ldr" x1="640" y1="866" x2="616.5" y2="725"/><circle class="bp-dot" cx="616.5" cy="725" r="2.6"/></g><g data-st="5"><line class="bp-ldr" x1="470" y1="866" x2="478.1" y2="737"/><circle class="bp-dot" cx="478.1" cy="737" r="2.6"/></g><g data-st="6"><line class="bp-ldr" x1="630" y1="384" x2="647.2" y2="599"/><circle class="bp-dot" cx="647.2" cy="599" r="2.6"/></g><g data-st="7"><line class="bp-ldr" x1="505" y1="384" x2="510.1" y2="605.5"/><circle class="bp-dot" cx="510.1" cy="605.5" r="2.6"/></g><g data-st="8"><line class="bp-ldr" x1="44" y1="384" x2="71.4" y2="264.1"/><circle class="bp-dot" cx="71.4" cy="264.1" r="2.6"/></g></g></svg>
+<button type="button" class="hs" id="hs-1" data-st="1" style="left:90.50%;top:11.56%" aria-label="Station 1, engine bay: BNS V8, 420 PS. Go to the station sheet.">1</button><button type="button" class="hs" id="hs-2" data-st="2" style="left:87.20%;top:42.67%" aria-label="Station 2, front brakes: 365 mm discs, Brembo eight-piston. Go to the station sheet.">2</button><button type="button" class="hs" id="hs-3" data-st="3" style="left:74.50%;top:42.67%" aria-label="Station 3, box flares: 1,816 mm across the front wings. Go to the station sheet.">3</button><button type="button" class="hs" id="hs-4" data-st="4" style="left:64.00%;top:96.22%" aria-label="Station 4, flat-bottomed steering wheel. Go to the station sheet.">4</button><button type="button" class="hs" id="hs-5" data-st="5" style="left:47.00%;top:96.22%" aria-label="Station 5, wingback bucket seats. Go to the station sheet.">5</button><button type="button" class="hs" id="hs-6" data-st="6" style="left:63.00%;top:42.67%" aria-label="Station 6, Torsen T3 centre differential, 40:60. Go to the station sheet.">6</button><button type="button" class="hs" id="hs-7" data-st="7" style="left:50.50%;top:42.67%" aria-label="Station 7, DRC dampers, 30 mm lower than an A4. Go to the station sheet.">7</button><button type="button" class="hs" id="hs-8" data-st="8" style="left:4.40%;top:42.67%" aria-label="Station 8, twin oval exhaust tips. Go to the station sheet.">8</button>
+<!-- BP:END -->
+          <svg class="leader" id="leader" aria-hidden="true" focusable="false" hidden><line id="leaderLine" x1="0" y1="0" x2="0" y2="0"/></svg>
+          <div class="tag" id="tag" aria-hidden="true" hidden></div>
+        </div>
+        <div class="titleblock">
+          <div>Subject<b>RS4 B7 saloon, right side and plan</b></div>
+          <div>Status<b>Drawn for this file, not a factory drawing</b></div>
+          <div>Drawn from<b>Outline: <a href="#src-model">the 3D model</a>. Sizes: auto-data.net, Avant, mm <a class="src" href="#src-7">S7</a></b></div>
+          <div>Schematic<b>Engine, driveline, seats, wheel, DRC lines. Track <a class="t-unv" href="#uv-5">unverified</a></b></div>
+        </div>
+        <ol class="parts" id="schedule" aria-label="Stations">
+          <li data-st="1"><a href="#st-1"><span class="pn">1</span><span class="pt">Engine bay · BNS V8</span><span class="pv">420 PS</span></a></li>
+          <li data-st="2"><a href="#st-2"><span class="pn">2</span><span class="pt">Front brakes</span><span class="pv">365 mm · 8-pot</span></a></li>
+          <li data-st="3"><a href="#st-3"><span class="pn">3</span><span class="pt">Box flares</span><span class="pv">1,816 mm</span></a></li>
+          <li data-st="4"><a href="#st-4"><span class="pn">4</span><span class="pt">Flat-bottomed wheel</span><span class="pv">reputed first</span></a></li>
+          <li data-st="5"><a href="#st-5"><span class="pn">5</span><span class="pt">Wingback buckets</span><span class="pv">fit disputed</span></a></li>
+          <li data-st="6"><a href="#st-6"><span class="pn">6</span><span class="pt">Torsen T3 centre diff</span><span class="pv">40:60</span></a></li>
+          <li data-st="7"><a href="#st-7"><span class="pn">7</span><span class="pt">DRC dampers</span><span class="pv">−30 mm</span></a></li>
+          <li data-st="8"><a href="#st-8"><span class="pn">8</span><span class="pt">Twin oval tips</span><span class="pv">2, not 4</span></a></li>
+        </ol>
+      </div>
     </div>
 
-    <div class="cap-grid">
-      <div class="hero-pick" id="heroPick" aria-label="Top recommended car"></div>
-      <div class="one-pager" id="onePager" aria-label="Daily PDF report"></div>
-    </div>
-  </section>
+    <div class="stations">
 
-  <p class="fifm-foot mono">Data refreshes each morning at 08:45 from Autotrader via the local tracker &middot; <span id="genStamp"></span></p>
+      <!-- STATION 1 -->
+      <article class="station" id="st-1" data-st="1" aria-labelledby="st-1-h">
+        <div class="st-head"><span class="st-no" aria-hidden="true">1</span><h3 id="st-1-h">Engine bay<small>BNS 4.2 FSI V8 · jobs 01, 03, 04</small></h3><a class="locate" href="#bp" data-locate="1">locate</a></div>
+        <p class="scan"><span class="big">420</span><span class="unit">PS</span><span class="cmp"><span>at 7,800 rpm</span><span>B5: 380 PS</span><span>101 PS per litre</span></span></p>
+        <!-- FIG1:BEGIN -->
+        <figure class="fig" id="fig-1">
+          <svg viewBox="0 0 440 96" role="img" aria-label="Rev range to scale, 0 to 8,250 rpm. 90 per cent of peak torque from 2,250 to 7,600 rpm, a span of 5,350; peak torque 430 Nm at 5,500; peak power 420 PS at 7,800; redline 8,000; limiter 8,250."><text class="fp" x="12" y="11">RPM · TO SCALE</text><text class="fr" x="428" y="11" text-anchor="end">redline 8,000 · limiter 8,250</text><rect class="tone" x="125.5" y="36" width="269.8" height="18"/><rect class="redf" x="415.4" y="22" width="12.6" height="32"/><text x="208.7" y="48.5" text-anchor="middle">90% of peak torque</text><line class="o" x1="289.3" y1="31" x2="289.3" y2="54"/><text class="fb" x="285.3" y="29" text-anchor="end">430 Nm at 5,500</text><line class="o" x1="405.3" y1="31" x2="405.3" y2="54"/><text class="fb" x="401.3" y="29" text-anchor="end">420 PS at 7,800</text><line class="o" x1="12" y1="54" x2="428" y2="54"/><line class="hl" x1="12" y1="54" x2="12" y2="58"/><line class="hl" x1="62.4" y1="54" x2="62.4" y2="58"/><line class="hl" x1="112.8" y1="54" x2="112.8" y2="58"/><line class="hl" x1="163.3" y1="54" x2="163.3" y2="58"/><line class="hl" x1="213.7" y1="54" x2="213.7" y2="58"/><line class="hl" x1="264.1" y1="54" x2="264.1" y2="58"/><line class="hl" x1="314.5" y1="54" x2="314.5" y2="58"/><line class="hl" x1="365" y1="54" x2="365" y2="58"/><line class="hl" x1="415.4" y1="54" x2="415.4" y2="58"/><text x="12" y="69">0</text><text x="125.5" y="69" text-anchor="middle">2,250</text><text x="395.2" y="69" text-anchor="middle">7,600</text><line class="ext" x1="125.5" y1="73" x2="125.5" y2="80"/><line class="ext" x1="395.2" y1="73" x2="395.2" y2="80"/><line class="dl" x1="125.5" y1="78" x2="395.2" y2="78"/><path class="ah" d="M125.5 78L131.5 75.8L131.5 80.2Z"/><path class="ah" d="M395.2 78L389.2 80.2L389.2 75.8Z"/><text class="fb" x="260.3" y="91" text-anchor="middle">5,350 rpm</text></svg>
+          <figcaption>90% of peak torque spans 5,350 rpm; peak power comes 200 rpm before the redline.</figcaption>
+        </figure>
+        <!-- FIG1:END -->
+        <div class="prose">
+          <p>Code BNS. Fuel sprayed straight into the chamber cools the charge, and that is what allows 12.5:1 compression without forced induction. It is also why the intake valves carbon up: no fuel washes them (<a href="#job-1">job 01</a>).</p>
+          <p>Closed-deck two-piece block, 84.5 mm bores at 90 mm spacing, 18.5 mm bank offset. Roller finger followers with hydraulic lash adjustment; sodium-filled, chrome-plated valve stems; 11.0 mm lift.</p>
+          <p>One gearbox: a six-speed Getrag manual.</p>
+        </div>
+        <div class="mkt" data-mkt="engine"></div>
+        <details class="ev"><summary>Evidence · 12 Jul 2026</summary><div class="ev-body"><ul><li>code, construction <a class="src" href="#src-5">S5</a> <a class="src" href="#src-6">S6</a>; figures <a class="src" href="#src-7">S7</a> <a class="src" href="#src-1">S1</a>; spread <a class="src" href="#src-2">S2</a></li><li><span class="k">Arithmetic</span>420 ÷ 4.163 = 101 PS/l</li><li><span class="k">Disputed</span><span class="dis">0–62 mph: 4.8 s factory, 4.7 s evo, 4.5 s measured</span> <a class="t-dis" href="#cf-1">cf-1</a></li><li><span class="k">Unverified</span><span class="rep">280 km/h delimit; sump details</span> <a class="t-unv" href="#uv-2">uv-2</a> <a class="t-unv" href="#uv-3">uv-3</a></li></ul></div></details>
+      </article>
+
+      <!-- STATION 2 -->
+      <article class="station" id="st-2" data-st="2" aria-labelledby="st-2-h">
+        <div class="st-head"><span class="st-no" aria-hidden="true">2</span><h3 id="st-2-h">Front brakes<small>Brembo monoblock</small></h3><a class="locate" href="#bp" data-locate="2">locate</a></div>
+        <p class="scan"><span class="big">365</span><span class="unit">mm</span><span class="cmp"><span>front disc, 34 mm thick</span><span>rear 324 mm</span><span>ceramic option 380 mm</span></span></p>
+        <!-- FIG2:BEGIN -->
+        <figure class="fig" id="fig-2">
+          <svg viewBox="0 0 440 196" role="img" aria-label="Brake discs to scale, face and edge. 18-inch rim 457 millimetres for reference. Rear disc 324 by 22 millimetres, one-piston floating caliper; front 365 by 34, eight-piston fixed caliper; ceramic option 380 by 38, six-piston."><text class="fp" x="6" y="11">FACE Ø · MM · TO SCALE</text><text class="fp" x="262" y="11">EDGE · THICKNESS</text><circle class="ref" cx="76" cy="92" r="66"/><circle class="o tone" cx="76" cy="92" r="52.7"/><circle class="opt" cx="76" cy="92" r="54.9"/><circle class="fe" cx="76" cy="92" r="46.8"/><circle class="dot" cx="76" cy="92" r="2"/><line class="ldr" x1="152" y1="32.5" x2="111" y2="36"/><circle class="dot" cx="111" cy="36" r="1.8"/><text x="156" y="36">18 in rim 457</text><line class="ldr" x1="152" y1="56.5" x2="126.9" y2="71.5"/><circle class="dot" cx="126.9" cy="71.5" r="1.8"/><text x="156" y="60">ceramic 380</text><line class="ldr" x1="152" y1="80.5" x2="127.1" y2="104.7"/><circle class="dot" cx="127.1" cy="104.7" r="1.8"/><text class="fb" x="156" y="84">front 365</text><line class="ldr" x1="152" y1="104.5" x2="106.1" y2="127.8"/><circle class="dot" cx="106.1" cy="127.8" r="1.8"/><text x="156" y="108">rear 324</text><rect class="fe" x="286.8" y="70.5" width="6.4" height="93.5"/><text x="290" y="65.5" text-anchor="middle">22</text><text x="290" y="177" text-anchor="middle">rear</text><text x="290" y="190" text-anchor="middle">1-pot</text><rect class="o tone" x="339.1" y="58.6" width="9.8" height="105.4"/><text class="fb" x="344" y="53.6" text-anchor="middle">34</text><text class="fb" x="344" y="177" text-anchor="middle">front</text><text x="344" y="190" text-anchor="middle">8-pot</text><rect class="opt" x="392.5" y="54.3" width="11" height="109.7"/><text x="398" y="49.3" text-anchor="middle">38</text><text x="398" y="177" text-anchor="middle">ceramic</text><text x="398" y="190" text-anchor="middle">6-pot</text><line class="hl" x1="262" y1="164" x2="434" y2="164"/></svg>
+          <figcaption>The front disc is 41 mm larger and 12 mm thicker than the rear.</figcaption>
+        </figure>
+        <!-- FIG2:END -->
+        <div class="prose">
+          <p>Brembo monoblock fixed calipers on vented front discs, floating calipers at the rear. From 2007, SGL Carbon ceramics were optional. Six-piston claims for the standard car appear to confuse it with that option.</p>
+        </div>
+        <div class="mkt" data-mkt="brakes"></div>
+        <details class="ev"><summary>Evidence · 12 Jul 2026</summary><div class="ev-body"><ul><li><a class="src" href="#src-1">S1</a> <a class="src" href="#src-2">S2</a></li><li><span class="k">Disputed</span><span class="dis">8-piston against 6-piston</span> <a class="t-dis" href="#cf-2">cf-2</a></li></ul></div></details>
+      </article>
+
+      <!-- STATION 3 -->
+      <article class="station" id="st-3" data-st="3" aria-labelledby="st-3-h">
+        <div class="st-head"><span class="st-no" aria-hidden="true">3</span><h3 id="st-3-h">Box flares<small>Arches, mirrors, body</small></h3><a class="locate" href="#bp" data-locate="3">locate</a></div>
+        <p class="scan"><span class="big">1,816</span><span class="unit">mm</span><span class="cmp"><span>across the front wings</span><span class="rep">≈35 mm wider than A4/S4, forum figure</span></span></p>
+        <!-- FIG3:BEGIN -->
+        <figure class="fig" id="fig-3">
+          <svg viewBox="0 0 440 246" role="img" aria-label="Front elevation to scale: 1,816 millimetres across the front wings. A4 and S4 about 35 millimetres narrower, a forum figure, shown in pencil; enlarged detail of one wing. Aluminium mirror housing and mesh grille marked."><text class="fp" x="6" y="11">FRONT · MODEL OUTLINE · TO SCALE</text><path class="fe tone" d="M35.9 139 35.8 194 36.4 212.7 37.6 213.6 44.7 214 57.6 214 64.6 213.6 65.7 212.7 66.2 211.7 66.5 206.8 66.4 198.4 48.3 198.2 45.6 196.5 43.3 192.5 41.4 186.3 40.5 183.9 39.1 177.1 37.9 164.8 37.3 157.5 37.5 155.6 37.2 155.1 37 154.1 36.2 141.1Z"/><path class="fe tone" d="M264 139 262.9 154.4 262.8 155.3 262.5 155.6 262.7 157.7 261.9 167.8 260.8 177.1 259.6 183.7 258 188 257.2 191 256.3 193.3 254.6 196.1 254 196.9 251.6 198.2 233.6 198.5 233.5 206.6 233.8 211.6 234.3 212.7 235.4 213.6 242.4 214 255.3 214 262.4 213.6 263.6 212.7 264.2 194Z"/><path class="o body" d="M132.7 35.4 113.2 36.1 99 37.2 85.8 38.6 85.1 38.8 84.3 39.4 83 38.9 78.6 40.2 76.3 41.6 74.7 43.5 64.7 62.4 58.8 76 55.7 84.3 55 85.4 52.3 85.4 52.5 83.2 52.2 80.4 51.3 79 49.4 78.1 46.6 77.6 42.4 77.6 36.9 78.6 33.4 79.8 30.8 81 29 82.1 27.8 83.6 26.9 86 27.2 88.7 27.6 89.9 29.1 91.6 31.6 93.3 38.1 94.4 44.1 94.7 47.6 94.2 49.3 93.2 50.1 92.9 50.7 93 50.7 93.3 50.1 93.9 47.7 95.7 44.9 99 42.3 102.9 41.7 104.7 41.4 107 40.1 108.4 39.9 109.3 39.6 111.6 40.5 112.4 39.8 117 38.3 119.3 34.4 123.8 33.9 125.3 33.8 136.3 34.1 146.3 34.6 155.6 35.7 168 35.8 201.3 36.4 212.7 37.6 213.6 44.7 214 57.6 214 64.6 213.6 65.7 212.7 66.2 211.7 66.5 198.5 73.2 198.4 75.7 197.8 76.9 195.6 148 194 149.1 193.8 223.1 195.6 224.2 197.8 226.7 198.4 233.5 198.5 233.8 211.6 234.3 212.7 235.4 213.6 242.4 214 262 213.8 263.9 212.6 264.1 212.4 264.2 201.3 264.3 168 265.1 159.1 265.9 146.6 266.2 136.7 266.2 125.5 265.5 123.8 262.9 120.9 260.3 117.3 259.4 112.4 260.4 111.6 260.1 109.3 259.9 108.4 258.6 107 258.3 104.5 257.7 103 256 100.2 252.3 95.7 249.7 93.8 249.2 93.1 249.9 92.9 252.4 94.2 255.8 94.7 261.9 94.4 268.4 93.3 270.9 91.6 272.3 90.1 272.7 88.9 273.1 86.1 272.7 84.8 271.3 82.3 267.7 80.3 262.9 78.6 257.5 77.6 253.4 77.6 250.6 78.1 248.7 79 247.8 80.2 247.5 83.4 247.7 85.4 245.7 85.5 244.9 85.2 235.7 63.5 225.3 43.5 222.9 40.9 220.6 39.9 217 38.9 216.6 38.9 216 39.5 215.7 39.5 214.8 38.7 210.4 38.2 201 37.2 186.8 36.1 167.5 35.4Z"/><path class="fe tone2" d="M126.1 44.8 112.7 45.1 81.7 46.6 79.5 47 74.8 57.6 69.7 70.2 65.4 81.9 60.7 96.2 70.3 94.8 84.5 94 110 93.4 110 93.2 99.9 92.2 90.2 91.7 81 91.6 75.3 91.9 74.4 91.7 74.1 91.2 74.7 89.7 75.5 89.6 77.2 89.6 78.1 89.7 78.4 90 90 90.1 98.8 90.6 99.8 90.4 100.2 89.7 104 89.3 110.5 89.9 111.6 90.3 113.9 90.5 126 91.4 130.5 92.1 130.8 92 130.5 91.8 130.3 91.3 130.4 89.9 131.2 89.6 133.8 89.3 134.4 89.8 145.9 88.9 155.7 88.5 157.1 88.4 157.5 87.8 160.1 87.1 165.8 86.8 169.3 86.8 174.6 87.3 177.8 88 191.4 88.4 191.9 88.5 192.7 88.5 193.3 88.2 194.2 88 195.8 88 196.8 88.2 197.1 88.5 197.3 89.8 197 90.4 196.1 90.6 192.9 90.1 191.5 90.1 191.5 90.3 211 93.9 229.7 94.8 238.9 96.2 239.3 96 236.1 86.4 230.9 71.8 224.6 56.3 220.5 47 218.2 46.6 187.3 45.1 161.9 44.8Z"/><path class="fe tone2" d="M227.3 47.6 235.5 66.3 242.8 84.6 243.4 85.5 244.8 85.6 241.1 76 235.7 63.5 227.6 47.9Z"/><path class="fe tone2" d="M72.3 48.2 64.4 63.2 58.8 76 55.1 85.6 56.3 85.7 57.2 84.6 63.9 67.6 67.5 59.1 72.3 48.9 72.5 48.2Z"/><path class="fe tone2" d="M170.2 89.9 162.5 90.3 154.4 90.1 147.9 90.4 136 91.2 133.2 91.9 131.4 92 131.8 92.3 135.7 92.8 168.8 93 200.2 93.6 200.2 93.4 197.8 93.1 194.4 92.2 182.2 89.9Z"/><path class="fe tone2" d="M60.2 121.4 55.9 121.6 54.3 122.1 53 123.1 52.2 124.1 51.8 125.2 51.4 133.5 51.2 134.1 51.3 135.4 64.2 137.2 68.8 139.2 70.3 139.7 76.7 140.7 92.4 142.1 94.8 142.1 96.3 141.8 97.1 140.8 97.4 139.6 96.1 133.9 94.5 128.9 93.2 127 91 125.3 78.3 122.7 66.4 121.6Z"/><path class="fe tone2" d="M239.4 121.4 233.6 121.6 221.7 122.7 208.9 125.3 207.3 126.4 205.7 128.5 203.9 134.2 202.6 139.6 202.8 140.8 203.7 141.8 205.2 142.1 207.6 142.1 223.3 140.7 229.4 139.7 231.2 139.2 235.8 137.2 248.6 135.4 248.7 133.9 248.2 125.2 247.8 124.1 247.1 123.2 245.7 122.1 244.1 121.6Z"/><path class="fe tone2" d="M63 168.5 61.1 168.8 59.7 169.7 58.3 171.6 58.1 172.5 58.2 174.5 58.5 175.6 60.4 177.4 62.7 178.1 65.4 177.7 66.2 177.3 68.2 175.3 68.7 173.7 68.6 172.2 68.2 171.2 66.8 169.7 66.2 169.1 65.1 168.7 63.8 168.4Z"/><path class="fe tone2" d="M235.9 168.5 233.8 169.1 232.2 170.6 231.4 172.2 231.3 174 231.6 175.1 233.2 176.9 234.7 177.8 237.3 178.1 239.4 177.4 241.4 175.6 242.1 173.8 241.9 172.3 241.1 170.7 239.8 169.4 238.3 168.7Z"/><path class="fe" d="M149.4 127 134.2 127.3 118.2 128 111.4 128.8 109.2 129.8 107.7 131.2 107.4 131.7 107.3 133.2 107.6 139.2 109.1 147.5 129.6 147.7 190.9 147.6 192.6 137.4 192.7 133.3 192.6 131.7 192.3 131.2 191.5 130.2 189.8 129.3 187.1 128.5 177.7 127.8 165.8 127.3Z"/><path class="fe" d="M138.7 131.1 141.5 131.6 145 131.5 146.4 131.1 149 131.6 152.1 131.5 153.7 131.1 155 131.5 158.5 131.6 161.2 131.1 162.6 131.5 167.3 131.6 167.3 143 161.6 143.1 161.2 143.3 158.9 143.1 154.2 143.1 153.9 143.3 151.5 143.1 146.9 143.1 146.5 143.3 145.7 143.1 141.1 143.1 138.8 143.3 138.4 143.1 133 143 132.6 138.1 132.9 135.1 132.7 131.6 137.4 131.5Z"/><path class="fe" d="M112.9 140.3 124.7 140.3 124.7 143.2 112.9 143.3Z"/><path class="fe" d="M53.6 164.1 53.5 165.7 53.8 168.1 55.6 176.8 57.1 179.8 58 180.7 59.5 181.5 67 182.2 85 182.7 100.1 182.8 105.3 182.7 105.6 182.5 105.6 180.3 101.9 165.8 61.6 164.1Z"/><path class="fe" d="M238.7 164.1 198.1 165.8 194.3 180.8 194.4 182.5 194.7 182.7 209.9 182.8 226.4 182.4 236.5 181.9 239.5 181.7 241 181.3 242.9 179.8 244.2 177.6 246.8 165.8 246.9 164.3 246.7 164.2 244.6 164.1Z"/><path class="fe" d="M112.9 164.4 114.4 170.9 115.9 176 116.9 177.7 118.4 178.7 120.5 179.1 124.3 179.4 146.8 179.5 148.5 179.7 175.7 179.4 179.5 179.1 181.5 178.7 183 177.7 184.1 176 187.1 164.6 187 164.4 185.4 164.3 165.1 164.6Z"/><path class="fe" d="M62.2 167.2 65.4 167.2 67.5 168 69.5 169.6 70.6 171.5 70.7 174.2 70.1 175.8 68.7 177.5 66.4 178.9 63.9 179.4 61.2 178.9 59.3 177.7 57.6 175.6 57.1 172.9 57.7 170.6 59.5 168.4 61 167.5Z"/><path class="fe" d="M234.6 167.2 236.9 167.1 239 167.5 240.8 168.7 242.5 171.1 242.9 173.6 242.4 175.6 240.7 177.7 238.8 178.9 236.5 179.4 233.6 178.9 231.2 177.4 229.6 175.2 229.2 172.4 229.8 170.7 231.4 168.7 233.3 167.6Z"/><path class="fe" d="M76.2 41.7 74.9 43.4 74.1 45.8 67.7 59.4 60.3 76.8 57 85.6 55.4 85.7 52.3 85.4 52.5 83.2 52.2 80.4 51.8 79.5 50.4 78.4 46.6 77.6 43.5 77.5 36.9 78.6 33.4 79.8 30.8 81 29 82.1 27.8 83.6 27 85.4 27 87.2 27.6 89.9 29.1 91.6 31.1 93 32.2 93.4 38.1 94.4 42.9 94.7 47.6 94.2 50.1 92.9 50.9 92.9 50.5 94.9 50.5 95.9 51.6 98.7 52.4 98.3 54 93.9 57.1 87.3 63.2 71.7 70.5 54.5 75.3 44.5 76.6 41.5Z"/><path class="fe" d="M223.5 41.5 224.9 45 229.7 55 234.8 66.8 238.7 76.1 242.9 87.3 246.7 95.7 247.4 98 248.2 98.7 248.6 98.3 249.5 95.7 249.2 94 249.3 92.9 249.9 92.9 252.4 94.2 257.1 94.7 261.9 94.4 267.8 93.4 268.9 93 270.9 91.6 272.3 90.1 273.1 86.9 272.9 85.4 271.5 82.6 270.7 81.9 267.7 80.3 262.1 78.4 257.5 77.6 254.4 77.5 251.6 77.9 249.6 78.4 248.7 79 247.8 80.2 247.5 83.4 247.7 85.4 244.5 85.7 242.9 85.6 239.4 76 231.5 57.6 226.2 46.3 224.8 42.9Z"/><path class="fe" d="M149.9 123.9 128.1 124.5 113.7 125.5 110.1 126 108.2 126.6 106.9 127.4 105.3 129.3 104.5 131.4 104.5 133.7 105.1 138.4 106.1 143.8 108.9 157.1 112.2 170.7 114.8 178.9 116.5 180.6 118 181.2 119 181.4 125.3 181.7 149.3 181.8 149.7 182 150.7 181.8 174.6 181.7 181 181.4 183.5 180.6 184.8 179.4 185.5 178.3 187.9 170.4 190.4 160.4 192.6 150.2 194.9 138.4 195.5 133.7 195.4 131.4 195.1 130 194 128.4 192.3 126.8 190.9 126.2 188.3 125.7 171.9 124.5Z"/><path class="fe" d="M149.6 127 173.1 127.5 185 128.3 189.2 129 191.5 130.2 192.3 131.2 192.6 131.7 192.7 133.3 192.6 137.4 190.9 148.1 185.5 171.1 184 176.5 183.3 177.5 182.3 178.5 179.5 179.1 175.7 179.4 153.5 179.5 151.7 179.7 124.3 179.4 120.5 179.1 118.4 178.7 117.1 177.9 116.3 177 114.4 170.7 112.2 161.7 108.9 146.6 107.3 137.1 107.3 133.2 107.4 131.7 107.7 131.2 108.4 130.2 110.8 129 114.9 128.3 126.9 127.5Z"/><line class="hl" x1="10" y1="214" x2="290" y2="214"/><line class="ext" x1="33.8" y1="139.7" x2="33.8" y2="232"/><line class="ext" x1="266.2" y1="139.7" x2="266.2" y2="232"/><line class="dl" x1="33.8" y1="228" x2="266.2" y2="228"/><path class="ah" d="M33.8 228L39.8 225.8L39.8 230.2Z"/><path class="ah" d="M266.2 228L260.2 230.2L260.2 225.8Z"/><text class="fb" x="150" y="241" text-anchor="middle">1,816 mm</text><circle class="hl" cx="266.2" cy="136.7" r="7"/><line class="hl" x1="273.2" y1="136.7" x2="300" y2="104"/><clipPath id="f3clip"><circle cx="352" cy="104" r="51"/></clipPath><g clip-path="url(#f3clip)"><line class="f-rep" x1="350.1" y1="52" x2="350.1" y2="156"/></g><circle class="fe" cx="352" cy="104" r="52"/><line class="dl" x1="350.1" y1="128" x2="368" y2="128"/><path class="ah" d="M350.1 128L354.6 126.2L354.6 129.8Z"/><path class="ah" d="M368 128L363.5 129.8L363.5 126.2Z"/><text class="fp" x="352" y="46" text-anchor="middle">DETAIL ×8</text><text class="fpi" x="352" y="169" text-anchor="middle">≈17.5 mm a side</text><text class="fpi" x="346.1" y="78" text-anchor="end">A4/S4</text><text class="fb" x="412" y="78">RS4</text><line class="ldr" x1="410" y1="75" x2="371" y2="75"/><text x="6" y="30">aluminium mirror housing</text><line class="ldr" x1="28" y1="33" x2="33" y2="85.2"/><circle class="dot" cx="33" cy="85.2" r="1.8"/><text x="318" y="196">mesh grille</text><line class="ldr" x1="316" y1="193" x2="174" y2="142.5"/><circle class="dot" cx="174" cy="142.5" r="1.8"/></svg>
+          <figcaption>1,816 mm across the front wings; the A4 and S4 are about 35 mm narrower, <span class="rep">a forum figure</span>.</figcaption>
+        </figure>
+        <!-- FIG3:END -->
+        <div class="prose">
+          <p>The arches are flared over a wider track than the A4 and S4; the track figures are <a class="t-unv" href="#uv-5">unverified</a>.</p>
+          <p>RS badges front and rear. Corrosion is unlikely. Check for stone-chips and the quality of any paint repair.</p>
+        </div>
+        <div class="mkt" data-mkt="body"></div>
+        <details class="ev"><summary>Evidence · 12 Jul 2026</summary><div class="ev-body"><ul><li>width <a class="src" href="#src-7">S7</a>; wider track <a class="src" href="#src-1">S1</a>; details <a class="src" href="#src-2">S2</a>; corrosion <a class="src" href="#src-3">S3</a>; outline <a href="#src-model">3D model</a></li><li><span class="k">Reputed</span><span class="rep">≈35 mm</span> <a class="src" href="#src-14">S14</a></li></ul></div></details>
+      </article>
+
+      <!-- STATION 4 -->
+      <article class="station" id="st-4" data-st="4" aria-labelledby="st-4-h">
+        <div class="st-head"><span class="st-no" aria-hidden="true">4</span><h3 id="st-4-h">Flat-bottomed wheel<small>Cabin</small></h3><a class="locate" href="#bp" data-locate="4">locate</a></div>
+        <p class="scan" data-scanblock="wheel"><span class="big">—</span><span class="cmp"><span>adverts naming it: needs market data</span></span></p>
+        <!-- FIG4:BEGIN -->
+        <figure class="fig" id="fig-4">
+          <svg viewBox="0 0 440 166" role="img" aria-label="Schematic driver's view of the flat-bottomed steering wheel: perforated leather rim, aluminium-effect lower spoke with the RS4 logo, flat lower section. Not to scale."><text class="fp" x="6" y="11">DRIVER’S VIEW · SCHEMATIC</text><path class="o tone2" fill-rule="evenodd" d="M52.2 140 A68 68 0 1 1 139.8 140 Z M56.4 129 A57 57 0 1 1 135.6 129 Z"/><circle class="dot" cx="41.9" cy="56.8" r="0.9"/><circle class="dot" cx="46.7" cy="49.5" r="0.9"/><circle class="dot" cx="52.6" cy="43" r="0.9"/><circle class="dot" cx="59.3" cy="37.4" r="0.9"/><circle class="dot" cx="66.7" cy="32.8" r="0.9"/><circle class="dot" cx="74.6" cy="29.3" r="0.9"/><circle class="dot" cx="83" cy="26.9" r="0.9"/><circle class="dot" cx="91.6" cy="25.7" r="0.9"/><circle class="dot" cx="100.4" cy="25.7" r="0.9"/><circle class="dot" cx="109" cy="26.9" r="0.9"/><circle class="dot" cx="117.4" cy="29.3" r="0.9"/><circle class="dot" cx="125.3" cy="32.8" r="0.9"/><circle class="dot" cx="132.7" cy="37.4" r="0.9"/><circle class="dot" cx="139.4" cy="43" r="0.9"/><circle class="dot" cx="145.3" cy="49.5" r="0.9"/><circle class="dot" cx="150.1" cy="56.8" r="0.9"/><rect class="fe tone2" x="72" y="70" width="48" height="34" rx="9"/><path class="fe" d="M72 84 41 78 42 96 72 98Z"/><path class="fe" d="M120 84 151 78 150 96 120 98Z"/><path class="o tone" d="M80 104 112 104 122 129 70 129Z"/><text class="fb" x="96" y="123" text-anchor="middle" style="font-size:8px">RS4</text><text x="196" y="34">perforated leather rim</text><line class="ldr" x1="193" y1="31" x2="142.8" y2="45.8"/><circle class="dot" cx="142.8" cy="45.8" r="1.8"/><text x="196" y="98">aluminium-effect lower spoke</text><text x="196" y="111">with the RS4 logo</text><line class="ldr" x1="193" y1="101" x2="114" y2="114"/><circle class="dot" cx="114" cy="114" r="1.8"/><text class="fb" x="196" y="150">flat lower section</text><line class="ldr" x1="193" y1="147" x2="126" y2="140"/><circle class="dot" cx="126" cy="140" r="1.8"/></svg>
+          <figcaption>In advert photos, look for the flat lower section and the RS4 logo.</figcaption>
+        </figure>
+        <!-- FIG4:END -->
+        <div class="prose">
+          <p>Small diameter; carbon-effect trim was optional. PistonHeads calls it a defining RS4 feature. It is <span class="rep">credited as Audi’s first flat-bottomed production wheel</span><a class="t-rep" href="#uv-1">reputed</a>, with no primary source.</p>
+          <p>Also in the cabin: drilled aluminium pedals, carbon-fibre dash inserts, a dash-top MMI screen. A <span class="rep">lap timer in the driver information system</span><a class="t-unv" href="#uv-7">unverified</a> is cited by owners only.</p>
+        </div>
+        <div class="mkt" data-mkt="wheel"></div>
+        <details class="ev"><summary>Evidence · 12 Jul 2026</summary><div class="ev-body"><ul><li><a class="src" href="#src-9">S9</a> <a class="src" href="#src-2">S2</a></li></ul></div></details>
+      </article>
+
+      <!-- STATION 5 -->
+      <article class="station" id="st-5" data-st="5" aria-labelledby="st-5-h">
+        <div class="st-head"><span class="st-no" aria-hidden="true">5</span><h3 id="st-5-h">Wingback buckets<small>Cabin</small></h3><a class="locate" href="#bp" data-locate="5">locate</a></div>
+        <p class="scan" data-scanblock="seats"><span class="big">—</span><span class="cmp"><span>adverts naming buckets: needs market data</span></span></p>
+        <!-- FIG5:BEGIN -->
+        <figure class="fig" id="fig-5">
+          <svg viewBox="0 0 440 210" role="img" aria-label="Schematic front view of the wingback bucket seat: shoulder wings, RS4 embossing, electrically inflated side bolsters. The driver's outer bolster, on the door side, is marked as the wear point."><text class="fp" x="6" y="11">FRONT VIEW · SCHEMATIC</text><path class="o tone2" d="M60 166 54 116 50 82 38 58 38 40 54 30 74 30 80 20 90 16 118 16 128 20 134 30 154 30 170 40 170 58 158 82 154 116 148 166Z"/><path class="fe" d="M74 164 72 116 68 76 74 46"/><path class="fe" d="M134 164 136 116 140 76 134 46"/><path class="hl" d="M74 30 134 30"/><text class="fb" x="104" y="46" text-anchor="middle" style="font-size:9px">RS4</text><path class="o tone2" d="M42 166 166 166 172 196 36 196Z"/><path class="wear" d="M42 166 66 166 64 196 36 196Z"/><path class="fe" d="M142 166 166 166 172 196 144 196Z"/><text x="214" y="40">shoulder wings</text><line class="ldr" x1="211" y1="37" x2="168" y2="46"/><circle class="dot" cx="168" cy="46" r="1.8"/><text x="214" y="64">RS4 embossing</text><line class="ldr" x1="211" y1="61" x2="116" y2="44"/><circle class="dot" cx="116" cy="44" r="1.8"/><text x="214" y="100">side bolsters,</text><text x="214" y="113">inflated electrically</text><line class="ldr" x1="211" y1="103" x2="146" y2="112"/><circle class="dot" cx="146" cy="112" r="1.8"/><text class="fr" x="214" y="160">wear: driver’s outer</text><text class="fr" x="214" y="173">bolster (door side)</text><line class="ldr-r" x1="211" y1="168" x2="56" y2="204"/><line class="ldr-r" x1="56" y1="204" x2="52" y2="186"/><circle class="dot-r" cx="52" cy="186" r="1.8"/></svg>
+          <figcaption>Wear shows first on the driver’s outer bolster; check it, and the armrest catch.</figcaption>
+        </figure>
+        <!-- FIG5:END -->
+        <div class="prose">
+          <p>Europe, saloon and Avant: wingback buckets. Cabriolet: S4-style seats, Recaro buckets optional. North America: conventional Recaros.</p>
+          <p>Fitment is <a class="t-dis" href="#cf-4">disputed</a>: <span class="dis">standard per PistonHeads and Supercar Nostalgia, a cost option by UK classified convention</span>. Agreed: wingbacks carry a premium and the bolsters wear.</p>
+        </div>
+        <div class="mkt" data-mkt="seats"></div>
+        <details class="ev"><summary>Evidence · 12 Jul 2026</summary><div class="ev-body"><ul><li><a class="src" href="#src-9">S9</a> <a class="src" href="#src-1">S1</a> <a class="src" href="#src-2">S2</a></li></ul></div></details>
+      </article>
+
+      <!-- STATION 6 -->
+      <article class="station" id="st-6" data-st="6" aria-labelledby="st-6-h">
+        <div class="st-head"><span class="st-no" aria-hidden="true">6</span><h3 id="st-6-h">Torsen T3 centre diff<small>Centre tunnel</small></h3><a class="locate" href="#bp" data-locate="6">locate</a></div>
+        <p class="scan"><span class="big">40:60</span><span class="cmp"><span>front:rear by default</span><span>bias ratio 4:1</span><span>standard A4 2:1</span></span></p>
+        <!-- FIG6:BEGIN -->
+        <figure class="fig" id="fig-6">
+          <svg viewBox="0 0 440 190" role="img" aria-label="Schematic plan, front to the right: torque leaves the Torsen T3 centre differential 40 per cent to the front axle and 60 per cent to the rear, band widths in proportion. Bias ratio 4 to 1 on the RS4 against 2 to 1 on the A4."><text class="fp" x="6" y="11">PLAN · SCHEMATIC</text><text class="fp" x="434" y="11" text-anchor="end">FRONT →</text><line class="fe" x1="330" y1="28" x2="330" y2="120"/><rect class="fe tone" x="317" y="21" width="26" height="14" rx="2"/><rect class="fe tone" x="317" y="113" width="26" height="14" rx="2"/><line class="fe" x1="40" y1="28" x2="40" y2="120"/><rect class="fe tone" x="27" y="21" width="26" height="14" rx="2"/><rect class="fe tone" x="27" y="113" width="26" height="14" rx="2"/><rect class="o tone2" x="173" y="64" width="24" height="20" rx="3"/><rect class="band" x="197" y="67.6" width="123" height="12.8"/><path class="ah-b" d="M328 74L319 83.4L319 64.6Z"/><rect class="band" x="50" y="64.4" width="123" height="19.2"/><path class="ah-b" d="M42 74L51 61.4L51 86.6Z"/><text class="fb" x="257.5" y="61" text-anchor="middle">40% front</text><text class="fb" x="112.5" y="58" text-anchor="middle">60% rear</text><text x="185" y="100" text-anchor="middle">Torsen T3</text><text class="fp" x="6" y="144">BIAS RATIO</text><text class="fb" x="6" y="166">RS4 T3</text><rect class="band" x="66" y="156" width="52" height="11"/><rect class="band2" x="121" y="156" width="13" height="11"/><text class="fb" x="141" y="166">4:1</text><text x="6" y="188">A4</text><rect class="band" x="66" y="178" width="26" height="11"/><rect class="band2" x="95" y="178" width="13" height="11"/><text x="115" y="188">2:1</text></svg>
+          <figcaption>The default split is 40:60, and the RS4’s bias ratio is double the A4’s.</figcaption>
+        </figure>
+        <!-- FIG6:END -->
+        <div class="prose">
+          <p>The asymmetric third-generation Torsen was quattro GmbH’s answer to the understeer of earlier fast Audis; evo credits it with “monstrous traction”. Like the block and gearbox, it is one of the robust parts.</p>
+        </div>
+        <div class="mkt" data-mkt="torsen"></div>
+        <details class="ev"><summary>Evidence · 12 Jul 2026</summary><div class="ev-body"><ul><li><a class="src" href="#src-1">S1</a>; forums agree <a class="src" href="#src-15">S15</a> <a class="src" href="#src-17">S17</a>; quote <a class="src" href="#src-3">S3</a></li><li><span class="k">Unverified</span><span class="rep">weight distribution</span> <a class="t-unv" href="#uv-4">uv-4</a></li></ul></div></details>
+      </article>
+
+      <!-- STATION 7 -->
+      <article class="station" id="st-7" data-st="7" aria-labelledby="st-7-h">
+        <div class="st-head"><span class="st-no" aria-hidden="true">7</span><h3 id="st-7-h">DRC dampers<small>All four corners · job 02</small></h3><a class="locate" href="#bp" data-locate="7">locate</a></div>
+        <p class="scan"><span class="big">−30</span><span class="unit">mm</span><span class="cmp"><span>ride height against an A4</span><span>−40 mm optional</span><span>2 diagonal pairs</span></span></p>
+        <!-- FIG7:BEGIN -->
+        <figure class="fig" id="fig-7">
+          <svg viewBox="0 0 440 184" role="img" aria-label="Schematic plan, front to the right: front-left damper linked to rear-right, front-right to rear-left, both through a central valve. Front wheel arch to scale: the RS4 body sits 30 millimetres lower than an A4."><text class="fp" x="6" y="11">PLAN · SCHEMATIC</text><text class="fp" x="262" y="11">ARCH · MODEL · TO SCALE</text><path class="fe body" d="M147.5 51.8 146.6 52 146.7 52.7 147.6 55.5 147.5 55.7 147 55.8 139.2 55.5 115.8 55.2 88.6 55 85.6 55.2 85.3 55.4 85.2 55.1 84.9 55 79.8 55.1 78.1 55 76.6 54.3 75.1 54 70.2 53.7 64.7 53.7 58.5 53.8 53 54 49.2 54.2 45.7 54.6 44.4 54.8 43 55.1 41.3 55.9 39.3 57.4 37.4 59 32.1 60 28.2 60.9 27.3 61 24.1 61.9 22.5 62.6 19.8 64.8 18.2 66.9 17.9 67.3 16.5 70.3 15.4 73.5 14.6 77.5 13.7 84.9 13.4 89.5 13.3 97.5 13.4 102.4 13.8 108.9 14.6 114.5 15.4 118.4 16.5 121.6 17.9 124.7 18.2 125.1 19.8 127.3 22 129 22.6 129.5 24.4 130.2 27.3 131 27.8 131 31.6 131.9 37.4 133 39.3 134.6 41.2 136 42.9 136.9 44.4 137.2 47.2 137.6 51.5 137.9 55.2 138.1 64.6 138.3 70.4 138.3 72.8 138.2 74.3 138.1 76.3 137.8 77.5 137.4 78.3 136.9 79.6 136.9 84.7 136.9 85.2 136.9 85.3 136.6 85.6 136.9 89.1 136.9 116.2 136.8 139.5 136.5 147.1 136.2 147.5 136.3 147.6 136.6 146.6 139.5 146.6 140 146.9 140.1 147.9 140.2 149.1 139.9 150.8 138.9 152.1 137.3 152.5 136.7 152.7 136.1 153.1 136 158.3 135.9 161.3 135.9 162.9 136.9 164.3 137.4 166.2 137.7 167.9 137.7 177.1 137.8 183 137.7 191.3 137.2 196.8 136.7 198 136.4 199.2 136 199.9 135.4 200.8 134 201.3 133.7 204.5 132.8 205.4 132.6 207.5 131.9 209.5 131 211.2 130 212.8 128.6 215.4 125.9 217.5 123.2 219 120.8 220.6 117.2 221.3 115.4 221.3 115.2 223.1 110.1 223.2 108 223.7 104.9 224 101.1 224.2 96.5 224 90.9 223.6 86.3 223.2 84.1 223.2 82 221.7 77.6 220.4 74.2 219.1 71.4 217 68.1 215.4 66 213.8 64.4 211.4 62.1 210.7 61.7 209.5 61 207.8 60.3 207.6 60.1 207 60 205.5 59.5 203 58.8 201.2 58.2 200.8 58 199.4 56.1 198.9 55.8 197.8 55.5 196 55.2 191.2 54.8 185.1 54.4 180 54.2 168 54.2 166.3 54.3 164.2 54.6 162.9 55.1 161.3 56.1 161 56.2 153.1 56 152.7 55.9 152.5 55.3 152.1 54.7 150.5 52.9 148.9 52 147.9 51.8Z"/><line class="drc" x1="181" y1="67.3" x2="59" y2="124.7"/><line class="drc drc2" x1="181" y1="124.7" x2="59" y2="67.3"/><circle class="damp" cx="181" cy="67.3" r="4.5"/><text class="fb" x="181" y="46" text-anchor="middle">FL</text><circle class="damp" cx="181" cy="124.7" r="4.5"/><text class="fb" x="181" y="154" text-anchor="middle">FR</text><circle class="damp" cx="59" cy="67.3" r="4.5"/><text class="fb" x="59" y="46" text-anchor="middle">RL</text><circle class="damp" cx="59" cy="124.7" r="4.5"/><text class="fb" x="59" y="154" text-anchor="middle">RR</text><circle class="damp" cx="120" cy="96" r="4.5"/><text x="120" y="170" text-anchor="middle">central valve</text><line class="ldr" x1="120" y1="102" x2="120" y2="160"/><text class="fp" x="232" y="11" text-anchor="end">FRONT →</text><clipPath id="f7clip"><rect x="262" y="18" width="172" height="158"/></clipPath><g clip-path="url(#f7clip)"><circle class="fe tone" cx="348" cy="166.8" r="99.2"/><path class="f-ref" d="M257.4 100.6 268.5 86.8 284.3 73.5 305.4 61.9 326.9 56.1 351.3 54.3 373.7 56.7 393.5 62.7 409.2 70.3 415.8 74.2 430.3 86"/><path class="o" d="M257.4 109.6 268.5 95.8 284.3 82.5 305.4 70.9 326.9 65.1 351.3 63.3 373.7 65.7 393.5 71.7 409.2 79.3 415.8 83.2 430.3 95"/></g><line class="dl" x1="381.3" y1="54.3" x2="381.3" y2="63.3"/><path class="ah" d="M381.3 63.3L379.5 58.8L383.1 58.8Z"/><path class="ah" d="M381.3 54.3L383.1 58.8L379.5 58.8Z"/><text class="fb" x="387.3" y="62.3">30 mm</text><text class="fpi" x="264" y="48.3">A4 height</text><text class="fb" x="266" y="110.8">RS4</text><text x="348" y="170" text-anchor="middle">tyre Ø661 mm</text></svg>
+          <figcaption>Diagonal pairs share oil through a central valve, and the body sits 30 mm lower than an A4.</figcaption>
+        </figure>
+        <!-- FIG7:END -->
+        <div class="prose">
+          <p>Mechanical, no electronics. In roll or pitch, oil crosses the diagonal through the valve, stiffening the damper that needs support and relieving the other.</p>
+          <p>With age the pressure drops: low or uneven stance, poor ride, knocks, weeping dampers (<a href="#job-2">job 02</a>). Many cars now run coilovers. Original, working DRC increasingly marks a collector car.</p>
+        </div>
+        <div class="mkt" data-mkt="drc"></div>
+        <details class="ev"><summary>Evidence · 12 Jul 2026</summary><div class="ev-body"><ul><li>mechanism <a class="src" href="#src-10">S10</a> <a class="src" href="#src-11">S11</a>; ride height <a class="src" href="#src-1">S1</a>; collector line <a class="src" href="#src-3">S3</a>; arch <a href="#src-model">3D model</a></li></ul></div></details>
+      </article>
+
+      <!-- STATION 8 -->
+      <article class="station" id="st-8" data-st="8" aria-labelledby="st-8-h">
+        <div class="st-head"><span class="st-no" aria-hidden="true">8</span><h3 id="st-8-h">Twin oval tips<small>Rear</small></h3><a class="locate" href="#bp" data-locate="8">locate</a></div>
+        <p class="scan"><span class="big">2</span><span class="unit">oval tips</span><span class="cmp"><span>S4: four round outlets</span></span></p>
+        <!-- FIG8:BEGIN -->
+        <figure class="fig" id="fig-8">
+          <svg viewBox="0 0 440 180" role="img" aria-label="Rear view, lower half, outline from the 3D model: two oval exhaust tips, one each side. The S4 has four round outlets."><text class="fp" x="6" y="11">REAR · MODEL OUTLINE · TO SCALE</text><clipPath id="f8clip"><rect x="0" y="28.8" width="440" height="200"/></clipPath><g clip-path="url(#f8clip)"><path class="fe tone" d="M18.4 79.2 18.3 136.7 18.7 156.1 21.3 157.9 47.3 158.1 56.1 157.8 58.3 156.1 59 152.2 59 124.8 39.9 123.5 33.5 120.7 29.5 117.5 25.5 111.5 23.5 106.2 20.7 94.7Z"/><path class="fe tone" d="M321.5 79.2 320.9 84.5 319.2 94.7 316.5 105.9 314.3 112 310.5 117.5 306.5 120.7 300.6 123.2 298.6 123.7 281 124.8 280.9 144.8 281.3 154.8 281.6 156.1 283.9 157.8 292.7 158.1 318.6 157.9 321.3 156.1 321.7 136.7Z"/><path class="o body" d="M158.5 -82.2 124.1 -81.2 105.3 -79.9 87.1 -77.8 85 -77.4 84.4 -77 81.3 -77.1 77.6 -76 73.4 -73.5 71.4 -71.4 57 -45.1 48.3 -24.9 43.5 -12.9 40.2 -12.8 40.5 -15.6 40.1 -19.3 39.5 -20.7 37.8 -22.1 33.4 -23.1 26.8 -23.1 19.4 -21.7 11.2 -18.5 8.8 -16.7 7.7 -15.2 6.5 -11.9 6.9 -8.3 8.2 -5.7 10.9 -3.4 13.8 -2.1 22.1 -0.8 29.2 -0.4 33.8 -1 33.4 -0 31.1 2.6 26.7 9.5 25.6 15.5 24.1 16.4 23.4 17.7 23 21.5 23.1 22 24 22.5 24.4 23.2 20.5 27.8 14.8 38.7 13.7 42.9 13.7 55.3 15 82.1 16.4 98.8 18.2 112.6 18.3 145 18.7 156.1 21.3 157.9 47.3 158.1 56.1 157.8 58.3 156.1 58.7 155 59.1 137.4 68 137.3 71.5 136.3 72.5 134.3 74 133.2 77.9 133.6 78.3 133.3 172.7 131.2 261.6 133.3 262.1 133.6 263.9 133.2 267.1 133.3 268.6 136.6 271.9 137.3 280.9 137.4 281.3 154.8 281.6 156.1 283.9 157.8 292.7 158.1 318.6 157.9 321.3 156.2 321.5 156 321.7 145 321.8 112.6 323.6 98.8 324.9 82.5 326.3 56 326.3 42.5 325 38.5 320.1 28.9 318.4 26.3 315.6 23.2 317 21.4 316.5 17.7 316.3 17 314.3 15 313.8 11.3 313 9 308.2 1.6 306.4 -0.3 306.2 -1 310.8 -0.4 317.9 -0.8 326.1 -2.1 329.1 -3.4 330.6 -4.4 332.4 -6.5 333.4 -10 333.4 -12.5 331.6 -16.4 327.9 -18.9 320.2 -21.8 313.5 -23.1 306.6 -23.1 303.2 -22.4 301.3 -21.4 300.1 -20.1 299.9 -19.3 299.5 -15.6 299.7 -12.8 296.5 -12.9 291 -26.6 283.6 -43.7 270.5 -68.1 268.6 -71.4 266.6 -73.5 264.8 -74.8 261 -76.5 257.9 -77.2 255.6 -77 255 -77.4 252.9 -77.8 238.8 -79.5 215.9 -81.2 181.5 -82.2Z"/><path class="fe" d="M114.3 87.1 86.7 87.8 80.3 88.4 77.7 89.4 74.3 91.3 73.1 92.3 71.1 94.7 68.3 99.6 66.9 106.8 66.8 109.4 67.2 110.7 72.8 111 73.4 109.3 73.7 105.5 75.5 98.6 78.4 95.7 84 93.9 88.9 93.5 95.6 93.6 97.8 95 100.5 99.7 105.1 110.2 107.5 110.8 142.2 111.1 225.6 111 232.4 110.8 235 110.1 239.8 99.2 242 95.3 243.9 93.9 247.2 93.5 253.6 93.5 255.9 93.9 261.6 95.7 264.4 98.6 266.4 105.8 266.9 111 272.8 110.7 273.1 110.4 273.1 106.8 271.7 99.6 268.6 94.3 265.7 91.3 263.6 90.1 259.9 88.5 257.6 88.1 245.8 87.4 225.6 87.1Z"/><path class="fe" d="M125.1 90.2 192.4 90.1 228.7 90.4 233.3 90.6 234 91.8 234.1 93.2 230.2 105.4 229.5 106.5 199.6 106.7 110.5 106.5 109.9 105.7 106.2 94.4 105.8 92.3 106.6 90.5Z"/><path class="fe" d="M115.4 90.5 106.6 90.8 105.8 92.3 106.3 94.7 109.8 105.4 110.5 106.5 140.4 106.7 229.5 106.5 230.1 105.7 234.1 93.2 234 91.8 233.3 90.8 224.6 90.5Z"/><path class="fe" d="M134.5 9.9 133.1 11.3 132.8 16.6 133.1 31.7 134.5 32.8 205.7 32.8 207.1 31.6 207.1 11.5 205.7 10.1 202.9 9.8 192.5 10.2 177.1 9.8 155.8 9.9 152.8 10.2Z"/><path class="o tone2" d="M85.7 95.6 80.4 97 77.4 99.2 75.3 99.7 73.7 105.5 73.2 110 73.5 111.1 86.8 115.6 101.7 113.1 102.7 112.8 104.6 111.2 104.9 110.1 104.2 108.1 101 100.8 100.1 99.3 98.8 99.1 96.8 97.6 92.5 96 88.6 95.5Z"/><path class="o tone2" d="M250.4 95.6 247.7 95.9 244.2 97.1 241.5 99 239.6 99.6 234.8 110.4 236.4 112.3 238.2 113.1 253.1 115.6 266.6 111 266.8 109.7 266.4 105.8 264.6 99.8 263.3 99.6 260.2 97.4 257.3 96.3 254.2 95.6Z"/><path class="o tone2" d="M86 96.6 88.9 96.5 92 96.9 94.5 97.8 96.5 98.9 98.5 101 99.4 103.1 99.4 104.6 98.2 107.1 96.3 108.8 94.7 109.8 91.5 110.8 89.2 111.1 86.1 111 83.4 110.5 80.6 109.4 78.6 107.9 77 105.7 76.6 103.4 77.5 101.2 78.7 99.7 80.6 98.3 83 97.3Z"/><path class="o tone2" d="M250 96.6 254.2 96.6 256.9 97.3 259 98 261.4 99.8 262.7 101.6 263.3 103.6 263 105.7 261.6 107.7 259.4 109.4 256.6 110.5 252.8 111.1 248 110.7 244.9 109.6 242.8 108.2 241.2 106.4 240.5 104.2 241.1 101.5 242.5 99.9 244.6 98.2 247.8 97Z"/></g><path class="hl" d="M10 28.8 250 28.8 256 22.8 264 34.8 270 28.8 330 28.8"/><line class="hl" x1="10" y1="158" x2="330" y2="158"/><text class="fb" x="170" y="173" text-anchor="middle">oval tip, one each side</text><line class="ldr" x1="140" y1="162" x2="89.1" y2="111.5"/><circle class="dot" cx="89.1" cy="109.5" r="1.8"/><line class="ldr" x1="200" y1="162" x2="250.8" y2="111.6"/><circle class="dot" cx="250.8" cy="109.6" r="1.8"/><line class="ldr" x1="140" y1="162" x2="88" y2="109.8"/><circle class="dot" cx="88" cy="107.8" r="1.8"/><line class="ldr" x1="200" y1="162" x2="251.9" y2="109.9"/><circle class="dot" cx="251.9" cy="107.9" r="1.8"/><text class="fb" x="356" y="80">S4:</text><text x="356" y="94">4 round</text><circle class="fe" cx="362" cy="110" r="5"/><circle class="fe" cx="376" cy="110" r="5"/><circle class="fe" cx="390" cy="110" r="5"/><circle class="fe" cx="404" cy="110" r="5"/></svg>
+          <figcaption>Two oval tips, one each side, where the S4 has four round outlets.</figcaption>
+        </figure>
+        <!-- FIG8:END -->
+        <div class="prose">
+          <p>The bypass-valve actuators behind the tips seize: sport mode that never switches off is the sign. Aftermarket systems, often ≈£2,000, are common and count against originality.</p>
+        </div>
+        <div class="mkt" data-mkt="exhaust"></div>
+        <details class="ev"><summary>Evidence · 12 Jul 2026</summary><div class="ev-body"><ul><li>tips <a class="src" href="#src-2">S2</a>; positions <a href="#src-model">3D model</a>; actuators <a class="src" href="#src-3">S3</a>; aftermarket <a class="src" href="#src-8">S8</a></li></ul></div></details>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ 4 KNOWN FAULTS -->
+<section class="sec" id="faults" aria-labelledby="h-faults">
+  <div class="sec-head">
+    <h2 id="h-faults"><span class="no">4</span>Known faults</h2>
+    <p class="lede">Robust where it matters: block, gearbox, quattro. Needy in four places. A good B7 is one where all four were managed, and the service file shows it.</p>
+  </div>
+
+  <div class="mline">
+    <div class="mline-head"><h3>Mileage line</h3><span class="stamp"><span data-asof="short"></span> <a class="src" href="#src-m1">M1</a></span></div>
+    <svg id="mileSvg" role="img" aria-label="Job windows on a mileage scale, with each car for sale placed at its advertised mileage."></svg>
+    <p class="chart-note">Dots: cars for sale at advertised mileage; red when flagged. Select one to find it.</p>
+  </div>
+
+  <table class="jobs">
+    <thead><tr><th scope="col">Job</th><th scope="col">Symptoms</th><th scope="col">Fix</th><th scope="col">Budget</th><th scope="col">Src</th></tr></thead>
+    <tbody>
+      <tr id="job-1"><th scope="row"><span class="jn">Job 01 · <a href="#st-1">station 1</a></span><span class="jt">Intake-valve carbon</span><span class="jw">60,000–100,000 mi</span></th>
+        <td data-l="Symptoms">Rough or lumpy idle, misfires, blue smoke on start-up, dull throttle. Sooner on town-driven cars.</td>
+        <td data-l="Fix">Manifold off, all eight ports walnut-blasted. Hard-revved engines carbon up more slowly.<small>No invoice in the file: price the job into the offer.</small></td>
+        <td class="money" data-l="Budget"><b>£500–£1,000</b><small>specialists ≈£1,000</small></td>
+        <td data-l="Sources"><a class="src" href="#src-11">S11</a> <a class="src" href="#src-3">S3</a> <a class="src" href="#src-13">S13</a> <a class="src" href="#src-8">S8</a></td></tr>
+      <tr id="job-2"><th scope="row"><span class="jn">Job 02 · <a href="#st-7">station 7</a></span><span class="jt">DRC leaks</span><span class="jw">with age</span></th>
+        <td data-l="Symptoms">Low or uneven stance, worse ride, knocking over bumps, fluid weeps at the dampers.</td>
+        <td data-l="Fix">Reseal or replace the dampers, re-pressurise with specialist tooling; not a general-garage job. Replace the diagonal partner too.<small>Coilovers: cheaper to run, end originality.</small></td>
+        <td class="money" data-l="Budget"><b>—</b><small>not costed</small></td>
+        <td data-l="Sources"><a class="src" href="#src-11">S11</a> <a class="src" href="#src-12">S12</a> <a class="src" href="#src-3">S3</a></td></tr>
+      <tr id="job-3"><th scope="row"><span class="jn">Job 03 · <a href="#st-1">station 1</a></span><span class="jt">Oil consumption</span><span class="jw">check every 1,000 mi</span></th>
+        <td data-l="Symptoms">Up to 2–3 litres per 1,000 miles on hard-driven cars.</td>
+        <td data-l="Fix">Check the level every 1,000 miles. At the viewing: cold start, and read the oil history.</td>
+        <td class="money" data-l="Budget"><b>oil</b><small>running cost</small></td>
+        <td data-l="Sources"><a class="src" href="#src-8">S8</a></td></tr>
+      <tr id="job-4"><th scope="row"><span class="jn">Job 04 · <a href="#st-1">station 1</a></span><span class="jt">Cooling and corrosion</span><span class="jw">with age</span></th>
+        <td data-l="Symptoms">Debris and galvanic corrosion attack the radiators and the steel oil-cooler pipes at the aluminium cooler.</td>
+        <td data-l="Fix">Inspect the pipes on a lift, not through the arch.</td>
+        <td class="money" data-l="Budget"><b>≈£500</b><small>auxiliary radiator, fitted</small></td>
+        <td data-l="Sources"><a class="src" href="#src-8">S8</a></td></tr>
+    </tbody>
+  </table>
+
+  <div class="rest">
+    <div>
+      <h3>The rest of the sheet</h3>
+      <dl>
+        <dt>Clutch and gearbox</dt>
+        <dd>The gearbox has proven fault-free. Clutches last about 40,000 miles even driven hard; feel for judder on track cars. A failed £23 clutch switch, ≈£150 fitted, kills cruise control and the throttle blip. <a class="src" href="#src-8">S8</a> <a class="src" href="#src-3">S3</a></dd>
+        <dt>Ignition and exhaust</dt>
+        <dd>Coil packs fail, misfire and can take the catalysts with them. <a class="src" href="#src-3">S3</a></dd>
+        <dt>ECU</dt>
+        <dd>Early cars’ lumpy idle was cured by a warranty ECU update. Confirm it was done. <a class="src" href="#src-8">S8</a></dd>
+        <dt>Timing gear</dt>
+        <dd>No systemic chain or camshaft failure is documented for the BNS; cam-follower wear belongs to the 2.0 TFSI. Still investigate any top-end rattle. <a class="src" href="#src-8">S8</a></dd>
+        <dt>Body and interior</dt>
+        <dd>Stone-chips, paint repairs, the driver’s outer bolster, the armrest catch. No spare wheel: check the sealant canister is in date. <a class="src" href="#src-3">S3</a> <a class="src" href="#src-9">S9</a></dd>
+        <dt>Service intervals</dt>
+        <dd><span class="rep">Factory schedule unverified.</span><a class="t-unv" href="#uv-8">uv-8</a> Community practice: oil check every 1,000 miles, decarbonisation about every 40,000. <a class="src" href="#src-8">S8</a> <a class="src" href="#src-13">S13</a></dd>
+      </dl>
+    </div>
+    <div class="ppi" id="ppi">
+      <h3>Minimum at the viewing</h3>
+      <p>Ticks stay in this browser.</p>
+      <ol>
+        <li><label><input type="checkbox" data-k="cold"><span>Cold start: smoke, idle quality</span><a class="to" href="#job-1">J01</a></label></li>
+        <li><label><input type="checkbox" data-k="inv"><span>Carbon-clean and DRC invoices</span><a class="to" href="#job-2">J02</a></label></li>
+        <li><label><input type="checkbox" data-k="oil"><span>Oil-level habits in the history</span><a class="to" href="#job-3">J03</a></label></li>
+        <li><label><input type="checkbox" data-k="stance"><span>Stance square and level</span><a class="to" href="#st-7">St 7</a></label></li>
+        <li><label><input type="checkbox" data-k="weep"><span>Damper weep check on a lift</span><a class="to" href="#job-2">J02</a></label></li>
+        <li><label><input type="checkbox" data-k="clutch"><span>Clutch bite and judder</span><a class="to" href="#faults">Rest</a></label></li>
+        <li><label><input type="checkbox" data-k="coil"><span>Coil-pack and misfire scan</span><a class="to" href="#faults">Rest</a></label></li>
+        <li><label><input type="checkbox" data-k="rad"><span>Radiator and oil-cooler pipe corrosion</span><a class="to" href="#job-4">J04</a></label></li>
+        <li><label><input type="checkbox" data-k="ecu"><span>ECU update status</span><a class="to" href="#faults">Rest</a></label></li>
+        <li><label><input type="checkbox" data-k="bolster"><span>Bolster and armrest condition</span><a class="to" href="#st-5">St 5</a></label></li>
+        <li><label><input type="checkbox" data-k="sealant"><span>Sealant kit present and in date</span><a class="to" href="#faults">Rest</a></label></li>
+      </ol>
+      <div class="ppi-foot"><span id="ppiCount">0 of 11 ticked</span><button type="button" class="linkish" id="ppiReset">clear ticks</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ 5 FIFM -->
+<section class="sec" id="fifm" aria-labelledby="h-fifm">
+  <div class="sec-head">
+    <h2 id="h-fifm"><span class="no">5</span>FIFM! The forecourt</h2>
+    <p class="lede"><span id="searchLabel">Find It For Me</span>. Every advert, read against the eight stations.</p>
+    <p class="stamp"><span data-asof="long"></span> <a class="src" href="#src-m1">M1</a></p>
+  </div>
+
+  <dl class="ledger" id="ledger" aria-label="Market ledger with comparators">
+    <div class="lg"><dt>Market data</dt><dd class="v">—</dd><dd class="c">js/data.js did not load</dd></div>
+  </dl>
+  <div class="charts">
+    <div class="chart chart-main">
+      <h3>Asking price against mileage</h3>
+      <svg id="scatterSvg" role="img" aria-label="Scatter of asking price against mileage for each car for sale, with evo price bands and the 60,000-mile line."></svg>
+      <div class="key"><span><i class="dot"></i>advert, numbered by rank</span><span><i class="dot top"></i>top of the list</span><span><i class="flag"></i>flagged</span><span><i class="band"></i>evo: £25k+ under 60,000 mi</span><span><i class="ref"></i>evo bands, 60,000 mi</span></div>
+    </div>
+    <div class="chart">
+      <h3>Trend across tracked runs</h3>
+      <svg id="trendSvg" role="img" aria-label="Floor, median and ceiling asking prices on each tracked run, with live counts."></svg>
+      <div class="key"><span><i class="band"></i>floor to ceiling</span><span><i></i>median</span><span><i class="ref"></i>evo bands</span></div>
+      <p class="chart-note" id="trendNote"></p>
+    </div>
+  </div>
+
+  <div class="keyrow">
+    <div>
+      <h3>The keeper test</h3>
+      <p>Select a count to filter the ranking. <span class="stamp" data-asof="mini"></span></p>
+    </div>
+  </div>
+  <div class="lin-wrap">
+    <table class="lin keeper" id="keeper">
+      <thead><tr><th scope="col">Column</th><th scope="col">Keeper</th><th scope="col">Walk away, or price it in</th><th scope="col">Adverts</th></tr></thead>
+      <tbody>
+        <tr data-f="drc"><th scope="row"><a href="#st-7">DRC</a></th><td>Original, working DRC</td><td>Coilovers in place of DRC</td><td data-fbtn="drc"></td></tr>
+        <tr data-f="carbon"><th scope="row"><a href="#job-1">Carbon</a></th><td>Full specialist history: carbon cleans, oil discipline, DRC care</td><td>No carbon-clean invoice past 70,000 mi</td><td data-fbtn="carbon"></td></tr>
+        <tr data-f="seats"><th scope="row"><a href="#st-5">Seats</a></th><td>Wingbacks with unworn bolsters</td><td class="nil">—</td><td data-fbtn="seats"></td></tr>
+        <tr data-f="wheel"><th scope="row"><a href="#st-4">Wheel</a></th><td>Named in the advert: +1 to the tracker score</td><td class="nil">—</td><td data-fbtn="wheel"></td></tr>
+        <tr data-f="exhaust"><th scope="row"><a href="#st-8">Exhaust</a></th><td>Unmodified exhaust</td><td>“Sport mode always on”: seized bypass valves</td><td data-fbtn="exhaust"></td></tr>
+        <tr data-f="engine"><th scope="row"><a href="#st-1">Engine</a></th><td>Unmodified engine</td><td>Remap with no supporting history</td><td data-fbtn="engine"></td></tr>
+        <tr data-f="cat"><th scope="row"><a href="#st-3">History</a></th><td class="nil">—</td><td>Insurance Cat markers (HPI check)</td><td data-fbtn="cat"></td></tr>
+        <tr data-f="paint"><th scope="row"><a href="#identification">Paint</a></th><td>Sprint Blue or Misano Red over black buckets</td><td class="nil">—</td><td data-fbtn="paint"></td></tr>
+        <tr><th scope="row">At the viewing</th><td class="nil">—</td><td>Clutch judder on a track-used car</td><td class="nil">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <details class="ev">
+    <summary>Evidence · score and columns</summary>
+    <div class="ev-body"><ul>
+      <li><span class="k">Score</span>positive keywords minus red flags, from the full advert text; rank by score, then mileage, then price</li>
+      <li><span class="k">Sources</span>keeper test <a class="src" href="#src-3">S3</a> <a class="src" href="#src-8">S8</a> <a class="src" href="#src-9">S9</a>; adverts <a class="src" href="#src-m1">M1</a> <span class="stamp" data-asof="plain"></span></li>
+    </ul></div>
+  </details>
+
+  <div class="keyrow"><div><h3>Ranked entries</h3></div></div>
+  <p class="filter-say" id="filterSay" aria-live="polite"></p>
+  <div class="mx" id="mx">
+    <div class="mx-head" aria-hidden="true">
+      <span>№</span><span></span><span>Car</span><span>Price ± median</span><span>Miles</span>
+      <a href="#st-7">DRC</a><a href="#st-5">Seats</a><a href="#st-4">Wheel</a><a href="#st-8">Exhaust</a><a href="#st-1">Engine</a><a href="#st-3">History</a>
+      <span>Score</span><span></span>
+    </div>
+    <ol class="mx-list" id="mxList"></ol>
+  </div>
+
+  <div class="contact-wrap" id="gallery">
+    <div class="cs-head"><h3>Contact sheet</h3><span class="stamp" data-asof="short"></span></div>
+    <ol class="contact" id="contact"></ol>
+  </div>
+
+  <div class="gone">
+    <h3>Gone from the market</h3>
+    <p class="stamp" data-asof="mini"></p>
+    <p>Sold or withdrawn; the tracker cannot tell. Missed runs make the days a range.</p>
+    <table class="gone-t" id="goneT"></table>
+  </div>
+</section>
+
+<!-- ================================================================ 6 VERDICT -->
+<section class="sec" id="verdict" aria-labelledby="h-verdict">
+  <div class="sec-head">
+    <h2 id="h-verdict"><span class="no">6</span>The one for you</h2>
+    <p class="lede">The top-ranked B7, with the checks its advert leaves open.</p>
+  </div>
+  <div class="verdict-grid">
+    <article class="one" id="one" aria-label="Top-ranked car"><div class="one-body"><p>No market data loaded.</p></div></article>
+    <aside class="pager" id="pager" aria-labelledby="h-pager">
+      <h3 id="h-pager">Your daily one-pager</h3>
+      <div id="pagerBody"><p>No one-pager PDF in this copy.</p></div>
+    </aside>
+  </div>
+</section>
+
+<!-- ================================================================ 7 EVIDENCE -->
+<section class="sec" id="evidence" aria-labelledby="h-ev">
+  <div class="sec-head">
+    <h2 id="h-ev"><span class="no">7</span>Evidence</h2>
+    <p class="lede">26 sources and the market tracker, each linked to where it is used. Five conflicts and ten unverified claims stay open.</p>
+  </div>
+  <div class="registers">
+    <div class="reg">
+      <h3>Sources</h3>
+      <p>As compiled 12 Jul 2026; M1 as stamped.</p>
+      <ol class="srcs" id="srcs">
+        <li id="src-1"><span class="id">S1</span><span><a href="https://en.wikipedia.org/wiki/Audi_RS_4" rel="noopener noreferrer" target="_blank">Wikipedia, Audi RS 4</a><span class="used"></span></span></li>
+        <li id="src-2"><span class="id">S2</span><span><a href="https://supercarnostalgia.com/blog/audi-b7-rs4" rel="noopener noreferrer" target="_blank">Supercar Nostalgia, Audi B7 RS4</a><span class="used"></span></span></li>
+        <li id="src-3"><span class="id">S3</span><span><a href="https://www.evo.co.uk/audi/rs4/6255/audi-rs4-b7-2006-2008-buyers-guide" rel="noopener noreferrer" target="_blank">evo, RS4 B7 buying guide</a><span class="used"></span></span></li>
+        <li id="src-4"><span class="id">S4</span><span><a href="https://www.topspeed.com/why-the-b7-audi-rs4-still-punches-above-its-weight/" rel="noopener noreferrer" target="_blank">TopSpeed, B7 retrospective</a><span class="used"></span></span></li>
+        <li id="src-5"><span class="id">S5</span><span><a href="https://www.australiancar.reviews/audi-b7-rs-4-bns-4-2-fsi-v8-engine/" rel="noopener noreferrer" target="_blank">Australian Car.Reviews, BNS 4.2 FSI V8</a><span class="used"></span></span></li>
+        <li id="src-6"><span class="id">S6</span><span><a href="https://mrctuning.com/site/rs4-b7-4-2-v8-fsi/" rel="noopener noreferrer" target="_blank">MRC Tuning, RS4 B7 4.2 V8 FSI</a><span class="used"></span></span></li>
+        <li id="src-7"><span class="id">S7</span><span><a href="https://www.auto-data.net/en/audi-rs4-avant-8e-b7-4.2-fsi-v8-32v-420hp-quattro-4531" rel="noopener noreferrer" target="_blank">auto-data.net, RS4 Avant 8E specification</a><span class="used"></span></span></li>
+        <li id="src-8"><span class="id">S8</span><span><a href="https://www.pistonheads.com/news/ph-buying-guide-contents/audi-rs4-b7-buying-guide-powertrain/28786" rel="noopener noreferrer" target="_blank">PistonHeads, buying guide: powertrain</a><span class="used"></span></span></li>
+        <li id="src-9"><span class="id">S9</span><span><a href="https://www.pistonheads.com/news/ph-buying-guide-contents/audi-rs4-b7-buying-guide-interior/28789" rel="noopener noreferrer" target="_blank">PistonHeads, buying guide: interior</a><span class="used"></span></span></li>
+        <li id="src-10"><span class="id">S10</span><span><a href="https://www.pistonheads.com/gassing/topic.asp?h=0&amp;f=86&amp;t=1300586" rel="noopener noreferrer" target="_blank">PistonHeads forum, DRC explained</a><span class="used"></span></span></li>
+        <li id="src-11"><span class="id">S11</span><span><a href="https://www.euroautopro.com.au/post/common-problems-of-audi-a4-b7-rs4-a-comprehensive-guide" rel="noopener noreferrer" target="_blank">Euro Auto Pro, common B7 problems</a><span class="used"></span></span></li>
+        <li id="src-12"><span class="id">S12</span><span><a href="https://zawieszeniapneumatyczne.eu/en/drc-suspension-repair-in-audi-rs-everything-you-need-to-know/" rel="noopener noreferrer" target="_blank">Zawieszenia Pneumatyczne, DRC repair</a><span class="used"></span></span></li>
+        <li id="src-13"><span class="id">S13</span><span><a href="https://samtalkscars25651946.wordpress.com/2020/05/10/the-b7-rs4-a-buyers-guide-to-common-faults/" rel="noopener noreferrer" target="_blank">Samtalkscars, common faults (2020)</a><span class="used"></span></span></li>
+        <li id="src-14"><span class="id">S14</span><span><a href="https://forum.rs246.com/viewtopic.php?t=90629" rel="noopener noreferrer" target="_blank">RS246 forum, wing width thread</a><span class="used"></span></span></li>
+        <li id="src-15"><span class="id">S15</span><span><a href="https://forum.rs246.com/viewtopic.php?t=95384" rel="noopener noreferrer" target="_blank">RS246 forum, torque split thread</a><span class="used"></span></span></li>
+        <li id="src-16"><span class="id">S16</span><span><a href="https://www.audizine.com/forum/showthread.php/519593-RS4-Production-numbers" rel="noopener noreferrer" target="_blank">Audizine forum, production numbers</a><span class="used"></span></span></li>
+        <li id="src-17"><span class="id">S17</span><span><a href="https://www.audizine.com/forum/showthread.php/336427-so-are-our-cars-50-50-or-40-60-torque-split" rel="noopener noreferrer" target="_blank">Audizine forum, 50:50 or 40:60</a><span class="used"></span></span></li>
+        <li id="src-18"><span class="id">S18</span><span><a href="https://www.autopadre.com/colors/audi-rs-4" rel="noopener noreferrer" target="_blank">Autopadre, RS 4 colours</a><span class="used"></span></span></li>
+        <li id="src-19"><span class="id">S19</span><span><a href="https://paintref.com/cgi-bin/colorcodedisplay.cgi?year=2007&amp;manuf=Audi&amp;model=RS4" rel="noopener noreferrer" target="_blank">PaintRef, 2007 Audi RS4</a><span class="used"></span></span></li>
+        <li id="src-20"><span class="id">S20</span><span><a href="https://thecarinvestor.com/audi-rs4-b7-future-classic" rel="noopener noreferrer" target="_blank">The Car Investor, B7 as future classic</a><span class="used"></span></span></li>
+        <li id="src-21"><span class="id">S21</span><span><a href="https://www.frost.co.uk/future-classics-audi-rs-4-avant-b7/" rel="noopener noreferrer" target="_blank">Frost, future classics: RS 4 Avant B7</a><span class="used"></span></span></li>
+        <li id="src-22"><span class="id">S22</span><span><a href="https://www.hagerty.com/media/market-trends/hagerty-insider/car-profiles-hagerty-insider/dream-sleeper-you-can-import-audi-rs4-avant/" rel="noopener noreferrer" target="_blank">Hagerty Media, RS4 Avant profile</a><span class="used"></span></span></li>
+        <li id="src-23"><span class="id">S23</span><span><a href="https://www.classic.com/m/audi/a4/b7/rs4/" rel="noopener noreferrer" target="_blank">CLASSIC.COM, B7 RS4 market</a><span class="used"></span></span></li>
+        <li id="src-24"><span class="id">S24</span><span><a href="https://www.autoevolution.com/audi/rs4-avant/" rel="noopener noreferrer" target="_blank">autoevolution, RS4 Avant generations</a><span class="used"></span></span></li>
+        <li id="src-25"><span class="id">S25</span><span><a href="https://drive-my.com/en/history/222-all-generations-of-audi-rs2-rs4-b4-8c-b5-b6-b7-b8-and-b9.html" rel="noopener noreferrer" target="_blank">Drive-My, RS2 to B9</a><span class="used"></span></span></li>
+        <li id="src-26"><span class="id">S26</span><span><a href="https://www.emanualonline.com/blog/the-story-and-history-of-the-audi-rs4" rel="noopener noreferrer" target="_blank">eManualOnline, history of the RS4</a><span class="used"></span></span></li>
+        <li id="src-m1"><span class="id">M1</span><span>Autotrader UK adverts via the local tracker · <span class="stamp" data-asof="plain"></span><span class="used"></span></span></li>
+      </ol>
+    </div>
+    <div>
+      <div class="reg">
+        <h3>Conflicts</h3>
+        <p>Named, not resolved.</p>
+        <ol class="regl" id="conflicts">
+          <li id="cf-1"><span class="id">cf-1</span>0–62 mph<span class="vals"><span>4.8 s factory · S1 S7</span><span>4.7 s · evo S3</span><span>4.5 s measured · Road &amp; Track via S1</span></span></li>
+          <li id="cf-2"><span class="id">cf-2</span>Standard front calipers<span class="vals"><span>8-piston · S1 S2</span><span>6-piston · secondary summaries, likely the ceramic option</span></span></li>
+          <li id="cf-3"><span class="id">cf-3</span>Kerb weight<span class="vals"><span>1,650–1,710 kg EU DIN · S1</span><span>≈1,795 kg · US-market sources, likely another standard</span></span></li>
+          <li id="cf-4"><span class="id">cf-4</span>Wingback fitment<span class="vals"><span>standard, EU saloon and Avant · S9 S2</span><span>cost option · UK forum and classified convention</span></span></li>
+          <li id="cf-5"><span class="id">cf-5</span>Production by body style<span class="vals"><span>≈10,000 total, multi-source · S1 S2</span><span>forum splits, internally inconsistent · S16</span></span></li>
+        </ol>
+      </div>
+      <div class="reg">
+        <h3>Unverified</h3>
+        <p>In pencil wherever it appears.</p>
+        <ol class="regl unv">
+          <li id="uv-1"><span class="id">uv-1</span>First flat-bottomed wheel on a production Audi</li>
+          <li id="uv-2"><span class="id">uv-2</span>280 km/h delimit option</li>
+          <li id="uv-3"><span class="id">uv-3</span>Sump and lubrication specifics</li>
+          <li id="uv-4"><span class="id">uv-4</span>Front/rear weight distribution</li>
+          <li id="uv-5"><span class="id">uv-5</span>Exact track-width increase</li>
+          <li id="uv-6"><span class="id">uv-6</span>Factory 19-inch wheel option</li>
+          <li id="uv-7"><span class="id">uv-7</span>Lap timer in the driver information system</li>
+          <li id="uv-8"><span class="id">uv-8</span>Factory service schedule</li>
+          <li id="uv-9"><span class="id">uv-9</span>Production numbers by body style</li>
+          <li id="uv-10"><span class="id">uv-10</span>US colour shares, forum-derived</li>
+        </ol>
+      </div>
+      <div class="reg">
+        <h3>Photographs, 3D and code</h3>
+        <ul class="regl">
+          <li>Photographs: © their advertisers, via Autotrader UK.</li>
+          <li id="src-model">3D model: “2008 Audi RS4” by <a href="https://sketchfab.com/ddiaz-design" rel="noopener noreferrer" target="_blank">Ddiaz Design</a>, licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener noreferrer" target="_blank">CC BY-NC-SA 4.0</a>, <a href="https://sketchfab.com/3d-models/2008-audi-rs4-14024864a643497497e11163151a0eb2" rel="noopener noreferrer" target="_blank">source on Sketchfab</a>. Displayed unmodified; the paint tint is a runtime view effect. The still image is a render of the same model. The walk-round outlines are projected from it and scaled to S7, under the same licence. Non-commercial fan use.</li>
+          <li>Viewer: &lt;model-viewer&gt; © Google, BSD-3-Clause, vendored locally.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <p class="colophon">Dossier compiled 12 Jul 2026. Market data: a local Autotrader tracker scheduled for 08:45 daily; not every day runs.</p>
 </section>
 
 </main>
-
-<footer class="site-foot">
-  <div class="rule"></div>
-  <details class="sources">
-    <summary>Sources &amp; caveats</summary>
-    <div class="sources-body">
-      <h3 class="kicker">Sources</h3>
-      <ul class="src-list mono">
-        <li>Wikipedia — Audi RS 4 — en.wikipedia.org/wiki/Audi_RS_4</li>
-        <li>Supercar Nostalgia — supercarnostalgia.com/blog/audi-b7-rs4</li>
-        <li>evo — RS4 B7 buying guide — evo.co.uk/audi/rs4/6255/audi-rs4-b7-2006-2008-buyers-guide</li>
-        <li>TopSpeed — topspeed.com/why-the-b7-audi-rs4-still-punches-above-its-weight</li>
-        <li>Australian Car.Reviews — BNS engine — australiancar.reviews/audi-b7-rs-4-bns-4-2-fsi-v8-engine</li>
-        <li>MRC Tuning — mrctuning.com/site/rs4-b7-4-2-v8-fsi</li>
-        <li>auto-data.net — RS4 Avant 8E B7 4.2 FSI specification sheet</li>
-        <li>PistonHeads — buying guide, powertrain — pistonheads.com &hellip;/28786</li>
-        <li>PistonHeads — buying guide, interior — pistonheads.com &hellip;/28789</li>
-        <li>PistonHeads forum — DRC explained — pistonheads.com/gassing t=1300586</li>
-        <li>Euro Auto Pro — common problems guide — euroautopro.com.au</li>
-        <li>Zawieszenia Pneumatyczne — DRC repair — zawieszeniapneumatyczne.eu</li>
-        <li>Samtalkscars — B7 RS4 common-faults guide (2020)</li>
-        <li>RS246 forum — t=90629 (wing width), t=95384 (torque split)</li>
-        <li>Audizine forum — production numbers &amp; torque-split threads</li>
-        <li>Autopadre / PaintRef — 2007–08 colour tables</li>
-        <li>The Car Investor — audi-rs4-b7-future-classic</li>
-        <li>Frost — future-classics-audi-rs-4-avant-b7</li>
-        <li>Hagerty Media — dream-sleeper-you-can-import-audi-rs4-avant</li>
-        <li>CLASSIC.COM — m/audi/a4/b7/rs4 market aggregation</li>
-        <li>autoevolution — audi/rs4-avant generations</li>
-        <li>Drive-My — all generations RS2–B9</li>
-        <li>eManualOnline — story and history of the Audi RS4</li>
-      </ul>
-      <h3 class="kicker">Photography, 3D &amp; libraries</h3>
-      <ul class="src-list mono">
-        <li>Hi-res photographs (hero, design previews, gallery) — &copy; their respective advertisers, via live Autotrader UK listings</li>
-        <li>3D viewer — &lt;model-viewer&gt; &copy; Google, BSD-3-Clause licence — vendored locally at vendor/model-viewer.min.js</li>
-        <li>3D model — &ldquo;2008 Audi RS4&rdquo; by <a href="https://sketchfab.com/ddiaz-design" rel="noopener">Ddiaz Design</a>, licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener">CC&nbsp;BY-NC-SA&nbsp;4.0</a> &mdash; <a href="https://sketchfab.com/3d-models/2008-audi-rs4-14024864a643497497e11163151a0eb2" rel="noopener">source on Sketchfab</a>. Displayed unmodified; runtime paint tint is a non-destructive view effect. Non-commercial fan use.</li>
-        <li>Paint hexes — detected from advert photographs; approximate, not factory codes</li>
-      </ul>
-      <h3 class="kicker">Unverified — presented as reputed, not fact</h3>
-      <ul class="src-list mono">
-        <li>&ldquo;First flat-bottomed steering wheel on a production Audi&rdquo; — credited, no primary source</li>
-        <li>280 km/h delimiter option</li>
-        <li>Sump / lubrication specifics</li>
-        <li>Front/rear weight distribution split</li>
-        <li>Exact track-width increase — the ~35 mm wing figure is forum-derived</li>
-        <li>Factory 19-inch wheel option details</li>
-        <li>Driver-information-system lap timer</li>
-        <li>Factory service schedule</li>
-        <li>Per-body-style production numbers</li>
-        <li>US colour distribution percentages — forum-derived, indicative only</li>
-      </ul>
-      <h3 class="kicker">Conflicts between sources — named, not resolved</h3>
-      <ul class="src-list mono">
-        <li>0–62 mph: 4.8 s factory &middot; 4.7 s (evo) &middot; 4.5 s measured (Road &amp; Track)</li>
-        <li>Standard front calipers: 8-piston vs 6-piston in some summaries — likely conflation with the ceramic option</li>
-        <li>Kerb weight: EU DIN 1,650–1,710 kg vs ~1,795 kg in US sources</li>
-        <li>Wingbacks: standard fit (EU sources) vs cost option (UK convention)</li>
-        <li>Per-body-style production splits: forum figures internally inconsistent; only the ~10,000 total is multi-source</li>
-      </ul>
-    </div>
-  </details>
-  <p class="colophon mono">Built for the last atmospheric RS4 &middot; market data: Autotrader UK, tracked locally &middot; photographs incl. hi-res belong to their advertisers &middot; 3D model: &ldquo;2008 Audi RS4&rdquo; by Ddiaz Design, CC BY-NC-SA 4.0 &middot; viewer: model-viewer &copy; Google, BSD-3-Clause</p>
-</footer>
-
-<!-- lightbox -->
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photograph viewer" hidden>
-  <button class="lb-close" id="lbClose" aria-label="Close viewer">&times;</button>
-  <button class="lb-prev" id="lbPrev" aria-label="Previous photograph">&lsaquo;</button>
-  <img id="lbImg" src="" alt="">
-  <button class="lb-next" id="lbNext" aria-label="Next photograph">&rsaquo;</button>
-  <div class="lb-caption" id="lbCaption"></div>
 </div>
 
-<!-- FIFM quick-preview popover -->
-<div class="pop" id="fifmPop" aria-hidden="true" hidden></div>
+<div class="bar" id="bar">
+  <button type="button" id="routeBtn" aria-controls="route" aria-expanded="false">Route</button>
+  <div class="here"><b id="barHere">0 · File</b><span class="stamp" data-asof="mini"></span></div>
+  <a href="#file" id="barPrev" aria-label="Previous stop">‹</a>
+  <a href="#identification" id="barNext" aria-label="Next stop">›</a>
+</div>
+
+<div class="pop" id="pop" hidden></div>
+
+<dialog class="lb" id="lb" aria-labelledby="lbTitle">
+  <div class="lb-top"><span id="lbTitle">Seller’s photographs</span><button type="button" class="lb-x" id="lbClose">Close</button></div>
+  <figure class="lb-fig">
+    <img id="lbImg" src="" alt="">
+    <button type="button" class="lb-nav lb-prev" id="lbPrev" aria-label="Previous photograph">‹</button>
+    <button type="button" class="lb-nav lb-next" id="lbNext" aria-label="Next photograph">›</button>
+  </figure>
+  <div class="lb-cap" id="lbCap"></div>
+</dialog>
+
+<!-- plan-view car, front at the top; used by the route map and stations 6 and 7 -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="planCar" viewBox="0 0 120 250">
+      <path class="pc-body" d="M40 12 C50 7 70 7 80 12 C90 17 98 26 100 40 L101 84 L101 196 C101 212 100 226 96 234 C90 242 76 245 60 245 C44 245 30 242 24 234 C20 226 19 212 19 196 L19 84 L20 40 C22 26 30 17 40 12 Z"/>
+      <path class="pc-glass" d="M28 86 L92 86 L86 110 L34 110 Z"/>
+      <rect class="pc-body" x="34" y="110" width="52" height="62"/>
+      <path class="pc-glass" d="M34 172 L86 172 L90 192 L30 192 Z"/>
+      <ellipse class="pc-body" cx="15" cy="92" rx="5" ry="3"/>
+      <ellipse class="pc-body" cx="105" cy="92" rx="5" ry="3"/>
+      <rect class="pc-tyre" x="21" y="40" width="11" height="30"/>
+      <rect class="pc-tyre" x="88" y="40" width="11" height="30"/>
+      <rect class="pc-tyre" x="21" y="178" width="11" height="30"/>
+      <rect class="pc-tyre" x="88" y="178" width="11" height="30"/>
+    </symbol>
+  </defs>
+</svg>
 
 <script>window.RS4_MODEL_CREDIT = "3D model: “2008 Audi RS4” by Ddiaz Design · CC BY-NC-SA 4.0 · sketchfab.com/ddiaz-design";</script>
 <script src="js/data.js"></script>
